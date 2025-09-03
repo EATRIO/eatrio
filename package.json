@@ -19,11 +19,11 @@
       "autoprefixer",
       "postcss"
     ],
-    "scripts": [
-      "start",
-      "build",
-      "serve"
-    ],
+    "scripts": {
+  "start": "vite",
+  "build": "vite build",
+  "serve": "vite preview"
+},
     "warning": "🚨 CRITICAL: DO NOT REMOVE OR MODIFY ABOVE DEPENDENCIES - Required for app functionality"
   },
   "dependencies": {
