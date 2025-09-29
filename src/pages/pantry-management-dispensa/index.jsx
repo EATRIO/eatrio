@@ -199,7 +199,7 @@ useEffect(() => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <HeaderWithLogo
-        title="Dispensa"
+        title="Dispensa" motto="Pianifica. Cucina. Risparmia." 
         actions={headerActions}
       />
       {/* Main Content */}
