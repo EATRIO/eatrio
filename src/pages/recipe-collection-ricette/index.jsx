@@ -108,7 +108,33 @@ const loadIngredientNutrition = () => {
   catch { return {}; }
 };
 
-// Hotkey: Alt+I / Alt+R / Alt+A / Alt+E per incollare/esportare JSON
+/* ========= NEW: seed forzato + scorciatoia reset ========= */
+function seedCatalogHard(setCatalog) {
+  try {
+    localStorage.setItem(CATALOG_KEYS.ingredients, JSON.stringify(EMBEDDED_INGREDIENTS));
+    localStorage.setItem(CATALOG_KEYS.recipes, JSON.stringify(EMBEDDED_RECIPES));
+  } catch {}
+  setCatalog({ ingredients: EMBEDDED_INGREDIENTS, recipes: EMBEDDED_RECIPES });
+}
+
+function useEmergencyResetShortcut(setCatalog) {
+  useEffect(() => {
+    const onKey = (e) => {
+      if (!e.altKey || !e.shiftKey) return;
+      if ((e.key || '').toLowerCase() !== '0') return;
+      try {
+        localStorage.removeItem(CATALOG_KEYS.ingredients);
+        localStorage.removeItem(CATALOG_KEYS.recipes);
+      } catch {}
+      seedCatalogHard(setCatalog);
+      alert('Catalogo resettato e ricaricato (embedded).');
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [setCatalog]);
+}
+
+// Hotkey: Alt+I / Alt+R / Alt+U / Alt+A / Alt+E
 function useAdminImportShortcuts(setIngredients, setRecipes) {
   useEffect(() => {
     const handler = async(e) => {
@@ -451,6 +477,15 @@ const RecipeCollection = () => {
   // Catalogo embedded o localStorage
   const [{ ingredients, recipes }, setCatalog] = useState(() => loadCatalog());
 
+  // 🔧 Auto-seed all’avvio se vuoto + scorciatoia di emergenza
+  useEffect(() => {
+    if (!recipes || recipes.length === 0) {
+      seedCatalogHard(setCatalog);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEmergencyResetShortcut(setCatalog);
+
   // Hotkey admin per importare/esportare
   useAdminImportShortcuts(
     (ing) => setCatalog((prev) => ({ ...prev, ingredients: ing })),
@@ -474,12 +509,18 @@ const RecipeCollection = () => {
     };
   }, []);
 
-  // Rileva aggiornamenti immagini/cataloghi da altre pagine/tab
+  // Rileva aggiornamenti da altre pagine/tab (immagini + cataloghi + meta)
   const [bump, setBump] = useState(0);
   useEffect(() => {
     const onStorage = (e) => {
       if (!e) return;
-      if ([__IMG_KEY, CATALOG_KEYS.ingredientPrices, CATALOG_KEYS.ingredientNutrition].includes(e.key)) {
+      if ([
+        __IMG_KEY,
+        CATALOG_KEYS.recipes,
+        CATALOG_KEYS.ingredients,
+        CATALOG_KEYS.ingredientPrices,
+        CATALOG_KEYS.ingredientNutrition,
+      ].includes(e.key)) {
         setBump((t) => t + 1);
       }
     };
@@ -528,7 +569,7 @@ const RecipeCollection = () => {
       if (activeFilters?.vegetarian && !recipe?.dietary?.includes('vegetarian')) return false;
       if (activeFilters?.budget) {
         const cps = getCostForSort(recipe);
-        if (!Number.isFinite(cps) || cps > 3.0) return false; // ≤ €3 a porzione = budget
+        if (!Number.isFinite(cps) || cps > 3.0) return false; // ≤ €3 a porzione
       }
 
       if (advancedFilters?.cookingTime) {
@@ -637,9 +678,29 @@ const RecipeCollection = () => {
         <div className="px-4 pb-4">
           <p className="text-sm text-muted-foreground">{filteredAndSortedRecipes.length} ricette trovate</p>
           <p className="text-xs text-muted-foreground mt-1">
-            (Tip admin: <kbd>Alt</kbd>+<kbd>I</kbd> importa ingredienti • <kbd>Alt</kbd>+<kbd>R</kbd> importa ricette • <kbd>Alt</kbd>+<kbd>A</kbd> all-in-one • <kbd>Alt</kbd>+<kbd>E</kbd> esporta id+titolo)
+            (Tip admin: <kbd>Alt</kbd>+<kbd>I</kbd> importa ingredienti • <kbd>Alt</kbd>+<kbd>R</kbd> importa ricette • <kbd>Alt</kbd>+<kbd>U</kbd> patch • <kbd>Alt</kbd>+<kbd>A</kbd> all-in-one • <kbd>Alt</kbd>+<kbd>E</kbd> esporta id+titolo • <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>0</kbd> reset/seed)
           </p>
         </div>
+
+        {/* Fallback quando è tutto vuoto: bottone "Carica ricette base" */}
+        {filteredAndSortedRecipes.length === 0 && (
+          <div className="px-4 pb-6">
+            <div className="border border-dashed border-border rounded-xl p-4 text-center">
+              <p className="text-sm text-muted-foreground mb-3">
+                Non trovo ricette su questo dispositivo.
+              </p>
+              <button
+                className="inline-flex items-center gap-2 text-sm px-3 py-2 rounded-md border border-border hover:bg-muted/30"
+                onClick={() => seedCatalogHard(setCatalog)}
+              >
+                Carica ricette base
+              </button>
+              <p className="text-xs text-muted-foreground mt-2">
+                Tip (desktop): <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>0</kbd> per reset/seed forzato.
+              </p>
+            </div>
+          </div>
+        )}
 
         <div className="px-4">
           <RecipeGrid recipes={recipesForGrid} onFavoriteToggle={handleFavoriteToggle} loading={loading} />
@@ -662,3 +723,4 @@ const RecipeCollection = () => {
 };
 
 export default RecipeCollection;
+
