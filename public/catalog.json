@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "ingredients": [
+    { "id": "ing_spaghetti", "name": "Spaghetti", "default_unit": "g", "aliases": ["pasta lunga"] },
+    { "id": "ing_uova", "name": "Uova", "default_unit": "pz", "aliases": ["uovo"] },
+    { "id": "ing_pollo", "name": "Pollo", "default_unit": "kg", "aliases": ["petto di pollo", "cosce di pollo", "fusi di pollo"] }
+  ],
+  "recipes": [
+    {
+      "id": "rec_carbonara",
+      "title": "Spaghetti alla Carbonara",
+      "servings": 4,
+      "image": "https://images.unsplash.com/photo-1588013273468-315fd88ea34c?w=1200&h=900&fit=crop",
+      "description": "Classica ricetta romana con uova, pecorino e guanciale",
+      "ingredients": [
+        { "ingredient_id": "ing_spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
+        { "ingredient_id": "ing_uova", "name": "Uova", "amount": 4, "unit": "pz" }
+      ],
+      "cookingTime": 20,
+      "difficulty": 1
+    }
+  ],
+  "ingredientPrices": {
+    "ing_spaghetti": { "unitBase": "kg", "avg": 2.20, "retailers": { "coop": 2.30, "conad": 2.10, "esselunga": 2.20 } },
+    "ing_uova":      { "unitBase": "pz", "avg": 0.28, "retailers": { "coop": 0.30, "conad": 0.27, "esselunga": 0.28 } },
+    "ing_pollo":     { "unitBase": "kg", "avg": 6.90, "retailers": { "coop": 7.20, "conad": 6.60, "esselunga": 6.90 } }
+  },
+  "ingredientNutrition": {
+    "ing_spaghetti": { "unitBase": "kg", "kcalPerUnit": 3600 },
+    "ing_uova":      { "unitBase": "pz", "kcalPerUnit": 70 },
+    "ing_pollo":     { "unitBase": "kg", "kcalPerUnit": 1200 }
+  }
+}
