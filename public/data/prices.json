@@ -1,0 +1,10 @@
+{
+  "ing_spaghetti":   { "unitBase": "kg", "retailers": { "coop": 1.8, "conad": 1.7, "esselunga": 1.9 } },
+  "ing_guanciale":   { "unitBase": "kg", "retailers": { "coop": 16,  "conad": 15,  "esselunga": 17 } },
+  "ing_uova":        { "unitBase": "pz", "retailers": { "coop": 0.35, "conad": 0.33, "esselunga": 0.34 } },
+  "ing_pecorino":    { "unitBase": "kg", "retailers": { "coop": 18,  "conad": 17,  "esselunga": 19 } },
+  "ing_pepe":        { "unitBase": "kg", "avg": 32 },
+  "ing_pomodoro":    { "unitBase": "kg", "retailers": { "coop": 2.5, "conad": 2.2, "esselunga": 2.4 } },
+  "ing_olio_evo":    { "unitBase": "l",  "retailers": { "coop": 8.5, "conad": 8.3, "esselunga": 8.7 } },
+  "ing_sale":        { "unitBase": "kg", "avg": 0.6 }
+}
