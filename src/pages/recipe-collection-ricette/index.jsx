@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { ensureCatalogLoaded, loadCatalogFromLocal, CATALOG_KEYS as CK } from '../../lib/catalogLoader';
+
 import HeaderWithLogo from '../../components/ui/HeaderWithLogo';
 import BottomTabNavigation from '../../components/ui/BottomTabNavigation';
 import FloatingActionButton from '../../components/ui/FloatingActionButton';
@@ -475,7 +477,8 @@ const RecipeCollection = () => {
   const [favorites, setFavorites] = useState(new Set());
 
   // Catalogo embedded o localStorage
-  const [{ ingredients, recipes }, setCatalog] = useState(() => loadCatalog());
+  const [{ ingredients, recipes }, setCatalog] = useState(() => loadCatalogFromLocal());
+
 
   // 🔧 Auto-seed all’avvio se vuoto + scorciatoia di emergenza
   useEffect(() => {
@@ -534,6 +537,33 @@ const RecipeCollection = () => {
     (recipes || []).forEach((r) => { if (r?.isFavorite) favoritesSet.add(r.id); });
     setFavorites(favoritesSet);
   }, [recipes]);
+
+  // Carica/aggiorna il catalogo dai JSON pubblici all’avvio
+useEffect(() => {
+  let mounted = true;
+  (async () => {
+    const fromRemote = await ensureCatalogLoaded(false); // scarica se necessario
+    if (!mounted) return;
+    setCatalog(prev => ({
+      ...prev,
+      ingredients: fromRemote.ingredients || prev.ingredients || [],
+      recipes: fromRemote.recipes || prev.recipes || [],
+    }));
+  })();
+
+  // Se un'altra tab aggiorna i cataloghi, ci sincronizziamo
+  const onStorage = (e) => {
+    if (!e) return;
+    if ([CK.ingredients, CK.recipes, CK.ingredientPrices, CK.ingredientNutrition].includes(e.key)) {
+      const latest = loadCatalogFromLocal();
+      setCatalog(prev => ({ ...prev, ingredients: latest.ingredients, recipes: latest.recipes }));
+    }
+  };
+  window.addEventListener('storage', onStorage);
+
+  return () => { mounted = false; window.removeEventListener('storage', onStorage); };
+}, []);
+
 
   // Calcolo disponibilità + meta costo/kcal
   const priceCatalog = useMemo(() => loadIngredientPrices(), [bump]);
