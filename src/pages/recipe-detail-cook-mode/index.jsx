@@ -2,6 +2,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { useCatalog } from '../../utils/catalog';
+
 import HeaderWithLogo from '../../components/ui/HeaderWithLogo';
 import BottomTabNavigation from '../../components/ui/BottomTabNavigation';
 import FloatingActionButton from '../../components/ui/FloatingActionButton';
@@ -431,7 +433,7 @@ const buildRichRecipe = (base, currentServings, pantry, imageVersionBump = 0) =>
   };
 
   // costo ricetta da catalogo (se disponibile)
-  const ingredientPrices = loadIngredientPrices();
+  const { prices: ingredientPrices } = useCatalog(true);
   const calcRetailer = (ret) => {
     let tot = 0;
     for (const ing of enrichedIngredients) {
