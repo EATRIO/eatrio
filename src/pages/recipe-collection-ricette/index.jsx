@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useCatalog } from '../../utils/catalog';
+
 import { ensureCatalogLoaded, loadCatalogFromLocal, CATALOG_KEYS as CK } from '../../lib/catalogLoader';
 
 import HeaderWithLogo from '../../components/ui/HeaderWithLogo';
@@ -477,7 +479,7 @@ const RecipeCollection = () => {
   const [favorites, setFavorites] = useState(new Set());
 
   // Catalogo embedded o localStorage
-  const [{ ingredients, recipes }, setCatalog] = useState(() => loadCatalogFromLocal());
+  const { ingredients, recipes, prices, nutrition, loading, error, reload } = useCatalog(true);
 
 
   // 🔧 Auto-seed all’avvio se vuoto + scorciatoia di emergenza
@@ -566,6 +568,10 @@ useEffect(() => {
 
 
   // Calcolo disponibilità + meta costo/kcal
+
+  const priceCatalog = prices;       // viene dall’hook
+  const kcalCatalog  = nutrition;    // viene dall’hook
+
   const priceCatalog = useMemo(() => loadIngredientPrices(), [bump]);
   const kcalCatalog  = useMemo(() => loadIngredientNutrition(), [bump]);
 
@@ -751,6 +757,32 @@ useEffect(() => {
     </div>
   );
 };
+
+if (loading) {
+  return (
+    <div className="min-h-screen bg-background">
+      <HeaderWithLogo title="Ricette" />
+      <main className="pt-16 pb-24 lg:pb-6 lg:pl-64">
+        <div className="px-4 py-10 text-center text-muted-foreground">Carico il catalogo…</div>
+      </main>
+      <BottomTabNavigation />
+    </div>
+  );
+}
+if (error) {
+  return (
+    <div className="min-h-screen bg-background">
+      <HeaderWithLogo title="Ricette" />
+      <main className="pt-16 pb-24 lg:pb-6 lg:pl-64">
+        <div className="px-4 py-10 text-center text-red-500">
+          Errore nel caricare il catalogo. <button onClick={reload} className="underline">Riprova</button>
+        </div>
+      </main>
+      <BottomTabNavigation />
+    </div>
+  );
+}
+
 
 export default RecipeCollection;
 
