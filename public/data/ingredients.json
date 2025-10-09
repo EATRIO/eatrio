@@ -1,0 +1,10 @@
+[
+  { "id": "ing_spaghetti", "name": "Spaghetti", "default_unit": "g", "aliases": ["pasta lunga"] },
+  { "id": "ing_guanciale", "name": "Guanciale", "default_unit": "g", "aliases": [] },
+  { "id": "ing_uova", "name": "Uova", "default_unit": "pz", "aliases": ["uovo"] },
+  { "id": "ing_pecorino", "name": "Pecorino Romano", "default_unit": "g", "aliases": ["pecorino"] },
+  { "id": "ing_pepe", "name": "Pepe nero", "default_unit": "g", "aliases": ["pepe"] },
+  { "id": "ing_pomodoro", "name": "Pomodoro", "default_unit": "g", "aliases": ["polpa di pomodoro", "pelati"] },
+  { "id": "ing_olio_evo", "name": "Olio extravergine di oliva", "default_unit": "ml", "aliases": ["olio evo", "olio di oliva", "extravergine"] },
+  { "id": "ing_sale", "name": "Sale", "default_unit": "g", "aliases": [] }
+]
