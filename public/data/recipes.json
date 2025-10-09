@@ -1,0 +1,27 @@
+[
+  {
+    "id": "rec_carbonara",
+    "title": "Spaghetti alla Carbonara",
+    "servings": 4,
+    "cookingTime": 20,
+    "ingredients": [
+      { "ingredient_id": "ing_spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
+      { "ingredient_id": "ing_guanciale", "name": "Guanciale", "amount": 120, "unit": "g" },
+      { "ingredient_id": "ing_uova", "name": "Uova", "amount": 4, "unit": "pz" },
+      { "ingredient_id": "ing_pecorino", "name": "Pecorino Romano", "amount": 60, "unit": "g" },
+      { "ingredient_id": "ing_pepe", "name": "Pepe nero", "amount": 2, "unit": "g" }
+    ]
+  },
+  {
+    "id": "rec_pomodoro",
+    "title": "Spaghetti al Pomodoro",
+    "servings": 4,
+    "cookingTime": 18,
+    "ingredients": [
+      { "ingredient_id": "ing_spaghetti", "name": "Spaghetti", "amount": 320, "unit": "g" },
+      { "ingredient_id": "ing_pomodoro", "name": "Pomodoro", "amount": 400, "unit": "g" },
+      { "ingredient_id": "ing_olio_evo", "name": "Olio extravergine di oliva", "amount": 20, "unit": "ml" },
+      { "ingredient_id": "ing_sale", "name": "Sale", "amount": 5, "unit": "g" }
+    ]
+  }
+]
