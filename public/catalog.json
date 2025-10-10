@@ -2,32 +2,35 @@
   "version": 1,
   "ingredients": [
     { "id": "ing_spaghetti", "name": "Spaghetti", "default_unit": "g", "aliases": ["pasta lunga"] },
-    { "id": "ing_uova", "name": "Uova", "default_unit": "pz", "aliases": ["uovo"] },
-    { "id": "ing_pollo", "name": "Pollo", "default_unit": "kg", "aliases": ["petto di pollo", "cosce di pollo", "fusi di pollo"] }
+    { "id": "ing_uova", "name": "Uova", "default_unit": "pz", "aliases": ["uovo"] }
+    // ... tutti gli altri ingredienti
   ],
   "recipes": [
     {
-      "id": "rec_carbonara",
-      "title": "Spaghetti alla Carbonara",
+      "id": "rec_pomodoro",
+      "title": "Spaghetti al Pomodoro",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1588013273468-315fd88ea34c?w=1200&h=900&fit=crop",
-      "description": "Classica ricetta romana con uova, pecorino e guanciale",
+      "image": "https://...",
+      "description": "Pasta semplice al pomodoro.",
       "ingredients": [
-        { "ingredient_id": "ing_spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
-        { "ingredient_id": "ing_uova", "name": "Uova", "amount": 4, "unit": "pz" }
-      ],
-      "cookingTime": 20,
-      "difficulty": 1
+        { "ingredient_id": "ing_spaghetti", "name": "Spaghetti", "amount": 320, "unit": "g" },
+        { "ingredient_id": "ing_pomodoro",  "name": "Pomodoro",  "amount": 400, "unit": "g" },
+        { "ingredient_id": "ing_olio_evo",  "name": "Olio EVO",  "amount": 20,  "unit": "ml" },
+        { "ingredient_id": "ing_sale",      "name": "Sale",      "amount": 5,   "unit": "g" }
+      ]
     }
+    // ... tutte le altre ricette
   ],
   "ingredientPrices": {
-    "ing_spaghetti": { "unitBase": "kg", "avg": 2.20, "retailers": { "coop": 2.30, "conad": 2.10, "esselunga": 2.20 } },
-    "ing_uova":      { "unitBase": "pz", "avg": 0.28, "retailers": { "coop": 0.30, "conad": 0.27, "esselunga": 0.28 } },
-    "ing_pollo":     { "unitBase": "kg", "avg": 6.90, "retailers": { "coop": 7.20, "conad": 6.60, "esselunga": 6.90 } }
+    "ing_spaghetti": { "unitBase": "kg", "avg": 2.2, "retailers": { "coop": 2.3, "conad": 2.1, "esselunga": 2.2 } },
+    "ing_uova":      { "unitBase": "pz", "avg": 0.35 },
+    "ing_olio_evo":  { "unitBase": "l",  "avg": 9.0 }
+    // ... prezzi per ogni ingredient_id che usi nelle ricette
   },
   "ingredientNutrition": {
-    "ing_spaghetti": { "unitBase": "kg", "kcalPerUnit": 3600 },
+    "ing_spaghetti": { "unitBase": "kg", "kcalPerUnit": 3500 },
     "ing_uova":      { "unitBase": "pz", "kcalPerUnit": 70 },
-    "ing_pollo":     { "unitBase": "kg", "kcalPerUnit": 1200 }
+    "ing_olio_evo":  { "unitBase": "l",  "kcalPerUnit": 8840 }
+    // ... kcal per unità base per ogni ingredient_id
   }
 }
