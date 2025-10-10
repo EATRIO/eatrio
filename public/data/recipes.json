@@ -1,27 +1,22 @@
 [
   {
-    "id": "rec_carbonara",
-    "title": "Spaghetti alla Carbonara",
-    "servings": 4,
-    "cookingTime": 20,
-    "ingredients": [
-      { "ingredient_id": "ing_spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
-      { "ingredient_id": "ing_guanciale", "name": "Guanciale", "amount": 120, "unit": "g" },
-      { "ingredient_id": "ing_uova", "name": "Uova", "amount": 4, "unit": "pz" },
-      { "ingredient_id": "ing_pecorino", "name": "Pecorino Romano", "amount": 60, "unit": "g" },
-      { "ingredient_id": "ing_pepe", "name": "Pepe nero", "amount": 2, "unit": "g" }
-    ]
-  },
-  {
     "id": "rec_pomodoro",
     "title": "Spaghetti al Pomodoro",
     "servings": 4,
-    "cookingTime": 18,
+    "description": "Pasta semplice al pomodoro.",
+    "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=1200&h=900&fit=crop",
     "ingredients": [
       { "ingredient_id": "ing_spaghetti", "name": "Spaghetti", "amount": 320, "unit": "g" },
-      { "ingredient_id": "ing_pomodoro", "name": "Pomodoro", "amount": 400, "unit": "g" },
-      { "ingredient_id": "ing_olio_evo", "name": "Olio extravergine di oliva", "amount": 20, "unit": "ml" },
-      { "ingredient_id": "ing_sale", "name": "Sale", "amount": 5, "unit": "g" }
-    ]
+      { "ingredient_id": "ing_pomodoro",  "name": "Pomodoro",  "amount": 400, "unit": "g" },
+      { "ingredient_id": "ing_olio_evo",  "name": "Olio EVO",  "amount": 20,  "unit": "ml" },
+      { "ingredient_id": "ing_sale",      "name": "Sale",      "amount": 5,   "unit": "g" }
+    ],
+    "steps": [
+      { "id": 1, "title": "Prepara", "description": "Metti l'acqua a bollire." },
+      { "id": 2, "title": "Cuoci", "description": "Cuoci pasta e salsa." },
+      { "id": 3, "title": "Condisci", "description": "Scola e amalgama." }
+    ],
+    "cookingTime": 20,
+    "difficulty": 1
   }
 ]
