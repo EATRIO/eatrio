@@ -2,35 +2,224 @@
   "version": 1,
   "ingredients": [
     { "id": "ing_spaghetti", "name": "Spaghetti", "default_unit": "g", "aliases": ["pasta lunga"] },
-    { "id": "ing_uova", "name": "Uova", "default_unit": "pz", "aliases": ["uovo"] }
-    // ... tutti gli altri ingredienti
+    { "id": "ing_bucatini", "name": "Bucatini", "default_unit": "g", "aliases": [] },
+    { "id": "ing_pasta_corta", "name": "Pasta corta", "default_unit": "g", "aliases": ["penne", "fusilli", "rigatoni"] },
+    { "id": "ing_riso_carnaroli", "name": "Riso Carnaroli", "default_unit": "g", "aliases": ["riso", "arborio", "vialone nano"] },
+    { "id": "ing_funghi_porcini", "name": "Funghi Porcini", "default_unit": "g", "aliases": ["porcini", "funghi"] },
+    { "id": "ing_brodo_veg", "name": "Brodo vegetale", "default_unit": "ml", "aliases": ["brodo"] },
+    { "id": "ing_cipolla", "name": "Cipolla", "default_unit": "pz", "aliases": ["cipolle", "cipollotto"] },
+    { "id": "ing_burro", "name": "Burro", "default_unit": "g", "aliases": [] },
+    { "id": "ing_parmigiano", "name": "Parmigiano", "default_unit": "g", "aliases": ["parmigiano reggiano", "grana padano", "grana"] },
+    { "id": "ing_vino_bianco", "name": "Vino bianco", "default_unit": "ml", "aliases": [] },
+    { "id": "ing_guanciale", "name": "Guanciale", "default_unit": "g", "aliases": [] },
+    { "id": "ing_uova", "name": "Uova", "default_unit": "pz", "aliases": ["uovo"] },
+    { "id": "ing_pecorino", "name": "Pecorino Romano", "default_unit": "g", "aliases": ["pecorino"] },
+    { "id": "ing_pepe", "name": "Pepe nero", "default_unit": "g", "aliases": ["pepe"] },
+    { "id": "ing_pomodoro", "name": "Pomodoro", "default_unit": "g", "aliases": ["polpa di pomodoro", "pelati"] },
+    { "id": "ing_passata", "name": "Passata di pomodoro", "default_unit": "g", "aliases": ["passata", "salsa di pomodoro", "polpa di pomodoro", "pomodori pelati"] },
+    { "id": "ing_olio_evo", "name": "Olio extravergine di oliva", "default_unit": "ml", "aliases": ["olio evo", "olio di oliva", "extravergine"] },
+    { "id": "ing_sale", "name": "Sale", "default_unit": "g", "aliases": [] },
+    { "id": "ing_olive", "name": "Olive", "default_unit": "g", "aliases": ["olive verdi", "olive nere", "olive denocciolate"] },
+    { "id": "ing_alloro", "name": "Alloro", "default_unit": "pz", "aliases": ["foglie di alloro"] },
+    { "id": "ing_lenticchie", "name": "Lenticchie secche", "default_unit": "g", "aliases": ["lenticchie"] },
+    { "id": "ing_carota", "name": "Carota", "default_unit": "pz", "aliases": ["carote"] },
+    { "id": "ing_sedano", "name": "Sedano", "default_unit": "pz", "aliases": [] },
+    { "id": "ing_basilico", "name": "Basilico", "default_unit": "pz", "aliases": ["foglie di basilico"] },
+    { "id": "ing_mozzarella", "name": "Mozzarella", "default_unit": "g", "aliases": ["mozzarella fiordilatte"] },
+    { "id": "ing_pesto", "name": "Pesto alla genovese", "default_unit": "g", "aliases": ["pesto di basilico"] },
+    { "id": "ing_salmone", "name": "Filetto di salmone", "default_unit": "g", "aliases": ["salmone"] },
+    { "id": "ing_zucchine", "name": "Zucchine", "default_unit": "g", "aliases": [] }
   ],
   "recipes": [
     {
       "id": "rec_pomodoro",
       "title": "Spaghetti al Pomodoro",
       "servings": 4,
-      "image": "https://...",
+      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=1200&h=900&fit=crop",
       "description": "Pasta semplice al pomodoro.",
       "ingredients": [
         { "ingredient_id": "ing_spaghetti", "name": "Spaghetti", "amount": 320, "unit": "g" },
-        { "ingredient_id": "ing_pomodoro",  "name": "Pomodoro",  "amount": 400, "unit": "g" },
-        { "ingredient_id": "ing_olio_evo",  "name": "Olio EVO",  "amount": 20,  "unit": "ml" },
-        { "ingredient_id": "ing_sale",      "name": "Sale",      "amount": 5,   "unit": "g" }
-      ]
+        { "ingredient_id": "ing_pomodoro", "name": "Pomodoro", "amount": 400, "unit": "g" },
+        { "ingredient_id": "ing_olio_evo", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+        { "ingredient_id": "ing_sale", "name": "Sale", "amount": 5, "unit": "g" },
+        { "ingredient_id": "ing_basilico", "name": "Basilico", "amount": 4, "unit": "pz" }
+      ],
+      "cookingTime": 20,
+      "difficulty": 1
+    },
+    {
+      "id": "rec_carbonara",
+      "title": "Spaghetti alla Carbonara",
+      "servings": 4,
+      "image": "https://images.unsplash.com/photo-1588013273468-315fd88ea34c?q=80&w=1469&auto=format&fit=crop",
+      "description": "Classica ricetta romana con uova, pecorino e guanciale.",
+      "ingredients": [
+        { "ingredient_id": "ing_spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
+        { "ingredient_id": "ing_guanciale", "name": "Guanciale", "amount": 120, "unit": "g" },
+        { "ingredient_id": "ing_uova", "name": "Uova", "amount": 4, "unit": "pz" },
+        { "ingredient_id": "ing_pecorino", "name": "Pecorino Romano", "amount": 60, "unit": "g" },
+        { "ingredient_id": "ing_pepe", "name": "Pepe nero", "amount": 2, "unit": "g" }
+      ],
+      "cookingTime": 25,
+      "difficulty": 2
+    },
+    {
+      "id": "rec_amatriciana",
+      "title": "Bucatini all'Amatriciana",
+      "servings": 4,
+      "image": "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?w=1200&h=900&fit=crop",
+      "description": "Pomodoro, guanciale e pecorino.",
+      "ingredients": [
+        { "ingredient_id": "ing_bucatini", "name": "Bucatini", "amount": 360, "unit": "g" },
+        { "ingredient_id": "ing_guanciale", "name": "Guanciale", "amount": 120, "unit": "g" },
+        { "ingredient_id": "ing_passata", "name": "Passata di pomodoro", "amount": 400, "unit": "g" },
+        { "ingredient_id": "ing_pecorino", "name": "Pecorino Romano", "amount": 60, "unit": "g" },
+        { "ingredient_id": "ing_pepe", "name": "Pepe nero", "amount": 2, "unit": "g" }
+      ],
+      "cookingTime": 30,
+      "difficulty": 2
+    },
+    {
+      "id": "rec_pesto",
+      "title": "Pasta al Pesto",
+      "servings": 4,
+      "image": "https://images.unsplash.com/photo-1546549039-392134ab8c18?w=1200&h=900&fit=crop",
+      "description": "Pasta corta con pesto e mozzarella.",
+      "ingredients": [
+        { "ingredient_id": "ing_pasta_corta", "name": "Pasta corta", "amount": 360, "unit": "g" },
+        { "ingredient_id": "ing_pesto", "name": "Pesto alla genovese", "amount": 160, "unit": "g" },
+        { "ingredient_id": "ing_mozzarella", "name": "Mozzarella", "amount": 200, "unit": "g" }
+      ],
+      "cookingTime": 20,
+      "difficulty": 1
+    },
+    {
+      "id": "rec_risotto_funghi",
+      "title": "Risotto ai Funghi Porcini",
+      "servings": 4,
+      "image": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=1200&h=900&fit=crop",
+      "description": "Cremoso risotto con funghi porcini e parmigiano.",
+      "ingredients": [
+        { "ingredient_id": "ing_riso_carnaroli", "name": "Riso Carnaroli", "amount": 320, "unit": "g" },
+        { "ingredient_id": "ing_funghi_porcini", "name": "Funghi Porcini", "amount": 300, "unit": "g" },
+        { "ingredient_id": "ing_brodo_veg", "name": "Brodo vegetale", "amount": 1000, "unit": "ml" },
+        { "ingredient_id": "ing_cipolla", "name": "Cipolla", "amount": 1, "unit": "pz" },
+        { "ingredient_id": "ing_burro", "name": "Burro", "amount": 40, "unit": "g" },
+        { "ingredient_id": "ing_parmigiano", "name": "Parmigiano", "amount": 60, "unit": "g" },
+        { "ingredient_id": "ing_vino_bianco", "name": "Vino bianco", "amount": 80, "unit": "ml" }
+      ],
+      "cookingTime": 35,
+      "difficulty": 2
+    },
+    {
+      "id": "rec_cacciatora",
+      "title": "Pollo alla Cacciatora",
+      "servings": 4,
+      "image": "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=1200&h=900&fit=crop",
+      "description": "Pollo in umido con pomodoro, olive ed erbe.",
+      "ingredients": [
+        { "ingredient_id": "ing_pomodoro", "name": "Pomodoro", "amount": 400, "unit": "g" },
+        { "ingredient_id": "ing_olive", "name": "Olive", "amount": 120, "unit": "g" },
+        { "ingredient_id": "ing_cipolla", "name": "Cipolla", "amount": 1, "unit": "pz" },
+        { "ingredient_id": "ing_olio_evo", "name": "Olio EVO", "amount": 30, "unit": "ml" },
+        { "ingredient_id": "ing_alloro", "name": "Alloro", "amount": 2, "unit": "pz" }
+      ],
+      "cookingTime": 45,
+      "difficulty": 2
+    },
+    {
+      "id": "rec_zuppa_lenticchie",
+      "title": "Zuppa di Lenticchie",
+      "servings": 4,
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=1200&h=900&fit=crop",
+      "description": "Zuppa nutriente con lenticchie e verdure.",
+      "ingredients": [
+        { "ingredient_id": "ing_lenticchie", "name": "Lenticchie secche", "amount": 300, "unit": "g" },
+        { "ingredient_id": "ing_carota", "name": "Carota", "amount": 1, "unit": "pz" },
+        { "ingredient_id": "ing_sedano", "name": "Sedano", "amount": 1, "unit": "pz" },
+        { "ingredient_id": "ing_cipolla", "name": "Cipolla", "amount": 1, "unit": "pz" },
+        { "ingredient_id": "ing_passata", "name": "Passata di pomodoro", "amount": 200, "unit": "g" },
+        { "ingredient_id": "ing_brodo_veg", "name": "Brodo vegetale", "amount": 1000, "unit": "ml" },
+        { "ingredient_id": "ing_olio_evo", "name": "Olio EVO", "amount": 30, "unit": "ml" },
+        { "ingredient_id": "ing_sale", "name": "Sale", "amount": 5, "unit": "g" }
+      ],
+      "cookingTime": 40,
+      "difficulty": 1
+    },
+    {
+      "id": "rec_salmone_forno",
+      "title": "Salmone al Forno con Zucchine",
+      "servings": 2,
+      "image": "https://images.unsplash.com/photo-1558036117-15d82a90b9b3?w=1200&h=900&fit=crop",
+      "description": "Filetto di salmone al forno con contorno di zucchine.",
+      "ingredients": [
+        { "ingredient_id": "ing_salmone", "name": "Filetto di salmone", "amount": 300, "unit": "g" },
+        { "ingredient_id": "ing_zucchine", "name": "Zucchine", "amount": 300, "unit": "g" },
+        { "ingredient_id": "ing_olio_evo", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+        { "ingredient_id": "ing_sale", "name": "Sale", "amount": 3, "unit": "g" }
+      ],
+      "cookingTime": 25,
+      "difficulty": 1
     }
-    // ... tutte le altre ricette
   ],
   "ingredientPrices": {
-    "ing_spaghetti": { "unitBase": "kg", "avg": 2.2, "retailers": { "coop": 2.3, "conad": 2.1, "esselunga": 2.2 } },
-    "ing_uova":      { "unitBase": "pz", "avg": 0.35 },
-    "ing_olio_evo":  { "unitBase": "l",  "avg": 9.0 }
-    // ... prezzi per ogni ingredient_id che usi nelle ricette
+    "ing_spaghetti": { "unitBase": "kg", "avg": 2.00, "retailers": { "coop": 2.10, "conad": 1.90, "esselunga": 2.00 } },
+    "ing_bucatini": { "unitBase": "kg", "avg": 2.20, "retailers": { "coop": 2.30, "conad": 2.10, "esselunga": 2.20 } },
+    "ing_pasta_corta": { "unitBase": "kg", "avg": 2.00, "retailers": { "coop": 2.00, "conad": 2.10, "esselunga": 1.90 } },
+    "ing_riso_carnaroli": { "unitBase": "kg", "avg": 4.00, "retailers": { "coop": 4.20, "conad": 3.80, "esselunga": 4.00 } },
+    "ing_funghi_porcini": { "unitBase": "kg", "avg": 12.00, "retailers": { "coop": 12.50, "conad": 11.50, "esselunga": 12.00 } },
+    "ing_brodo_veg": { "unitBase": "l", "avg": 1.50, "retailers": { "coop": 1.60, "conad": 1.40, "esselunga": 1.50 } },
+    "ing_cipolla": { "unitBase": "pz", "avg": 0.35, "retailers": { "coop": 0.40, "conad": 0.30, "esselunga": 0.35 } },
+    "ing_burro": { "unitBase": "kg", "avg": 9.00, "retailers": { "coop": 9.50, "conad": 8.80, "esselunga": 9.00 } },
+    "ing_parmigiano": { "unitBase": "kg", "avg": 16.00, "retailers": { "coop": 16.50, "conad": 15.50, "esselunga": 16.00 } },
+    "ing_vino_bianco": { "unitBase": "l", "avg": 4.00, "retailers": { "coop": 4.50, "conad": 3.50, "esselunga": 4.00 } },
+    "ing_guanciale": { "unitBase": "kg", "avg": 14.00, "retailers": { "coop": 14.50, "conad": 13.50, "esselunga": 14.00 } },
+    "ing_uova": { "unitBase": "pz", "avg": 0.40, "retailers": { "coop": 0.45, "conad": 0.38, "esselunga": 0.40 } },
+    "ing_pecorino": { "unitBase": "kg", "avg": 18.00, "retailers": { "coop": 18.50, "conad": 17.50, "esselunga": 18.00 } },
+    "ing_pepe": { "unitBase": "kg", "avg": 22.00, "retailers": { "coop": 22.00, "conad": 22.00, "esselunga": 22.00 } },
+    "ing_pomodoro": { "unitBase": "kg", "avg": 2.20, "retailers": { "coop": 2.40, "conad": 2.00, "esselunga": 2.20 } },
+    "ing_passata": { "unitBase": "kg", "avg": 2.00, "retailers": { "coop": 2.10, "conad": 1.90, "esselunga": 2.00 } },
+    "ing_olio_evo": { "unitBase": "l", "avg": 8.50, "retailers": { "coop": 9.00, "conad": 8.00, "esselunga": 8.50 } },
+    "ing_sale": { "unitBase": "kg", "avg": 0.80, "retailers": { "coop": 0.90, "conad": 0.70, "esselunga": 0.80 } },
+    "ing_olive": { "unitBase": "kg", "avg": 6.50, "retailers": { "coop": 6.80, "conad": 6.20, "esselunga": 6.50 } },
+    "ing_alloro": { "unitBase": "pz", "avg": 0.10, "retailers": { "coop": 0.10, "conad": 0.10, "esselunga": 0.10 } },
+    "ing_lenticchie": { "unitBase": "kg", "avg": 3.00, "retailers": { "coop": 3.20, "conad": 2.80, "esselunga": 3.00 } },
+    "ing_carota": { "unitBase": "pz", "avg": 0.30, "retailers": { "coop": 0.35, "conad": 0.25, "esselunga": 0.30 } },
+    "ing_sedano": { "unitBase": "pz", "avg": 0.60, "retailers": { "coop": 0.70, "conad": 0.50, "esselunga": 0.60 } },
+    "ing_basilico": { "unitBase": "pz", "avg": 0.20, "retailers": { "coop": 0.20, "conad": 0.20, "esselunga": 0.20 } },
+    "ing_mozzarella": { "unitBase": "kg", "avg": 8.00, "retailers": { "coop": 8.50, "conad": 7.50, "esselunga": 8.00 } },
+    "ing_pesto": { "unitBase": "kg", "avg": 18.00, "retailers": { "coop": 18.50, "conad": 17.50, "esselunga": 18.00 } },
+    "ing_salmone": { "unitBase": "kg", "avg": 20.00, "retailers": { "coop": 21.00, "conad": 19.00, "esselunga": 20.00 } },
+    "ing_zucchine": { "unitBase": "kg", "avg": 2.20, "retailers": { "coop": 2.50, "conad": 2.00, "esselunga": 2.20 } }
   },
   "ingredientNutrition": {
-    "ing_spaghetti": { "unitBase": "kg", "kcalPerUnit": 3500 },
-    "ing_uova":      { "unitBase": "pz", "kcalPerUnit": 70 },
-    "ing_olio_evo":  { "unitBase": "l",  "kcalPerUnit": 8840 }
-    // ... kcal per unità base per ogni ingredient_id
+    "ing_spaghetti": { "unitBase": "kg", "kcalPerUnit": 3600 },
+    "ing_bucatini": { "unitBase": "kg", "kcalPerUnit": 3600 },
+    "ing_pasta_corta": { "unitBase": "kg", "kcalPerUnit": 3600 },
+    "ing_riso_carnaroli": { "unitBase": "kg", "kcalPerUnit": 3600 },
+    "ing_funghi_porcini": { "unitBase": "kg", "kcalPerUnit": 250 },
+    "ing_brodo_veg": { "unitBase": "l", "kcalPerUnit": 50 },
+    "ing_cipolla": { "unitBase": "pz", "kcalPerUnit": 40 },
+    "ing_burro": { "unitBase": "kg", "kcalPerUnit": 7200 },
+    "ing_parmigiano": { "unitBase": "kg", "kcalPerUnit": 4310 },
+    "ing_vino_bianco": { "unitBase": "l", "kcalPerUnit": 700 },
+    "ing_guanciale": { "unitBase": "kg", "kcalPerUnit": 4500 },
+    "ing_uova": { "unitBase": "pz", "kcalPerUnit": 70 },
+    "ing_pecorino": { "unitBase": "kg", "kcalPerUnit": 4000 },
+    "ing_pepe": { "unitBase": "kg", "kcalPerUnit": 250 },
+    "ing_pomodoro": { "unitBase": "kg", "kcalPerUnit": 180 },
+    "ing_passata": { "unitBase": "kg", "kcalPerUnit": 300 },
+    "ing_olio_evo": { "unitBase": "l", "kcalPerUnit": 8000 },
+    "ing_sale": { "unitBase": "kg", "kcalPerUnit": 0 },
+    "ing_olive": { "unitBase": "kg", "kcalPerUnit": 1450 },
+    "ing_alloro": { "unitBase": "pz", "kcalPerUnit": 5 },
+    "ing_lenticchie": { "unitBase": "kg", "kcalPerUnit": 3500 },
+    "ing_carota": { "unitBase": "pz", "kcalPerUnit": 35 },
+    "ing_sedano": { "unitBase": "pz", "kcalPerUnit": 15 },
+    "ing_basilico": { "unitBase": "pz", "kcalPerUnit": 1 },
+    "ing_mozzarella": { "unitBase": "kg", "kcalPerUnit": 2500 },
+    "ing_pesto": { "unitBase": "kg", "kcalPerUnit": 4670 },
+    "ing_salmone": { "unitBase": "kg", "kcalPerUnit": 2080 },
+    "ing_zucchine": { "unitBase": "kg", "kcalPerUnit": 170 }
   }
 }
