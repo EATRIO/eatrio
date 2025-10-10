@@ -1,9 +1,5 @@
 {
-  "ing_spaghetti": { "unitBase": "kg", "kcalPerUnit": 3500 },
-  "ing_guanciale": { "unitBase": "kg", "kcalPerUnit": 6550 },
-  "ing_uova":      { "unitBase": "pz", "kcalPerUnit": 80 },
-  "ing_pecorino":  { "unitBase": "kg", "kcalPerUnit": 4020 },
-  "ing_pepe":      { "unitBase": "kg", "kcalPerUnit": 2550 },
+  "ing_spaghetti": { "unitBase": "kg", "kcalPerUnit": 3600 },
   "ing_pomodoro":  { "unitBase": "kg", "kcalPerUnit": 180 },
   "ing_olio_evo":  { "unitBase": "l",  "kcalPerUnit": 8840 },
   "ing_sale":      { "unitBase": "kg", "kcalPerUnit": 0 }
