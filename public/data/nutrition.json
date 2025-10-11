@@ -1,71 +1,202 @@
 {
-  "ing_spaghetti": { "unitBase": "kg", "kcalPerUnit": 3700 },
-  "ing_bucatini":  { "unitBase": "kg", "kcalPerUnit": 3700 },
-  "ing_penne":     { "unitBase": "kg", "kcalPerUnit": 3600 },
-
-  "ing_riso_carnaroli": { "unitBase": "kg", "kcalPerUnit": 3600 },
-  "ing_funghi_porcini": { "unitBase": "kg", "kcalPerUnit": 250 },
-  "ing_brodo_veg":      { "unitBase": "l",  "kcalPerUnit": 15 },
-  "ing_cipolla":        { "unitBase": "pz", "kcalPerUnit": 45 },
-  "ing_burro":          { "unitBase": "kg", "kcalPerUnit": 7200 },
-  "ing_parmigiano":     { "unitBase": "kg", "kcalPerUnit": 4020 },
-  "ing_vino_bianco":    { "unitBase": "l",  "kcalPerUnit": 700 },
-
-  "ing_pollo":          { "unitBase": "kg", "kcalPerUnit": 1650 },
-  "ing_passata":        { "unitBase": "kg", "kcalPerUnit": 350 },
-  "ing_olive":          { "unitBase": "kg", "kcalPerUnit": 1450 },
-  "ing_olio_evo":       { "unitBase": "l",  "kcalPerUnit": 8840 },
-  "ing_alloro":         { "unitBase": "pz", "kcalPerUnit": 2 },
-
-  "ing_guanciale":      { "unitBase": "kg", "kcalPerUnit": 3200 },
-  "ing_uova":           { "unitBase": "pz", "kcalPerUnit": 70 },
-  "ing_pecorino":       { "unitBase": "kg", "kcalPerUnit": 3900 },
-  "ing_pepe":           { "unitBase": "kg", "kcalPerUnit": 2550 },
-
-  "ing_pomodoro":       { "unitBase": "kg", "kcalPerUnit": 180 },
-  "ing_sale":           { "unitBase": "kg", "kcalPerUnit": 0 },
-  "ing_basilico":       { "unitBase": "pz", "kcalPerUnit": 1 },
-  "ing_mozzarella":     { "unitBase": "kg", "kcalPerUnit": 2800 },
-  "ing_melanzane":      { "unitBase": "kg", "kcalPerUnit": 250 },
-  "ing_ricotta_salata": { "unitBase": "kg", "kcalPerUnit": 3300 },
-  "ing_pomodorini":     { "unitBase": "kg", "kcalPerUnit": 180 },
-
-  "ing_acciughe":       { "unitBase": "kg", "kcalPerUnit": 2100 },
-  "ing_capperi":        { "unitBase": "kg", "kcalPerUnit": 230 },
-  "ing_olive_nere":     { "unitBase": "kg", "kcalPerUnit": 1450 },
-
-  "ing_zafferano":      { "unitBase": "kg", "kcalPerUnit": 3100 },
-
-  "ing_sedano":         { "unitBase": "pz", "kcalPerUnit": 10 },
-  "ing_carota":         { "unitBase": "pz", "kcalPerUnit": 35 },
-  "ing_patata":         { "unitBase": "kg", "kcalPerUnit": 770 },
-
-  "ing_farina00":       { "unitBase": "kg", "kcalPerUnit": 3400 },
-  "ing_lievito_birra_secco": { "unitBase": "kg", "kcalPerUnit": 3250 },
-  "ing_acqua":          { "unitBase": "l",  "kcalPerUnit": 0 },
-
-  "ing_zucchero":       { "unitBase": "kg", "kcalPerUnit": 4000 },
-  "ing_savoiardi":      { "unitBase": "kg", "kcalPerUnit": 3900 },
-  "ing_mascarpone":     { "unitBase": "kg", "kcalPerUnit": 4100 },
-  "ing_caffe":          { "unitBase": "l",  "kcalPerUnit": 5 },
-  "ing_cacao":          { "unitBase": "kg", "kcalPerUnit": 2280 },
-
-  "ing_salmone":        { "unitBase": "kg", "kcalPerUnit": 2080 },
-  "ing_branzino":       { "unitBase": "kg", "kcalPerUnit": 1500 },
-  "ing_limone":         { "unitBase": "pz", "kcalPerUnit": 17 },
-  "ing_prezzemolo":     { "unitBase": "kg", "kcalPerUnit": 360 },
-
-  "ing_olio_semi":      { "unitBase": "l",  "kcalPerUnit": 8840 },
-  "ing_pancetta":       { "unitBase": "kg", "kcalPerUnit": 3200 },
-  "ing_salsiccia":      { "unitBase": "kg", "kcalPerUnit": 3000 },
-  "ing_gorgonzola":     { "unitBase": "kg", "kcalPerUnit": 3300 },
-  "ing_speck":          { "unitBase": "kg", "kcalPerUnit": 3100 },
-  "ing_zucchine":       { "unitBase": "kg", "kcalPerUnit": 170 },
-  "ing_tonno_sgocciolato": { "unitBase": "kg", "kcalPerUnit": 2000 },
-  "ing_pane":           { "unitBase": "kg", "kcalPerUnit": 2600 },
-  "ing_aglio":          { "unitBase": "kg", "kcalPerUnit": 1490 },
-  "ing_peperoncino":    { "unitBase": "kg", "kcalPerUnit": 320 },
-  "ing_minestrone_misto": { "unitBase": "kg", "kcalPerUnit": 300 },
-  "ing_lenticchie":     { "unitBase": "kg", "kcalPerUnit": 1160 },
-  "ing_olive_verdi":    { "unitBase": "kg", "kcalPerUnit": 1150 }
+  "ing_spaghetti": {
+    "unitBase": "kg",
+    "kcalPerUnit": 792
+  },
+  "ing_penne": {
+    "unitBase": "kg",
+    "kcalPerUnit": 669
+  },
+  "ing_rigatoni": {
+    "unitBase": "kg",
+    "kcalPerUnit": 270
+  },
+  "ing_tagliatelle": {
+    "unitBase": "kg",
+    "kcalPerUnit": 261
+  },
+  "ing_gnocchi_di_patate": {
+    "unitBase": "kg",
+    "kcalPerUnit": 310
+  },
+  "ing_riso_carnaroli": {
+    "unitBase": "kg",
+    "kcalPerUnit": 2194
+  },
+  "ing_riso_basmati": {
+    "unitBase": "kg",
+    "kcalPerUnit": 3080
+  },
+  "ing_couscous": {
+    "unitBase": "kg",
+    "kcalPerUnit": 2579
+  },
+  "ing_passata_di_pomodoro": {
+    "unitBase": "kg",
+    "kcalPerUnit": 3000
+  },
+  "ing_pomodori_pelati": {
+    "unitBase": "kg",
+    "kcalPerUnit": 1880
+  },
+  "ing_pomodorini": {
+    "unitBase": "kg",
+    "kcalPerUnit": 56
+  },
+  "ing_pesto_alla_genovese": {
+    "unitBase": "kg",
+    "kcalPerUnit": 459
+  },
+  "ing_mozzarella": {
+    "unitBase": "kg",
+    "kcalPerUnit": 97
+  },
+  "ing_scamorza": {
+    "unitBase": "kg",
+    "kcalPerUnit": 3231
+  },
+  "ing_gorgonzola": {
+    "unitBase": "kg",
+    "kcalPerUnit": 3465
+  },
+  "ing_parmigiano": {
+    "unitBase": "kg",
+    "kcalPerUnit": 3137
+  },
+  "ing_pecorino_romano": {
+    "unitBase": "kg",
+    "kcalPerUnit": 4236
+  },
+  "ing_funghi_champignon": {
+    "unitBase": "kg",
+    "kcalPerUnit": 281
+  },
+  "ing_funghi_porcini": {
+    "unitBase": "kg",
+    "kcalPerUnit": 391
+  },
+  "ing_melanzane": {
+    "unitBase": "kg",
+    "kcalPerUnit": 89
+  },
+  "ing_zucchine": {
+    "unitBase": "kg",
+    "kcalPerUnit": 405
+  },
+  "ing_peperoni": {
+    "unitBase": "kg",
+    "kcalPerUnit": 359
+  },
+  "ing_cipolle": {
+    "unitBase": "kg",
+    "kcalPerUnit": 180
+  },
+  "ing_carote": {
+    "unitBase": "kg",
+    "kcalPerUnit": 325
+  },
+  "ing_sedano": {
+    "unitBase": "kg",
+    "kcalPerUnit": 703
+  },
+  "ing_olive_nere": {
+    "unitBase": "kg",
+    "kcalPerUnit": 259
+  },
+  "ing_olive_verdi": {
+    "unitBase": "kg",
+    "kcalPerUnit": 429
+  },
+  "ing_burro": {
+    "unitBase": "kg",
+    "kcalPerUnit": 3407
+  },
+  "ing_olio_extravergine_di_oliva": {
+    "unitBase": "l",
+    "kcalPerUnit": 8856
+  },
+  "ing_panna_da_cucina": {
+    "unitBase": "l",
+    "kcalPerUnit": 1130
+  },
+  "ing_latte": {
+    "unitBase": "l",
+    "kcalPerUnit": 1129
+  },
+  "ing_brodo_vegetale": {
+    "unitBase": "l",
+    "kcalPerUnit": 723
+  },
+  "ing_vino_bianco": {
+    "unitBase": "l",
+    "kcalPerUnit": 180
+  },
+  "ing_pollo": {
+    "unitBase": "kg",
+    "kcalPerUnit": 2064
+  },
+  "ing_salsiccia": {
+    "unitBase": "kg",
+    "kcalPerUnit": 4494
+  },
+  "ing_speck": {
+    "unitBase": "kg",
+    "kcalPerUnit": 3737
+  },
+  "ing_guanciale": {
+    "unitBase": "kg",
+    "kcalPerUnit": 4039
+  },
+  "ing_tonno_in_scatola_sgocciolato": {
+    "unitBase": "kg",
+    "kcalPerUnit": 2051
+  },
+  "ing_salmone": {
+    "unitBase": "kg",
+    "kcalPerUnit": 1975
+  },
+  "ing_calamari": {
+    "unitBase": "kg",
+    "kcalPerUnit": 1835
+  },
+  "ing_gamberi": {
+    "unitBase": "kg",
+    "kcalPerUnit": 1916
+  },
+  "ing_uova": {
+    "unitBase": "pz",
+    "kcalPerUnit": 1106
+  },
+  "ing_aglio": {
+    "unitBase": "pz",
+    "kcalPerUnit": 732
+  },
+  "ing_limone": {
+    "unitBase": "pz",
+    "kcalPerUnit": 434
+  },
+  "ing_basilico": {
+    "unitBase": "kg",
+    "kcalPerUnit": 91
+  },
+  "ing_prezzemolo": {
+    "unitBase": "kg",
+    "kcalPerUnit": 80
+  },
+  "ing_peperoncino_secco": {
+    "unitBase": "kg",
+    "kcalPerUnit": 257
+  },
+  "ing_zafferano": {
+    "unitBase": "kg",
+    "kcalPerUnit": 257
+  },
+  "ing_sale_fino": {
+    "unitBase": "kg",
+    "kcalPerUnit": 455
+  },
+  "ing_pepe_nero": {
+    "unitBase": "kg",
+    "kcalPerUnit": 420
+  }
 }
