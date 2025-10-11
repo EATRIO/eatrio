@@ -1,71 +1,686 @@
 {
-  "ing_spaghetti": { "unitBase": "kg", "retailers": { "coop": 2.10, "conad": 1.90, "esselunga": 2.30 } },
-  "ing_bucatini":  { "unitBase": "kg", "avg": 2.20 },
-  "ing_penne":     { "unitBase": "kg", "avg": 2.00 },
-
-  "ing_riso_carnaroli": { "unitBase": "kg", "avg": 3.80 },
-  "ing_funghi_porcini": { "unitBase": "kg", "avg": 24.00 },
-  "ing_brodo_veg":      { "unitBase": "l",  "avg": 1.50 },
-  "ing_cipolla":        { "unitBase": "pz", "avg": 0.40 },
-  "ing_burro":          { "unitBase": "kg", "avg": 9.00 },
-  "ing_parmigiano":     { "unitBase": "kg", "avg": 17.00 },
-  "ing_vino_bianco":    { "unitBase": "l",  "avg": 5.00 },
-
-  "ing_pollo":          { "unitBase": "kg", "avg": 6.50 },
-  "ing_passata":        { "unitBase": "kg", "avg": 2.10 },
-  "ing_olive":          { "unitBase": "kg", "avg": 8.00 },
-  "ing_olio_evo":       { "unitBase": "l",  "avg": 9.90 },
-  "ing_alloro":         { "unitBase": "pz", "avg": 0.10 },
-
-  "ing_guanciale":      { "unitBase": "kg", "avg": 16.00 },
-  "ing_uova":           { "unitBase": "pz", "avg": 0.35 },
-  "ing_pecorino":       { "unitBase": "kg", "avg": 18.00 },
-  "ing_pepe":           { "unitBase": "kg", "avg": 22.00 },
-
-  "ing_pomodoro":       { "unitBase": "kg", "avg": 2.40 },
-  "ing_sale":           { "unitBase": "kg", "avg": 0.70 },
-  "ing_basilico":       { "unitBase": "pz", "avg": 0.50 },
-  "ing_mozzarella":     { "unitBase": "kg", "avg": 8.50 },
-  "ing_melanzane":      { "unitBase": "kg", "avg": 2.20 },
-  "ing_ricotta_salata": { "unitBase": "kg", "avg": 14.00 },
-  "ing_pomodorini":     { "unitBase": "kg", "avg": 3.50 },
-
-  "ing_acciughe":       { "unitBase": "kg", "avg": 18.00 },
-  "ing_capperi":        { "unitBase": "kg", "avg": 14.00 },
-  "ing_olive_nere":     { "unitBase": "kg", "avg": 8.50 },
-
-  "ing_zafferano":      { "unitBase": "kg", "avg": 3000.00 },
-
-  "ing_sedano":         { "unitBase": "pz", "avg": 0.60 },
-  "ing_carota":         { "unitBase": "pz", "avg": 0.30 },
-  "ing_patata":         { "unitBase": "kg", "avg": 1.60 },
-
-  "ing_farina00":       { "unitBase": "kg", "avg": 1.40 },
-  "ing_lievito_birra_secco": { "unitBase": "kg", "avg": 18.00 },
-  "ing_acqua":          { "unitBase": "l",  "avg": 0.00 },
-
-  "ing_zucchero":       { "unitBase": "kg", "avg": 1.50 },
-  "ing_savoiardi":      { "unitBase": "kg", "avg": 6.00 },
-  "ing_mascarpone":     { "unitBase": "kg", "avg": 10.00 },
-  "ing_caffe":          { "unitBase": "l",  "avg": 15.00 },
-  "ing_cacao":          { "unitBase": "kg", "avg": 12.00 },
-
-  "ing_salmone":        { "unitBase": "kg", "avg": 22.00 },
-  "ing_branzino":       { "unitBase": "kg", "avg": 18.00 },
-  "ing_limone":         { "unitBase": "pz", "avg": 0.50 },
-  "ing_prezzemolo":     { "unitBase": "kg", "avg": 12.00 },
-
-  "ing_olio_semi":      { "unitBase": "l",  "avg": 3.00 },
-  "ing_pancetta":       { "unitBase": "kg", "avg": 12.00 },
-  "ing_salsiccia":      { "unitBase": "kg", "avg": 9.00 },
-  "ing_gorgonzola":     { "unitBase": "kg", "avg": 12.00 },
-  "ing_speck":          { "unitBase": "kg", "avg": 14.00 },
-  "ing_zucchine":       { "unitBase": "kg", "avg": 2.20 },
-  "ing_tonno_sgocciolato": { "unitBase": "kg", "avg": 12.00 },
-  "ing_pane":           { "unitBase": "kg", "avg": 3.00 },
-  "ing_aglio":          { "unitBase": "kg", "avg": 4.00 },
-  "ing_peperoncino":    { "unitBase": "kg", "avg": 20.00 },
-  "ing_minestrone_misto": { "unitBase": "kg", "avg": 3.00 },
-  "ing_lenticchie":     { "unitBase": "kg", "avg": 3.50 },
-  "ing_olive_verdi":    { "unitBase": "kg", "avg": 8.00 }
+  "ing_spaghetti": {
+    "unitBase": "kg",
+    "avg": 6.59,
+    "retailers": {
+      "coop": 6.95,
+      "conad": 6.56,
+      "esselunga": 6.75
+    }
+  },
+  "ing_penne": {
+    "unitBase": "kg",
+    "avg": 3.59,
+    "retailers": {
+      "coop": 3.61,
+      "conad": 3.59,
+      "esselunga": 3.39
+    }
+  },
+  "ing_rigatoni": {
+    "unitBase": "kg",
+    "avg": 3.9,
+    "retailers": {
+      "coop": 3.9,
+      "conad": 3.71,
+      "esselunga": 3.98
+    }
+  },
+  "ing_tagliatelle": {
+    "unitBase": "kg",
+    "avg": 7.64,
+    "retailers": {
+      "coop": 7.57,
+      "conad": 7.34,
+      "esselunga": 7.73
+    }
+  },
+  "ing_gnocchi_di_patate": {
+    "unitBase": "kg",
+    "avg": 3.89,
+    "retailers": {
+      "coop": 3.72,
+      "conad": 4.01,
+      "esselunga": 3.82
+    }
+  },
+  "ing_riso_carnaroli": {
+    "unitBase": "kg",
+    "avg": 2.68,
+    "retailers": {
+      "coop": 2.6,
+      "conad": 2.71,
+      "esselunga": 2.55
+    }
+  },
+  "ing_riso_basmati": {
+    "unitBase": "kg",
+    "avg": 2.87,
+    "retailers": {
+      "coop": 3,
+      "conad": 2.83,
+      "esselunga": 2.89
+    }
+  },
+  "ing_couscous": {
+    "unitBase": "kg",
+    "avg": 3.83,
+    "retailers": {
+      "coop": 3.82,
+      "conad": 3.88,
+      "esselunga": 3.61
+    }
+  },
+  "ing_passata_di_pomodoro": {
+    "unitBase": "kg",
+    "avg": 1.87,
+    "retailers": {
+      "coop": 1.88,
+      "conad": 1.93,
+      "esselunga": 1.89
+    }
+  },
+  "ing_pomodori_pelati": {
+    "unitBase": "kg",
+    "avg": 2.2,
+    "retailers": {
+      "coop": 2.14,
+      "conad": 2.23,
+      "esselunga": 2.29
+    }
+  },
+  "ing_pomodorini": {
+    "unitBase": "kg",
+    "avg": 3.75,
+    "retailers": {
+      "coop": 3.93,
+      "conad": 3.67,
+      "esselunga": 3.75
+    }
+  },
+  "ing_pesto_alla_genovese": {
+    "unitBase": "kg",
+    "avg": 6.55,
+    "retailers": {
+      "coop": 6.43,
+      "conad": 6.87,
+      "esselunga": 6.59
+    }
+  },
+  "ing_mozzarella": {
+    "unitBase": "kg",
+    "avg": 5.35,
+    "retailers": {
+      "coop": 5.32,
+      "conad": 5.15,
+      "esselunga": 5.55
+    }
+  },
+  "ing_scamorza": {
+    "unitBase": "kg",
+    "avg": 4.75,
+    "retailers": {
+      "coop": 4.84,
+      "conad": 4.56,
+      "esselunga": 4.79
+    }
+  },
+  "ing_gorgonzola": {
+    "unitBase": "kg",
+    "avg": 13.87,
+    "retailers": {
+      "coop": 13.33,
+      "conad": 14.56,
+      "esselunga": 14.4
+    }
+  },
+  "ing_parmigiano": {
+    "unitBase": "kg",
+    "avg": 15.34,
+    "retailers": {
+      "coop": 15.36,
+      "conad": 15.77,
+      "esselunga": 15.18
+    }
+  },
+  "ing_pecorino_romano": {
+    "unitBase": "kg",
+    "avg": 16.25,
+    "retailers": {
+      "coop": 16.14,
+      "conad": 16.46,
+      "esselunga": 15.49
+    }
+  },
+  "ing_funghi_champignon": {
+    "unitBase": "kg",
+    "avg": 4.31,
+    "retailers": {
+      "coop": 4.22,
+      "conad": 4.14,
+      "esselunga": 4.1
+    }
+  },
+  "ing_funghi_porcini": {
+    "unitBase": "kg",
+    "avg": 5.92,
+    "retailers": {
+      "coop": 5.93,
+      "conad": 6.27,
+      "esselunga": 5.9
+    }
+  },
+  "ing_melanzane": {
+    "unitBase": "kg",
+    "avg": 3.55,
+    "retailers": {
+      "coop": 3.4,
+      "conad": 3.37,
+      "esselunga": 3.51
+    }
+  },
+  "ing_zucchine": {
+    "unitBase": "kg",
+    "avg": 5.24,
+    "retailers": {
+      "coop": 5.23,
+      "conad": 5.54,
+      "esselunga": 5.33
+    }
+  },
+  "ing_peperoni": {
+    "unitBase": "kg",
+    "avg": 7.6,
+    "retailers": {
+      "coop": 7.49,
+      "conad": 7.34,
+      "esselunga": 7.15
+    }
+  },
+  "ing_cipolle": {
+    "unitBase": "kg",
+    "avg": 2.75,
+    "retailers": {
+      "coop": 2.73,
+      "conad": 2.82,
+      "esselunga": 2.75
+    }
+  },
+  "ing_carote": {
+    "unitBase": "kg",
+    "avg": 5.83,
+    "retailers": {
+      "coop": 6.12,
+      "conad": 6.12,
+      "esselunga": 5.8
+    }
+  },
+  "ing_sedano": {
+    "unitBase": "kg",
+    "avg": 6.48,
+    "retailers": {
+      "coop": 6.78,
+      "conad": 6.2,
+      "esselunga": 6.34
+    }
+  },
+  "ing_olive_nere": {
+    "unitBase": "kg",
+    "avg": 7.63,
+    "retailers": {
+      "coop": 7.55,
+      "conad": 8.04,
+      "esselunga": 7.4
+    }
+  },
+  "ing_olive_verdi": {
+    "unitBase": "kg",
+    "avg": 6.12,
+    "retailers": {
+      "coop": 6.45,
+      "conad": 6.23,
+      "esselunga": 6.33
+    }
+  },
+  "ing_burro": {
+    "unitBase": "kg",
+    "avg": 7.2,
+    "retailers": {
+      "coop": 6.9,
+      "conad": 6.9,
+      "esselunga": 7.28
+    }
+  },
+  "ing_olio_extravergine_di_oliva": {
+    "unitBase": "l",
+    "avg": 24.4,
+    "retailers": {
+      "coop": 24.44,
+      "conad": 23.6,
+      "esselunga": 23.22
+    }
+  },
+  "ing_panna_da_cucina": {
+    "unitBase": "l",
+    "avg": 6.77,
+    "retailers": {
+      "coop": 6.68,
+      "conad": 6.8,
+      "esselunga": 6.79
+    }
+  },
+  "ing_latte": {
+    "unitBase": "l",
+    "avg": 5.27,
+    "retailers": {
+      "coop": 5.03,
+      "conad": 5.24,
+      "esselunga": 5.47
+    }
+  },
+  "ing_brodo_vegetale": {
+    "unitBase": "l",
+    "avg": 6.05,
+    "retailers": {
+      "coop": 5.76,
+      "conad": 6.06,
+      "esselunga": 6.39
+    }
+  },
+  "ing_vino_bianco": {
+    "unitBase": "l",
+    "avg": 2.26,
+    "retailers": {
+      "coop": 2.14,
+      "conad": 2.15,
+      "esselunga": 2.16
+    }
+  },
+  "ing_pollo": {
+    "unitBase": "kg",
+    "avg": 13.63,
+    "retailers": {
+      "coop": 13.61,
+      "conad": 13.77,
+      "esselunga": 13.31
+    }
+  },
+  "ing_salsiccia": {
+    "unitBase": "kg",
+    "avg": 11.75,
+    "retailers": {
+      "coop": 12.38,
+      "conad": 11.45,
+      "esselunga": 12.07
+    }
+  },
+  "ing_speck": {
+    "unitBase": "kg",
+    "avg": 16.36,
+    "retailers": {
+      "coop": 16.24,
+      "conad": 16.9,
+      "esselunga": 15.42
+    }
+  },
+  "ing_guanciale": {
+    "unitBase": "kg",
+    "avg": 16.6,
+    "retailers": {
+      "coop": 16.07,
+      "conad": 17.48,
+      "esselunga": 15.99
+    }
+  },
+  "ing_tonno_in_scatola_sgocciolato": {
+    "unitBase": "kg",
+    "avg": 10.06,
+    "retailers": {
+      "coop": 9.98,
+      "conad": 9.81,
+      "esselunga": 10.31
+    }
+  },
+  "ing_salmone": {
+    "unitBase": "kg",
+    "avg": 13.98,
+    "retailers": {
+      "coop": 14.61,
+      "conad": 13.4,
+      "esselunga": 14.08
+    }
+  },
+  "ing_calamari": {
+    "unitBase": "kg",
+    "avg": 11.57,
+    "retailers": {
+      "coop": 11.54,
+      "conad": 11.09,
+      "esselunga": 12.12
+    }
+  },
+  "ing_gamberi": {
+    "unitBase": "kg",
+    "avg": 21.2,
+    "retailers": {
+      "coop": 21.61,
+      "conad": 19.94,
+      "esselunga": 21.73
+    }
+  },
+  "ing_uova": {
+    "unitBase": "pz",
+    "avg": 5.06,
+    "retailers": {
+      "coop": 5.07,
+      "conad": 5.29,
+      "esselunga": 5.24
+    }
+  },
+  "ing_aglio": {
+    "unitBase": "pz",
+    "avg": 6.55,
+    "retailers": {
+      "coop": 6.63,
+      "conad": 6.92,
+      "esselunga": 6.35
+    }
+  },
+  "ing_limone": {
+    "unitBase": "pz",
+    "avg": 3.65,
+    "retailers": {
+      "coop": 3.86,
+      "conad": 3.68,
+      "esselunga": 3.57
+    }
+  },
+  "ing_basilico": {
+    "unitBase": "kg",
+    "avg": 5,
+    "retailers": {
+      "coop": 4.9,
+      "conad": 5.12,
+      "esselunga": 5.1
+    }
+  },
+  "ing_prezzemolo": {
+    "unitBase": "kg",
+    "avg": 3.14,
+    "retailers": {
+      "coop": 2.99,
+      "conad": 2.96,
+      "esselunga": 3.31
+    }
+  },
+  "ing_peperoncino_secco": {
+    "unitBase": "kg",
+    "avg": 7.48,
+    "retailers": {
+      "coop": 7.9,
+      "conad": 7.85,
+      "esselunga": 7.39
+    }
+  },
+  "ing_zafferano": {
+    "unitBase": "kg",
+    "avg": 22.8,
+    "retailers": {
+      "coop": 23.88,
+      "conad": 23.09,
+      "esselunga": 22.53
+    }
+  },
+  "ing_sale_fino": {
+    "unitBase": "kg",
+    "avg": 6.63,
+    "retailers": {
+      "coop": 6.56,
+      "conad": 6.75,
+      "esselunga": 6.6
+    }
+  },
+  "ing_pepe_nero": {
+    "unitBase": "kg",
+    "avg": 6.15,
+    "retailers": {
+      "coop": 5.92,
+      "conad": 6.48,
+      "esselunga": 5.99
+    }
+  },
+  "pollo": {
+    "unitBase": "kg",
+    "avg": 6.8,
+    "retailers": {
+      "coop": 6.7,
+      "conad": 6.5,
+      "esselunga": 7
+    }
+  },
+  "passata_di_pomodoro": {
+    "unitBase": "kg",
+    "avg": 2.4,
+    "retailers": {
+      "coop": 2.3,
+      "conad": 2.5,
+      "esselunga": 2.4
+    }
+  },
+  "olive_verdi": {
+    "unitBase": "kg",
+    "avg": 7.9,
+    "retailers": {
+      "coop": 7.7,
+      "conad": 7.5,
+      "esselunga": 8.2
+    }
+  },
+  "cipolla": {
+    "unitBase": "pz",
+    "avg": 0.45,
+    "retailers": {
+      "coop": 0.4,
+      "conad": 0.42,
+      "esselunga": 0.5
+    }
+  },
+  "olio_extravergine": {
+    "unitBase": "l",
+    "avg": 6.5,
+    "retailers": {
+      "coop": 6.3,
+      "conad": 6.2,
+      "esselunga": 6.8
+    }
+  },
+  "alloro": {
+    "unitBase": "pz",
+    "avg": 0.1,
+    "retailers": {
+      "coop": 0.1,
+      "conad": 0.1,
+      "esselunga": 0.12
+    }
+  },
+  "spaghetti": {
+    "unitBase": "kg",
+    "avg": 1.6,
+    "retailers": {
+      "coop": 1.5,
+      "conad": 1.6,
+      "esselunga": 1.7
+    }
+  },
+  "guanciale": {
+    "unitBase": "kg",
+    "avg": 14.5,
+    "retailers": {
+      "coop": 14,
+      "conad": 14.2,
+      "esselunga": 15
+    }
+  },
+  "uova": {
+    "unitBase": "pz",
+    "avg": 0.28,
+    "retailers": {
+      "coop": 0.26,
+      "conad": 0.27,
+      "esselunga": 0.3
+    }
+  },
+  "pecorino_romano": {
+    "unitBase": "kg",
+    "avg": 18,
+    "retailers": {
+      "coop": 17.5,
+      "conad": 17.8,
+      "esselunga": 18.5
+    }
+  },
+  "riso_carnaroli": {
+    "unitBase": "kg",
+    "avg": 3.2,
+    "retailers": {
+      "coop": 3.1,
+      "conad": 3.2,
+      "esselunga": 3.3
+    }
+  },
+  "funghi_porcini": {
+    "unitBase": "kg",
+    "avg": 22,
+    "retailers": {
+      "coop": 21,
+      "conad": 21.5,
+      "esselunga": 23
+    }
+  },
+  "brodo_vegetale": {
+    "unitBase": "l",
+    "avg": 1.2,
+    "retailers": {
+      "coop": 1.1,
+      "conad": 1.2,
+      "esselunga": 1.3
+    }
+  },
+  "burro": {
+    "unitBase": "kg",
+    "avg": 9,
+    "retailers": {
+      "coop": 8.8,
+      "conad": 8.9,
+      "esselunga": 9.2
+    }
+  },
+  "parmigiano": {
+    "unitBase": "kg",
+    "avg": 19.5,
+    "retailers": {
+      "coop": 19,
+      "conad": 19.2,
+      "esselunga": 20
+    }
+  },
+  "vino_bianco": {
+    "unitBase": "l",
+    "avg": 3,
+    "retailers": {
+      "coop": 2.8,
+      "conad": 2.9,
+      "esselunga": 3.2
+    }
+  },
+  "lenticchie_secche": {
+    "unitBase": "kg",
+    "avg": 2.1,
+    "retailers": {
+      "coop": 2,
+      "conad": 2.1,
+      "esselunga": 2.2
+    }
+  },
+  "carota": {
+    "unitBase": "pz",
+    "avg": 0.18,
+    "retailers": {
+      "coop": 0.16,
+      "conad": 0.17,
+      "esselunga": 0.2
+    }
+  },
+  "sedano": {
+    "unitBase": "pz",
+    "avg": 1.2,
+    "retailers": {
+      "coop": 1.1,
+      "conad": 1.1,
+      "esselunga": 1.3
+    }
+  },
+  "farina_00": {
+    "unitBase": "kg",
+    "avg": 1.3,
+    "retailers": {
+      "coop": 1.2,
+      "conad": 1.3,
+      "esselunga": 1.4
+    }
+  },
+  "zucchero": {
+    "unitBase": "kg",
+    "avg": 1.1,
+    "retailers": {
+      "coop": 1,
+      "conad": 1.1,
+      "esselunga": 1.2
+    }
+  },
+  "lievito_dolci": {
+    "unitBase": "kg",
+    "avg": 16,
+    "retailers": {
+      "coop": 15.5,
+      "conad": 15.8,
+      "esselunga": 16.5
+    }
+  },
+  "pomodoro": {
+    "unitBase": "kg",
+    "avg": 2.8,
+    "retailers": {
+      "coop": 2.6,
+      "conad": 2.7,
+      "esselunga": 3
+    }
+  },
+  "mozzarella": {
+    "unitBase": "pz",
+    "avg": 0.95,
+    "retailers": {
+      "coop": 0.9,
+      "conad": 0.95,
+      "esselunga": 1
+    }
+  },
+  "basilico": {
+    "unitBase": "pz",
+    "avg": 1.2,
+    "retailers": {
+      "coop": 1.1,
+      "conad": 1.2,
+      "esselunga": 1.3
+    }
+  },
+  "pomodori_pelati": {
+    "unitBase": "kg",
+    "avg": 2.2,
+    "retailers": {
+      "coop": 2.1,
+      "conad": 2.2,
+      "esselunga": 2.3
+    }
+  }
 }
