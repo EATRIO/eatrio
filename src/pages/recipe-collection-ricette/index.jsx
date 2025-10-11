@@ -1,9 +1,6 @@
+// src/pages/recipe-collection-ricette/index.jsx
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { useCatalog } from '../../utils/catalog';
-
-import { ensureCatalogLoaded, loadCatalogFromLocal, CATALOG_KEYS as CK } from '../../lib/catalogLoader';
 
 import HeaderWithLogo from '../../components/ui/HeaderWithLogo';
 import BottomTabNavigation from '../../components/ui/BottomTabNavigation';
@@ -15,7 +12,10 @@ import SortOptions from './components/SortOptions';
 import AdvancedFilters from './components/AdvancedFilters';
 import RecipeGrid from './components/RecipeGrid';
 
-// inline image map (stessa chiave usata in cook mode)
+import { useCatalog } from '../../utils/catalog';
+import { ensureCatalogLoaded } from '../../lib/catalogLoader';
+
+/* ===================== inline image override (condiviso con Cook Mode) ===================== */
 const __IMG_KEY = 'eatrio:recipeImages';
 const __strip = (s = '') => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 const __rKey = (t) =>
@@ -35,219 +35,10 @@ const __getImg = (title, fallback) => {
 const DEFAULT_COVER =
   'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=1200&h=900&fit=crop';
 
-/* ===================== EMBEDDED DATA (usati se non c'è nulla in localStorage) ===================== */
-const EMBEDDED_INGREDIENTS = [
-  { id: 'ing_pollo', name: 'Pollo', default_unit: 'kg', aliases: ['petto di pollo', 'cosce di pollo', 'fusi di pollo'] },
-  { id: 'ing_cipolla', name: 'Cipolla', default_unit: 'pz', aliases: ['cipolle', 'cipollotto'] },
-  { id: 'ing_passata', name: 'Passata di pomodoro', default_unit: 'g', aliases: ['passata', 'salsa di pomodoro', 'polpa di pomodoro', 'pomodori pelati'] },
-  { id: 'ing_olive', name: 'Olive', default_unit: 'g', aliases: ['olive verdi', 'olive nere', 'olive denocciolate'] },
-  { id: 'ing_olio_evo', name: 'Olio extravergine di oliva', default_unit: 'ml', aliases: ['olio evo', 'olio di oliva', 'extravergine'] },
-  { id: 'ing_alloro', name: 'Alloro', default_unit: 'pz', aliases: ['foglie di alloro'] },
-  { id: 'ing_riso_carnaroli', name: 'Riso Carnaroli', default_unit: 'g', aliases: ['riso', 'arborio', 'vialone nano'] },
-  { id: 'ing_funghi_porcini', name: 'Funghi Porcini', default_unit: 'g', aliases: ['porcini', 'funghi'] },
-  { id: 'ing_brodo_veg', name: 'Brodo vegetale', default_unit: 'ml', aliases: ['brodo'] },
-  { id: 'ing_burro', name: 'Burro', default_unit: 'g', aliases: [] },
-  { id: 'ing_parmigiano', name: 'Parmigiano', default_unit: 'g', aliases: ['parmigiano reggiano', 'grana padano', 'grana'] },
-  { id: 'ing_vino_bianco', name: 'Vino bianco', default_unit: 'ml', aliases: [] },
-  { id: 'ing_spaghetti', name: 'Spaghetti', default_unit: 'g', aliases: ['pasta lunga'] },
-  { id: 'ing_guanciale', name: 'Guanciale', default_unit: 'g', aliases: [] },
-  { id: 'ing_uova', name: 'Uova', default_unit: 'pz', aliases: ['uovo'] },
-  { id: 'ing_pecorino', name: 'Pecorino Romano', default_unit: 'g', aliases: ['pecorino'] },
-  { id: 'ing_pepe', name: 'Pepe nero', default_unit: 'g', aliases: ['pepe'] },
-  { id: 'ing_pasta', name: 'Pasta', default_unit: 'g', aliases: ['penne', 'fusilli', 'rigatoni'] },
-  { id: 'ing_pomodoro', name: 'Pomodoro', default_unit: 'g', aliases: ['polpa di pomodoro', 'pelati'] },
-  { id: 'ing_sale', name: 'Sale', default_unit: 'g', aliases: [] },
-  { id: 'ing_farina00', name: 'Farina 00', default_unit: 'g', aliases: ['farina'] },
-  { id: 'ing_zucchero', name: 'Zucchero', default_unit: 'g', aliases: [] },
-  { id: 'ing_lievito_dolci', name: 'Lievito per dolci', default_unit: 'g', aliases: ['baking powder'] },
-  { id: 'ing_basilico', name: 'Basilico', default_unit: 'pz', aliases: ['foglie di basilico'] },
-  { id: 'ing_mozzarella', name: 'Mozzarella', default_unit: 'g', aliases: ['mozzarella fiordilatte'] },
-  { id: 'ing_quinoa', name: 'Quinoa', default_unit: 'g', aliases: [] },
-  { id: 'ing_verdure_miste', name: 'Verdure miste', default_unit: 'g', aliases: ['verdure di stagione', 'ortaggi misti'] },
-  { id: 'ing_savoiardi', name: 'Savoiardi', default_unit: 'g', aliases: [] },
-  { id: 'ing_mascarpone', name: 'Mascarpone', default_unit: 'g', aliases: [] },
-  { id: 'ing_caffe', name: 'Caffè', default_unit: 'ml', aliases: ['espresso', 'caffè espresso'] },
-  { id: 'ing_cacao', name: 'Cacao amaro', default_unit: 'g', aliases: ['cacao'] },
-  { id: 'ing_lenticchie', name: 'Lenticchie secche', default_unit: 'g', aliases: ['lenticchie'] },
-  { id: 'ing_carota', name: 'Carota', default_unit: 'pz', aliases: ['carote'] },
-  { id: 'ing_sedano', name: 'Sedano', default_unit: 'pz', aliases: [] },
-  { id: 'ing_banana', name: 'Banana', default_unit: 'pz', aliases: [] },
-  { id: 'ing_frutti_bosco', name: 'Frutti di bosco', default_unit: 'g', aliases: [] },
-  { id: 'ing_granola', name: 'Granola', default_unit: 'g', aliases: [] },
-];
-
-const EMBEDDED_RECIPES = [/* ... come prima, invariato ... */];
-
-/* ===================== Catalog loader (solo dentro questo file) ===================== */
-const CATALOG_KEYS = {
-  ingredients: 'eatrio:catalog:ingredients',
-  recipes: 'eatrio:catalog:recipes',
-  ingredientPrices: 'eatrio:catalog:ingredientPrices',
-  ingredientNutrition: 'eatrio:catalog:ingredientNutrition',
-};
-
-// Legge da localStorage; se vuoto inizializza con gli embedded
-function loadCatalog() {
-  let ingredients = [];
-  let recipes = [];
-  try {
-    const i = JSON.parse(localStorage.getItem(CATALOG_KEYS.ingredients) || 'null');
-    const r = JSON.parse(localStorage.getItem(CATALOG_KEYS.recipes) || 'null');
-    ingredients = Array.isArray(i) && i.length ? i : EMBEDDED_INGREDIENTS;
-    recipes = Array.isArray(r) && r.length ? r : EMBEDDED_RECIPES;
-    if (!i) localStorage.setItem(CATALOG_KEYS.ingredients, JSON.stringify(ingredients));
-    if (!r) localStorage.setItem(CATALOG_KEYS.recipes, JSON.stringify(recipes));
-  } catch {
-    ingredients = EMBEDDED_INGREDIENTS;
-    recipes = EMBEDDED_RECIPES;
-  }
-  return { ingredients, recipes };
-}
-const loadIngredientPrices = () => {
-  try { return JSON.parse(localStorage.getItem(CATALOG_KEYS.ingredientPrices) || '{}'); }
-  catch { return {}; }
-};
-const loadIngredientNutrition = () => {
-  try { return JSON.parse(localStorage.getItem(CATALOG_KEYS.ingredientNutrition) || '{}'); }
-  catch { return {}; }
-};
-
-/* ========= NEW: seed forzato + scorciatoia reset ========= */
-function seedCatalogHard(setCatalog) {
-  try {
-    localStorage.setItem(CATALOG_KEYS.ingredients, JSON.stringify(EMBEDDED_INGREDIENTS));
-    localStorage.setItem(CATALOG_KEYS.recipes, JSON.stringify(EMBEDDED_RECIPES));
-  } catch {}
-  setCatalog({ ingredients: EMBEDDED_INGREDIENTS, recipes: EMBEDDED_RECIPES });
-}
-
-function useEmergencyResetShortcut(setCatalog) {
-  useEffect(() => {
-    const onKey = (e) => {
-      if (!e.altKey || !e.shiftKey) return;
-      if ((e.key || '').toLowerCase() !== '0') return;
-      try {
-        localStorage.removeItem(CATALOG_KEYS.ingredients);
-        localStorage.removeItem(CATALOG_KEYS.recipes);
-      } catch {}
-      seedCatalogHard(setCatalog);
-      alert('Catalogo resettato e ricaricato (embedded).');
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [setCatalog]);
-}
-
-// Hotkey: Alt+I / Alt+R / Alt+U / Alt+A / Alt+E
-function useAdminImportShortcuts(setIngredients, setRecipes) {
-  useEffect(() => {
-    const handler = async(e) => {
-      if (!e.altKey) return;
-
-      if (e.key.toLowerCase() === 'e') {
-        try {
-          const rec = JSON.parse(localStorage.getItem(CATALOG_KEYS.recipes) || '[]');
-          const data = rec.map(r => ({ id: r.id, title: r.title ?? '' }));
-          const json = JSON.stringify(data, null, 2);
-          if (navigator.clipboard?.writeText) {
-            await navigator.clipboard.writeText(json);
-            alert(`Esportate ${data.length} ricette (id + title) negli appunti.\nIncolla qui in chat e ti genero gli step.`);
-          } else {
-            window.prompt('Copia questo JSON e incollalo qui in chat:', json);
-          }
-        } catch {
-          alert('Export fallito: non riesco a leggere il catalogo.');
-        }
-        return;
-      }
-
-      if (e.key.toLowerCase() === 'a') {
-        const txt = window.prompt('Incolla JSON ALL-IN-ONE ({recipes, ingredients} o array di ricette):');
-        if (!txt) return;
-        try {
-          const parsed = JSON.parse(txt);
-          if (Array.isArray(parsed)) {
-            localStorage.setItem(CATALOG_KEYS.recipes, JSON.stringify(parsed));
-            setRecipes(parsed);
-          } else if (parsed && typeof parsed === 'object') {
-            if (Array.isArray(parsed.ingredients)) {
-              localStorage.setItem(CATALOG_KEYS.ingredients, JSON.stringify(parsed.ingredients));
-              setIngredients(parsed.ingredients);
-            }
-            if (Array.isArray(parsed.recipes)) {
-              localStorage.setItem(CATALOG_KEYS.recipes, JSON.stringify(parsed.recipes));
-              setRecipes(parsed.recipes);
-            }
-          }
-          alert('Catalogo aggiornato (import all-in-one).');
-        } catch {
-          alert('JSON non valido');
-        }
-        return;
-      }
-
-      if (e.key.toLowerCase() === 'i') {
-        const txt = window.prompt('Incolla JSON ingredients (array):');
-        if (!txt) return;
-        try {
-          const parsed = JSON.parse(txt);
-          localStorage.setItem(CATALOG_KEYS.ingredients, JSON.stringify(parsed));
-          setIngredients(parsed);
-          alert('Ingredients aggiornati');
-        } catch {
-          alert('JSON non valido');
-        }
-        return;
-      }
-
-      if (e.key.toLowerCase() === 'r') {
-        const txt = window.prompt('Incolla JSON recipes (array):');
-        if (!txt) return;
-        try {
-          const parsed = JSON.parse(txt);
-          localStorage.setItem(CATALOG_KEYS.recipes, JSON.stringify(parsed));
-          setRecipes(parsed);
-          alert('Recipes aggiornate');
-        } catch {
-          alert('JSON non valido');
-        }
-        return;
-      }
-
-      if (e.key.toLowerCase() === 'u') {
-        const txt = window.prompt('Incolla PATCH ricette (oggetto o array):');
-        if (!txt) return;
-        try {
-          const patch = JSON.parse(txt);
-          const patches = Array.isArray(patch) ? patch : [patch];
-          const curr = JSON.parse(localStorage.getItem(CATALOG_KEYS.recipes) || '[]');
-          const next = curr.map((r) => {
-            const p = patches.find((x) => x.id === r.id);
-            return p ? { ...r, ...p } : r;
-          });
-          localStorage.setItem(CATALOG_KEYS.recipes, JSON.stringify(next));
-          setRecipes(next);
-          alert('Ricette aggiornate (patch applicata).');
-        } catch {
-          alert('JSON non valido');
-        }
-      }
-    };
-
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, [setIngredients, setRecipes]);
-}
-
 /* ===================== Pantry + matcher (allineati al Cook Mode) ===================== */
 const PANTRY_KEY = 'eatrio:pantry';
 const loadPantry = () => {
-  try {
-    const raw = localStorage.getItem(PANTRY_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
+  try { return JSON.parse(localStorage.getItem(PANTRY_KEY) || '[]'); } catch { return []; }
 };
 
 const stripAccents = (s) => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -256,10 +47,7 @@ const normalizeText = (s) => {
   x = x
     .replace(/[\d.,]+ ?(kg|g|gr|l|ml|cl|pz|pezzi|pezzo|uova|uovo)\b/g, ' ')
     .replace(/[^\p{L}\s]/gu, ' ')
-    .replace(
-      /\b(qb|q\.b\.|bio|fresco|fresca|fresche|freschi|tritato|tritata|a|dadini|di|del|della|dello|dei|degli|delle|al|allo|alla|ai|agli|alle|lo|la|il|i|gli|le|con|senza|ed|e|oppure)\b/g,
-      ' '
-    )
+    .replace(/\b(qb|q\.b\.|bio|fresco|fresca|fresche|freschi|tritato|tritata|a|dadini|di|del|della|dello|dei|degli|delle|al|allo|alla|ai|agli|alle|lo|la|il|i|gli|le|con|senza|ed|e|oppure)\b/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 
@@ -289,9 +77,7 @@ const canonicalFromNormalized = (norm) => {
   for (const [canon, list] of Object.entries(ALIASES)) {
     const c = normalizeText(canon);
     if (norm === c) return canon;
-    for (const a of list) {
-      if (norm === normalizeText(a)) return canon;
-    }
+    for (const a of list) if (norm === normalizeText(a)) return canon;
   }
   return norm;
 };
@@ -379,9 +165,6 @@ const computeAvailabilityPercent = (recipe, pantry) => {
 };
 
 /* ===================== Meta calcolata (costo/kcal) ===================== */
-const euro = (n) =>
-  Number(n || 0).toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
 const toBasePrice = (amount, fromUnit, base) => {
   const u = (fromUnit || '').toLowerCase();
   const qty = Number(amount || 0);
@@ -419,7 +202,7 @@ const computeRecipeMeta = (recipe, priceCatalog, kcalCatalog) => {
     const unit = ing.unit || 'pz';
     if (!id) continue;
 
-    const kcalInfo = kcalCatalog[id];
+    const kcalInfo = kcalCatalog?.[id];
     if (kcalInfo) {
       const base = kcalInfo.unitBase || 'kg';
       const need = toBasePrice(amount, unit, base);
@@ -429,7 +212,7 @@ const computeRecipeMeta = (recipe, priceCatalog, kcalCatalog) => {
       }
     }
 
-    const priceInfo = priceCatalog[id];
+    const priceInfo = priceCatalog?.[id];
     if (priceInfo) {
       const base = priceInfo.unitBase || 'kg';
       const need = toBasePrice(amount, unit, base);
@@ -475,27 +258,10 @@ const RecipeCollection = () => {
   const [advancedFilters, setAdvancedFilters] = useState({});
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const [currentSort, setCurrentSort] = useState('relevance');
-  const [loading, setLoading] = useState(false);
   const [favorites, setFavorites] = useState(new Set());
 
-  // Catalogo embedded o localStorage
-  const { ingredients, recipes, prices, nutrition, loading, error, reload } = useCatalog(true);
-
-
-  // 🔧 Auto-seed all’avvio se vuoto + scorciatoia di emergenza
-  useEffect(() => {
-    if (!recipes || recipes.length === 0) {
-      seedCatalogHard(setCatalog);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEmergencyResetShortcut(setCatalog);
-
-  // Hotkey admin per importare/esportare
-  useAdminImportShortcuts(
-    (ing) => setCatalog((prev) => ({ ...prev, ingredients: ing })),
-    (rec) => setCatalog((prev) => ({ ...prev, recipes: rec }))
-  );
+  // Catalogo (da public/catalog.json + localStorage) via hook
+  const { recipes, prices, nutrition, loading, error, reload } = useCatalog(true);
 
   // Snapshot dispensa con auto-refresh
   const [pantry, setPantry] = useState(() => loadPantry());
@@ -514,21 +280,10 @@ const RecipeCollection = () => {
     };
   }, []);
 
-  // Rileva aggiornamenti da altre pagine/tab (immagini + cataloghi + meta)
-  const [bump, setBump] = useState(0);
+  // Rileva aggiornamenti immagini da altre pagine/tab
+  const [imgBump, setImgBump] = useState(0);
   useEffect(() => {
-    const onStorage = (e) => {
-      if (!e) return;
-      if ([
-        __IMG_KEY,
-        CATALOG_KEYS.recipes,
-        CATALOG_KEYS.ingredients,
-        CATALOG_KEYS.ingredientPrices,
-        CATALOG_KEYS.ingredientNutrition,
-      ].includes(e.key)) {
-        setBump((t) => t + 1);
-      }
-    };
+    const onStorage = (e) => { if (!e || e.key === __IMG_KEY) setImgBump((t) => t + 1); };
     window.addEventListener('storage', onStorage);
     return () => window.removeEventListener('storage', onStorage);
   }, []);
@@ -540,40 +295,46 @@ const RecipeCollection = () => {
     setFavorites(favoritesSet);
   }, [recipes]);
 
-  // Carica/aggiorna il catalogo dai JSON pubblici all’avvio
-useEffect(() => {
-  let mounted = true;
-  (async () => {
-    const fromRemote = await ensureCatalogLoaded(false); // scarica se necessario
-    if (!mounted) return;
-    setCatalog(prev => ({
-      ...prev,
-      ingredients: fromRemote.ingredients || prev.ingredients || [],
-      recipes: fromRemote.recipes || prev.recipes || [],
-    }));
-  })();
+  // Hotkeys: export id+title, force reload from /public
+  useEffect(() => {
+    const handler = async (e) => {
+      if (!e.altKey) return;
 
-  // Se un'altra tab aggiorna i cataloghi, ci sincronizziamo
-  const onStorage = (e) => {
-    if (!e) return;
-    if ([CK.ingredients, CK.recipes, CK.ingredientPrices, CK.ingredientNutrition].includes(e.key)) {
-      const latest = loadCatalogFromLocal();
-      setCatalog(prev => ({ ...prev, ingredients: latest.ingredients, recipes: latest.recipes }));
-    }
-  };
-  window.addEventListener('storage', onStorage);
+      // Alt + E = esporta id + titolo
+      if (e.key.toLowerCase() === 'e') {
+        try {
+          const data = (recipes || []).map(r => ({ id: r.id, title: r.title ?? '' }));
+          const json = JSON.stringify(data, null, 2);
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(json);
+            alert(`Esportate ${data.length} ricette (id + title) negli appunti.`);
+          } else {
+            window.prompt('Copia questo JSON:', json);
+          }
+        } catch {
+          alert('Export fallito.');
+        }
+        return;
+      }
 
-  return () => { mounted = false; window.removeEventListener('storage', onStorage); };
-}, []);
-
+      // Alt + Shift + 0 = forza reload dal public/catalog.json
+      if (e.shiftKey && e.key === '0') {
+        try {
+          await ensureCatalogLoaded(true); // forza refresh da /public
+          await reload();
+          alert('Catalogo ricaricato dal file pubblico.');
+        } catch {
+          alert('Reload fallito.');
+        }
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [recipes, reload]);
 
   // Calcolo disponibilità + meta costo/kcal
-
-  const priceCatalog = prices;       // viene dall’hook
-  const kcalCatalog  = nutrition;    // viene dall’hook
-
-  const priceCatalog = useMemo(() => loadIngredientPrices(), [bump]);
-  const kcalCatalog  = useMemo(() => loadIngredientNutrition(), [bump]);
+  const priceCatalog = prices;     // dal hook
+  const kcalCatalog  = nutrition;  // dal hook
 
   const recipesWithMeta = useMemo(() => {
     return (recipes || []).map((r) => {
@@ -593,14 +354,13 @@ useEffect(() => {
     let filtered = recipesWithMeta.filter((recipe) => {
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        if (
-          !recipe.title?.toLowerCase()?.includes(q) &&
-          !recipe.description?.toLowerCase()?.includes(q)
-        ) return false;
+        if (!recipe.title?.toLowerCase()?.includes(q) && !recipe.description?.toLowerCase()?.includes(q)) {
+          return false;
+        }
       }
-      if (activeFilters?.quick && recipe?.cookingTime > 30) return false;
-      if (activeFilters?.easy && recipe?.difficulty > 1) return false;
-      if (activeFilters?.available && recipe?.ingredientAvailability < 80) return false;
+      if (activeFilters?.quick && (recipe?.cookingTime || 0) > 30) return false;
+      if (activeFilters?.easy && (recipe?.difficulty || 0) > 1) return false;
+      if (activeFilters?.available && (recipe?.ingredientAvailability || 0) < 80) return false;
       if (activeFilters?.favorites && !favorites?.has(recipe?.id)) return false;
       if (activeFilters?.vegetarian && !recipe?.dietary?.includes('vegetarian')) return false;
       if (activeFilters?.budget) {
@@ -646,7 +406,8 @@ useEffect(() => {
         case 'popularity':
           return (favorites.has(b.id) ? 1 : 0) - (favorites.has(a.id) ? 1 : 0);
         case 'newest':
-          return (b.id || 0) - (a.id || 0);
+          // se l'id non è numerico, l’ordinamento per newest ha poco senso ma manteniamo compatibilità
+          return String(b.id || '').localeCompare(String(a.id || ''));
         case 'relevance':
         default:
           return (b.ingredientAvailability || 0) - (a.ingredientAvailability || 0);
@@ -662,7 +423,7 @@ useEffect(() => {
       ...r,
       image: __getImg(r.title, r.image || DEFAULT_COVER),
     }));
-  }, [filteredAndSortedRecipes, bump]);
+  }, [filteredAndSortedRecipes, imgBump]);
 
   const handleFavoriteToggle = (recipeId) => {
     const next = new Set(favorites);
@@ -683,6 +444,35 @@ useEffect(() => {
     setSearchQuery('');
   };
 
+  /* ====== loading / error states (DENTRO al componente) ====== */
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <HeaderWithLogo title="Ricette" />
+        <main className="pt-16 pb-24 lg:pb-6 lg:pl-64">
+          <div className="px-4 py-10 text-center text-muted-foreground">Carico il catalogo…</div>
+        </main>
+        <BottomTabNavigation />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background">
+        <HeaderWithLogo title="Ricette" />
+        <main className="pt-16 pb-24 lg:pb-6 lg:pl-64">
+          <div className="px-4 py-10 text-center text-red-500">
+            Errore nel caricare il catalogo.{' '}
+            <button onClick={reload} className="underline">Riprova</button>
+          </div>
+        </main>
+        <BottomTabNavigation />
+      </div>
+    );
+  }
+
+  /* ====== UI principale ====== */
   return (
     <div className="min-h-screen bg-background">
       <HeaderWithLogo
@@ -714,11 +504,11 @@ useEffect(() => {
         <div className="px-4 pb-4">
           <p className="text-sm text-muted-foreground">{filteredAndSortedRecipes.length} ricette trovate</p>
           <p className="text-xs text-muted-foreground mt-1">
-            (Tip admin: <kbd>Alt</kbd>+<kbd>I</kbd> importa ingredienti • <kbd>Alt</kbd>+<kbd>R</kbd> importa ricette • <kbd>Alt</kbd>+<kbd>U</kbd> patch • <kbd>Alt</kbd>+<kbd>A</kbd> all-in-one • <kbd>Alt</kbd>+<kbd>E</kbd> esporta id+titolo • <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>0</kbd> reset/seed)
+            (Tip admin: <kbd>Alt</kbd>+<kbd>E</kbd> esporta id+titolo • <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>0</kbd> forza reload catalogo)
           </p>
         </div>
 
-        {/* Fallback quando è tutto vuoto: bottone "Carica ricette base" */}
+        {/* Fallback quando è tutto vuoto: bottone "Ricarica dal catalogo" */}
         {filteredAndSortedRecipes.length === 0 && (
           <div className="px-4 pb-6">
             <div className="border border-dashed border-border rounded-xl p-4 text-center">
@@ -727,19 +517,20 @@ useEffect(() => {
               </p>
               <button
                 className="inline-flex items-center gap-2 text-sm px-3 py-2 rounded-md border border-border hover:bg-muted/30"
-                onClick={() => seedCatalogHard(setCatalog)}
+                onClick={reload}
               >
-                Carica ricette base
+                Ricarica dal catalogo
               </button>
-              <p className="text-xs text-muted-foreground mt-2">
-                Tip (desktop): <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>0</kbd> per reset/seed forzato.
-              </p>
             </div>
           </div>
         )}
 
         <div className="px-4">
-          <RecipeGrid recipes={recipesForGrid} onFavoriteToggle={handleFavoriteToggle} loading={loading} />
+          <RecipeGrid
+            recipes={recipesForGrid}
+            onFavoriteToggle={handleFavoriteToggle}
+            loading={false}
+          />
         </div>
       </main>
 
@@ -757,32 +548,6 @@ useEffect(() => {
     </div>
   );
 };
-
-if (loading) {
-  return (
-    <div className="min-h-screen bg-background">
-      <HeaderWithLogo title="Ricette" />
-      <main className="pt-16 pb-24 lg:pb-6 lg:pl-64">
-        <div className="px-4 py-10 text-center text-muted-foreground">Carico il catalogo…</div>
-      </main>
-      <BottomTabNavigation />
-    </div>
-  );
-}
-if (error) {
-  return (
-    <div className="min-h-screen bg-background">
-      <HeaderWithLogo title="Ricette" />
-      <main className="pt-16 pb-24 lg:pb-6 lg:pl-64">
-        <div className="px-4 py-10 text-center text-red-500">
-          Errore nel caricare il catalogo. <button onClick={reload} className="underline">Riprova</button>
-        </div>
-      </main>
-      <BottomTabNavigation />
-    </div>
-  );
-}
-
 
 export default RecipeCollection;
 
