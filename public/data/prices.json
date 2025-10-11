@@ -1,6 +1,71 @@
 {
-  "ing_spaghetti": { "unitBase": "kg", "avg": 2.00, "retailers": { "coop": 2.10, "conad": 1.90, "esselunga": 2.00 } },
-  "ing_pomodoro":  { "unitBase": "kg", "avg": 1.60 },
-  "ing_olio_evo":  { "unitBase": "l",  "avg": 7.50 },
-  "ing_sale":      { "unitBase": "kg", "avg": 0.60 }
+  "ing_spaghetti": { "unitBase": "kg", "retailers": { "coop": 2.10, "conad": 1.90, "esselunga": 2.30 } },
+  "ing_bucatini":  { "unitBase": "kg", "avg": 2.20 },
+  "ing_penne":     { "unitBase": "kg", "avg": 2.00 },
+
+  "ing_riso_carnaroli": { "unitBase": "kg", "avg": 3.80 },
+  "ing_funghi_porcini": { "unitBase": "kg", "avg": 24.00 },
+  "ing_brodo_veg":      { "unitBase": "l",  "avg": 1.50 },
+  "ing_cipolla":        { "unitBase": "pz", "avg": 0.40 },
+  "ing_burro":          { "unitBase": "kg", "avg": 9.00 },
+  "ing_parmigiano":     { "unitBase": "kg", "avg": 17.00 },
+  "ing_vino_bianco":    { "unitBase": "l",  "avg": 5.00 },
+
+  "ing_pollo":          { "unitBase": "kg", "avg": 6.50 },
+  "ing_passata":        { "unitBase": "kg", "avg": 2.10 },
+  "ing_olive":          { "unitBase": "kg", "avg": 8.00 },
+  "ing_olio_evo":       { "unitBase": "l",  "avg": 9.90 },
+  "ing_alloro":         { "unitBase": "pz", "avg": 0.10 },
+
+  "ing_guanciale":      { "unitBase": "kg", "avg": 16.00 },
+  "ing_uova":           { "unitBase": "pz", "avg": 0.35 },
+  "ing_pecorino":       { "unitBase": "kg", "avg": 18.00 },
+  "ing_pepe":           { "unitBase": "kg", "avg": 22.00 },
+
+  "ing_pomodoro":       { "unitBase": "kg", "avg": 2.40 },
+  "ing_sale":           { "unitBase": "kg", "avg": 0.70 },
+  "ing_basilico":       { "unitBase": "pz", "avg": 0.50 },
+  "ing_mozzarella":     { "unitBase": "kg", "avg": 8.50 },
+  "ing_melanzane":      { "unitBase": "kg", "avg": 2.20 },
+  "ing_ricotta_salata": { "unitBase": "kg", "avg": 14.00 },
+  "ing_pomodorini":     { "unitBase": "kg", "avg": 3.50 },
+
+  "ing_acciughe":       { "unitBase": "kg", "avg": 18.00 },
+  "ing_capperi":        { "unitBase": "kg", "avg": 14.00 },
+  "ing_olive_nere":     { "unitBase": "kg", "avg": 8.50 },
+
+  "ing_zafferano":      { "unitBase": "kg", "avg": 3000.00 },
+
+  "ing_sedano":         { "unitBase": "pz", "avg": 0.60 },
+  "ing_carota":         { "unitBase": "pz", "avg": 0.30 },
+  "ing_patata":         { "unitBase": "kg", "avg": 1.60 },
+
+  "ing_farina00":       { "unitBase": "kg", "avg": 1.40 },
+  "ing_lievito_birra_secco": { "unitBase": "kg", "avg": 18.00 },
+  "ing_acqua":          { "unitBase": "l",  "avg": 0.00 },
+
+  "ing_zucchero":       { "unitBase": "kg", "avg": 1.50 },
+  "ing_savoiardi":      { "unitBase": "kg", "avg": 6.00 },
+  "ing_mascarpone":     { "unitBase": "kg", "avg": 10.00 },
+  "ing_caffe":          { "unitBase": "l",  "avg": 15.00 },
+  "ing_cacao":          { "unitBase": "kg", "avg": 12.00 },
+
+  "ing_salmone":        { "unitBase": "kg", "avg": 22.00 },
+  "ing_branzino":       { "unitBase": "kg", "avg": 18.00 },
+  "ing_limone":         { "unitBase": "pz", "avg": 0.50 },
+  "ing_prezzemolo":     { "unitBase": "kg", "avg": 12.00 },
+
+  "ing_olio_semi":      { "unitBase": "l",  "avg": 3.00 },
+  "ing_pancetta":       { "unitBase": "kg", "avg": 12.00 },
+  "ing_salsiccia":      { "unitBase": "kg", "avg": 9.00 },
+  "ing_gorgonzola":     { "unitBase": "kg", "avg": 12.00 },
+  "ing_speck":          { "unitBase": "kg", "avg": 14.00 },
+  "ing_zucchine":       { "unitBase": "kg", "avg": 2.20 },
+  "ing_tonno_sgocciolato": { "unitBase": "kg", "avg": 12.00 },
+  "ing_pane":           { "unitBase": "kg", "avg": 3.00 },
+  "ing_aglio":          { "unitBase": "kg", "avg": 4.00 },
+  "ing_peperoncino":    { "unitBase": "kg", "avg": 20.00 },
+  "ing_minestrone_misto": { "unitBase": "kg", "avg": 3.00 },
+  "ing_lenticchie":     { "unitBase": "kg", "avg": 3.50 },
+  "ing_olive_verdi":    { "unitBase": "kg", "avg": 8.00 }
 }
