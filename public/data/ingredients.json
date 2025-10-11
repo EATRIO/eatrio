@@ -1,60 +1,302 @@
 [
-  { "id": "ing_spaghetti", "name": "Spaghetti", "default_unit": "g", "aliases": ["pasta lunga"] },
-  { "id": "ing_bucatini", "name": "Bucatini", "default_unit": "g", "aliases": [] },
-  { "id": "ing_penne", "name": "Penne", "default_unit": "g", "aliases": ["pasta corta"] },
-  { "id": "ing_riso_carnaroli", "name": "Riso Carnaroli", "default_unit": "g", "aliases": ["riso", "arborio", "vialone nano"] },
-  { "id": "ing_funghi_porcini", "name": "Funghi Porcini", "default_unit": "g", "aliases": ["porcini", "funghi"] },
-  { "id": "ing_brodo_veg", "name": "Brodo vegetale", "default_unit": "ml", "aliases": ["brodo"] },
-  { "id": "ing_cipolla", "name": "Cipolla", "default_unit": "pz", "aliases": ["cipolle", "cipollotto"] },
-  { "id": "ing_burro", "name": "Burro", "default_unit": "g", "aliases": [] },
-  { "id": "ing_parmigiano", "name": "Parmigiano", "default_unit": "g", "aliases": ["parmigiano reggiano", "grana padano", "grana"] },
-  { "id": "ing_vino_bianco", "name": "Vino bianco", "default_unit": "ml", "aliases": [] },
-  { "id": "ing_pollo", "name": "Pollo", "default_unit": "kg", "aliases": ["petto di pollo", "cosce di pollo", "fusi di pollo"] },
-  { "id": "ing_passata", "name": "Passata di pomodoro", "default_unit": "g", "aliases": ["passata", "salsa di pomodoro", "polpa di pomodoro", "pomodori pelati"] },
-  { "id": "ing_olive", "name": "Olive", "default_unit": "g", "aliases": ["olive verdi", "olive nere"] },
-  { "id": "ing_olio_evo", "name": "Olio extravergine di oliva", "default_unit": "ml", "aliases": ["olio evo", "olio di oliva", "extravergine"] },
-  { "id": "ing_alloro", "name": "Alloro", "default_unit": "pz", "aliases": ["foglie di alloro"] },
-  { "id": "ing_guanciale", "name": "Guanciale", "default_unit": "g", "aliases": [] },
-  { "id": "ing_uova", "name": "Uova", "default_unit": "pz", "aliases": ["uovo"] },
-  { "id": "ing_pecorino", "name": "Pecorino Romano", "default_unit": "g", "aliases": ["pecorino"] },
-  { "id": "ing_pepe", "name": "Pepe nero", "default_unit": "g", "aliases": ["pepe"] },
-  { "id": "ing_pomodoro", "name": "Pomodoro", "default_unit": "g", "aliases": ["polpa di pomodoro", "pelati"] },
-  { "id": "ing_sale", "name": "Sale", "default_unit": "g", "aliases": [] },
-  { "id": "ing_basilico", "name": "Basilico", "default_unit": "pz", "aliases": ["foglie di basilico"] },
-  { "id": "ing_mozzarella", "name": "Mozzarella", "default_unit": "g", "aliases": ["mozzarella fiordilatte"] },
-  { "id": "ing_melanzane", "name": "Melanzane", "default_unit": "g", "aliases": [] },
-  { "id": "ing_ricotta_salata", "name": "Ricotta salata", "default_unit": "g", "aliases": [] },
-  { "id": "ing_pomodorini", "name": "Pomodorini", "default_unit": "g", "aliases": [] },
-  { "id": "ing_acciughe", "name": "Acciughe sott'olio", "default_unit": "g", "aliases": ["alici"] },
-  { "id": "ing_capperi", "name": "Capperi", "default_unit": "g", "aliases": [] },
-  { "id": "ing_olive_nere", "name": "Olive nere", "default_unit": "g", "aliases": [] },
-  { "id": "ing_zafferano", "name": "Zafferano", "default_unit": "g", "aliases": [] },
-  { "id": "ing_sedano", "name": "Sedano", "default_unit": "pz", "aliases": [] },
-  { "id": "ing_carota", "name": "Carota", "default_unit": "pz", "aliases": ["carote"] },
-  { "id": "ing_patata", "name": "Patata", "default_unit": "g", "aliases": ["patate"] },
-  { "id": "ing_farina00", "name": "Farina 00", "default_unit": "g", "aliases": ["farina"] },
-  { "id": "ing_lievito_birra_secco", "name": "Lievito di birra secco", "default_unit": "g", "aliases": [] },
-  { "id": "ing_acqua", "name": "Acqua", "default_unit": "ml", "aliases": [] },
-  { "id": "ing_zucchero", "name": "Zucchero", "default_unit": "g", "aliases": [] },
-  { "id": "ing_savoiardi", "name": "Savoiardi", "default_unit": "g", "aliases": [] },
-  { "id": "ing_mascarpone", "name": "Mascarpone", "default_unit": "g", "aliases": [] },
-  { "id": "ing_caffe", "name": "Caffè", "default_unit": "ml", "aliases": ["espresso", "caffè espresso"] },
-  { "id": "ing_cacao", "name": "Cacao amaro", "default_unit": "g", "aliases": ["cacao"] },
-  { "id": "ing_salmone", "name": "Filetto di salmone", "default_unit": "g", "aliases": [] },
-  { "id": "ing_branzino", "name": "Branzino eviscerato", "default_unit": "g", "aliases": [] },
-  { "id": "ing_limone", "name": "Limone", "default_unit": "pz", "aliases": [] },
-  { "id": "ing_prezzemolo", "name": "Prezzemolo", "default_unit": "g", "aliases": [] },
-  { "id": "ing_olio_semi", "name": "Olio di semi", "default_unit": "ml", "aliases": [] },
-  { "id": "ing_pancetta", "name": "Pancetta", "default_unit": "g", "aliases": [] },
-  { "id": "ing_salsiccia", "name": "Salsiccia", "default_unit": "g", "aliases": [] },
-  { "id": "ing_gorgonzola", "name": "Gorgonzola", "default_unit": "g", "aliases": [] },
-  { "id": "ing_speck", "name": "Speck", "default_unit": "g", "aliases": [] },
-  { "id": "ing_zucchine", "name": "Zucchine", "default_unit": "g", "aliases": [] },
-  { "id": "ing_tonno_sgocciolato", "name": "Tonno in scatola sgocciolato", "default_unit": "g", "aliases": [] },
-  { "id": "ing_pane", "name": "Pane", "default_unit": "g", "aliases": [] },
-  { "id": "ing_aglio", "name": "Aglio", "default_unit": "g", "aliases": [] },
-  { "id": "ing_peperoncino", "name": "Peperoncino", "default_unit": "g", "aliases": [] },
-  { "id": "ing_minestrone_misto", "name": "Verdure miste (minestrone)", "default_unit": "g", "aliases": ["verdure miste"] },
-  { "id": "ing_lenticchie", "name": "Lenticchie secche", "default_unit": "g", "aliases": ["lenticchie"] },
-  { "id": "ing_olive_verdi", "name": "Olive verdi", "default_unit": "g", "aliases": [] }
+  {
+    "id": "ing_spaghetti",
+    "name": "Spaghetti",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_penne",
+    "name": "Penne",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_rigatoni",
+    "name": "Rigatoni",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_tagliatelle",
+    "name": "Tagliatelle",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_gnocchi_di_patate",
+    "name": "Gnocchi di patate",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_riso_carnaroli",
+    "name": "Riso Carnaroli",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_riso_basmati",
+    "name": "Riso Basmati",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_couscous",
+    "name": "Couscous",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_passata_di_pomodoro",
+    "name": "Passata di pomodoro",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_pomodori_pelati",
+    "name": "Pomodori pelati",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_pomodorini",
+    "name": "Pomodorini",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_pesto_alla_genovese",
+    "name": "Pesto alla genovese",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_mozzarella",
+    "name": "Mozzarella",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_scamorza",
+    "name": "Scamorza",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_gorgonzola",
+    "name": "Gorgonzola",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_parmigiano",
+    "name": "Parmigiano",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_pecorino_romano",
+    "name": "Pecorino Romano",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_funghi_champignon",
+    "name": "Funghi champignon",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_funghi_porcini",
+    "name": "Funghi porcini",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_melanzane",
+    "name": "Melanzane",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_zucchine",
+    "name": "Zucchine",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_peperoni",
+    "name": "Peperoni",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_cipolle",
+    "name": "Cipolle",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_carote",
+    "name": "Carote",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_sedano",
+    "name": "Sedano",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_olive_nere",
+    "name": "Olive nere",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_olive_verdi",
+    "name": "Olive verdi",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_burro",
+    "name": "Burro",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_olio_extravergine_di_oliva",
+    "name": "Olio extravergine di oliva",
+    "default_unit": "ml",
+    "aliases": []
+  },
+  {
+    "id": "ing_panna_da_cucina",
+    "name": "Panna da cucina",
+    "default_unit": "ml",
+    "aliases": []
+  },
+  {
+    "id": "ing_latte",
+    "name": "Latte",
+    "default_unit": "ml",
+    "aliases": []
+  },
+  {
+    "id": "ing_brodo_vegetale",
+    "name": "Brodo vegetale",
+    "default_unit": "ml",
+    "aliases": []
+  },
+  {
+    "id": "ing_vino_bianco",
+    "name": "Vino bianco",
+    "default_unit": "ml",
+    "aliases": []
+  },
+  {
+    "id": "ing_pollo",
+    "name": "Pollo",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_salsiccia",
+    "name": "Salsiccia",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_speck",
+    "name": "Speck",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_guanciale",
+    "name": "Guanciale",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_tonno_in_scatola_sgocciolato",
+    "name": "Tonno in scatola sgocciolato",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_salmone",
+    "name": "Salmone",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_calamari",
+    "name": "Calamari",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_gamberi",
+    "name": "Gamberi",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_uova",
+    "name": "Uova",
+    "default_unit": "pz",
+    "aliases": []
+  },
+  {
+    "id": "ing_aglio",
+    "name": "Aglio",
+    "default_unit": "pz",
+    "aliases": []
+  },
+  {
+    "id": "ing_limone",
+    "name": "Limone",
+    "default_unit": "pz",
+    "aliases": []
+  },
+  {
+    "id": "ing_basilico",
+    "name": "Basilico",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_prezzemolo",
+    "name": "Prezzemolo",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_peperoncino_secco",
+    "name": "Peperoncino secco",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_zafferano",
+    "name": "Zafferano",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_sale_fino",
+    "name": "Sale fino",
+    "default_unit": "g",
+    "aliases": []
+  },
+  {
+    "id": "ing_pepe_nero",
+    "name": "Pepe nero",
+    "default_unit": "g",
+    "aliases": []
+  }
 ]
