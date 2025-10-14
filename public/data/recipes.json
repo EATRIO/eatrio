@@ -2306,5 +2306,90 @@
     { "id": 1, "title": "Base", "description": "Cipolla, salsiccia sgranata e zucchine a rondelle.", "type": "cook", "duration": "8–9 min" },
     { "id": 2, "title": "Manteca", "description": "Condisci la pasta e manteca con parmigiano.", "type": "mix" }
   ]
-}
+},
+  [
+  {
+    "id": "rec_pici_aglione",
+    "title": "Pici all'Aglione",
+    "servings": 4,
+    "cookingTime": 35,
+    "difficulty": 2,
+    "description": "Pasta tipica toscana con sugo di pomodoro e aglio in abbondanza.",
+    "ingredients": [],
+    "steps": [
+      { "id": 1, "title": "Preparazione", "description": "Prepara il sugo di pomodoro con aglio schiacciato.", "type": "prep", "duration": "10 min" },
+      { "id": 2, "title": "Cottura pasta", "description": "Cuoci i pici e condisci con il sugo all’aglione.", "type": "cook", "duration": "20 min", "timerMinutes": 20 },
+      { "id": 3, "title": "Finitura", "description": "Manteca con un filo d’olio e servi caldo.", "type": "mix", "duration": "5 min" }
+    ]
+  },
+  {
+    "id": "rec_orecchiette_cime_rapa",
+    "title": "Orecchiette alle Cime di Rapa",
+    "servings": 4,
+    "cookingTime": 30,
+    "difficulty": 1,
+    "description": "Classico pugliese con cime di rapa, aglio e acciughe.",
+    "ingredients": [],
+    "steps": [
+      { "id": 1, "title": "Sbollenta", "description": "Sbollenta le cime di rapa in acqua salata.", "type": "prep", "duration": "8 min" },
+      { "id": 2, "title": "Salta", "description": "Salta con aglio, olio e acciughe, unisci le orecchiette.", "type": "cook", "duration": "17 min", "timerMinutes": 17 },
+      { "id": 3, "title": "Servi", "description": "Completa con peperoncino a piacere.", "type": "mix", "duration": "5 min" }
+    ]
+  },
+  {
+    "id": "rec_pasta_alla_gricia",
+    "title": "Pasta alla Gricia",
+    "servings": 4,
+    "cookingTime": 25,
+    "difficulty": 1,
+    "description": "Antenata della carbonara: guanciale croccante e pecorino.",
+    "ingredients": [],
+    "steps": [
+      { "id": 1, "title": "Guanciale", "description": "Rosola il guanciale fino a renderlo croccante.", "type": "cook", "duration": "8 min" },
+      { "id": 2, "title": "Pasta", "description": "Cuoci la pasta e manteca con pecorino e guanciale.", "type": "cook", "duration": "12 min", "timerMinutes": 12 },
+      { "id": 3, "title": "Mantecatura", "description": "Aggiusta di pepe e servi cremoso.", "type": "mix", "duration": "5 min" }
+    ]
+  },
+  {
+    "id": "rec_pasta_pistacchio",
+    "title": "Pasta al Pistacchio",
+    "servings": 4,
+    "cookingTime": 20,
+    "difficulty": 1,
+    "description": "Cremosa salsa al pistacchio con una nota di limone.",
+    "ingredients": [],
+    "steps": [
+      { "id": 1, "title": "Crema", "description": "Prepara una crema di pistacchio con olio e limone.", "type": "prep", "duration": "5 min" },
+      { "id": 2, "title": "Pasta", "description": "Cuoci la pasta e unisci la crema con poca acqua di cottura.", "type": "cook", "duration": "12 min", "timerMinutes": 12 },
+      { "id": 3, "title": "Finitura", "description": "Zeste di limone e granella in superficie.", "type": "mix", "duration": "3 min" }
+    ]
+  },
+  {
+    "id": "rec_trofie_pesto_rucola",
+    "title": "Trofie al Pesto di Rucola",
+    "servings": 4,
+    "cookingTime": 20,
+    "difficulty": 1,
+    "description": "Alternativa fresca al pesto classico, con rucola e mandorle.",
+    "ingredients": [],
+    "steps": [
+      { "id": 1, "title": "Pesto", "description": "Frulla rucola, mandorle, olio e formaggio.", "type": "prep", "duration": "5 min" },
+      { "id": 2, "title": "Cuoci trofie", "description": "Cuoci le trofie e manteca con il pesto.", "type": "cook", "duration": "12 min", "timerMinutes": 12 },
+      { "id": 3, "title": "Servizio", "description": "Completa con mandorle tostate.", "type": "mix", "duration": "3 min" }
+    ]
+  },
+  {
+    "id": "rec_tagliolini_tartufo",
+    "title": "Tagliolini al Tartufo",
+    "servings": 4,
+    "cookingTime": 15,
+    "difficulty": 2,
+    "description": "Semplici e profumati, con burro chiarificato e tartufo.",
+    "ingredients": [],
+    "steps": [
+      { "id": 1, "title": "Burro", "description": "Sciogli il burro a fuoco dolce.", "type": "prep", "duration": "4 min" },
+      { "id": 2, "title": "Pasta", "description": "Cuoci i tagliolini e condisci con burro e tartufo.", "type": "cook", "duration": "8 min", "timerMinutes": 8 },
+      { "id": 3, "title": "Finitura", "description": "Regola di sale e pepe, lamelle di tartufo in cima.", "type": "mix", "duration": "3 min" }
+    ]
+  }
 ]
