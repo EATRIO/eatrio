@@ -677,5 +677,1634 @@
       { "id": 2, "title": "Strati", "description": "Alterna savoiardi bagnati nel caffè e crema.", "type": "prep" },
       { "id": 3, "title": "Riposo", "description": "Frigo 2–3 ore. Cacao in superficie.", "type": "mix", "duration": "180 min" }
     ]
-  }
+  },
+  {
+  "id": "rec_spaghetti_aglio_olio",
+  "title": "Spaghetti Aglio, Olio e Peperoncino",
+  "servings": 4,
+  "cookingTime": 15,
+  "difficulty": 1,
+  "description": "Classico veloce con aglio, olio e peperoncino.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 30, "unit": "ml" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 2, "unit": "pz" },
+    { "ingredient_id": "peperoncino", "name": "Peperoncino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Soffritto", "description": "Scalda l’olio con aglio e peperoncino senza bruciare.", "type": "cook", "duration": "2–3 min" },
+    { "id": 2, "title": "Pasta", "description": "Cuoci gli spaghetti in acqua salata.", "type": "boil", "duration": "8–11 min" },
+    { "id": 3, "title": "Salta", "description": "Scola al dente e salta con l’olio aromatizzato e prezzemolo.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_pasta_tonno",
+  "title": "Pasta al Tonno",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 1,
+  "description": "Penne al sugo di tonno e pomodoro.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pasta_corta", "name": "Pasta corta", "amount": 360, "unit": "g" },
+    { "ingredient_id": "tonno_sgocciolato", "name": "Tonno in scatola sgocciolato", "amount": 240, "unit": "g" },
+    { "ingredient_id": "pomodori_pelati", "name": "Pomodori pelati", "amount": 400, "unit": "g" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Sugo", "description": "Cipolla in olio, aggiungi pelati e tonno. Cuoci 8–10 min.", "type": "cook" },
+    { "id": 2, "title": "Pasta", "description": "Cuoci la pasta in acqua salata.", "type": "boil" },
+    { "id": 3, "title": "Mantecatura", "description": "Salta con il sugo e prezzemolo tritato.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_pasta_zucchine_speck",
+  "title": "Pasta Zucchine e Speck",
+  "servings": 4,
+  "cookingTime": 22,
+  "difficulty": 1,
+  "description": "Cremosa grazie alla mantecatura con parmigiano.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pasta_corta", "name": "Pasta corta", "amount": 360, "unit": "g" },
+    { "ingredient_id": "zucchine", "name": "Zucchine", "amount": 300, "unit": "g" },
+    { "ingredient_id": "speck", "name": "Speck", "amount": 120, "unit": "g" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 40, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Saltare", "description": "Cipolla, zucchine a rondelle e speck a listarelle.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Pasta", "description": "Cuoci la pasta.", "type": "boil" },
+    { "id": 3, "title": "Manteca", "description": "Salta con il condimento e parmigiano.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_penne_panna_salmone",
+  "title": "Penne Panna e Salmone",
+  "servings": 4,
+  "cookingTime": 18,
+  "difficulty": 1,
+  "description": "Penne con salmone e panna al profumo di limone.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "penne", "name": "Penne", "amount": 360, "unit": "g" },
+    { "ingredient_id": "salmone", "name": "Filetto di salmone", "amount": 250, "unit": "g" },
+    { "ingredient_id": "panna_fresca", "name": "Panna fresca", "amount": 200, "unit": "ml" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 10, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" },
+    { "ingredient_id": "pepe_nero", "name": "Pepe nero", "amount": 1, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Salmone", "description": "Rosola velocemente il salmone a cubetti.", "type": "cook", "duration": "3–4 min" },
+    { "id": 2, "title": "Salsa", "description": "Unisci panna e scorza di limone.", "type": "mix" },
+    { "id": 3, "title": "Pasta", "description": "Cuoci le penne e salta con la salsa.", "type": "boil" }
+  ]
+},
+{
+  "id": "rec_penne_pesto_patate",
+  "title": "Penne al Pesto con Patate",
+  "servings": 4,
+  "cookingTime": 22,
+  "difficulty": 1,
+  "description": "Pesto genovese arricchito da patate a cubetti.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "penne", "name": "Penne", "amount": 360, "unit": "g" },
+    { "ingredient_id": "pesto_basilico", "name": "Pesto alla genovese", "amount": 180, "unit": "g" },
+    { "ingredient_id": "patate", "name": "Patate", "amount": 250, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 8, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Patate", "description": "Lessa i cubetti di patate nell’acqua della pasta.", "type": "boil", "duration": "8–10 min" },
+    { "id": 2, "title": "Pasta", "description": "Cuoci le penne insieme alle patate.", "type": "boil" },
+    { "id": 3, "title": "Condisci", "description": "Scola morbido e mescola col pesto.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_rigatoni_salsiccia_funghi",
+  "title": "Rigatoni Salsiccia e Porcini",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 2,
+  "description": "Salsa cremosa con funghi porcini e panna.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "rigatoni", "name": "Rigatoni", "amount": 360, "unit": "g" },
+    { "ingredient_id": "salsiccia", "name": "Salsiccia", "amount": 250, "unit": "g" },
+    { "ingredient_id": "funghi_porcini", "name": "Funghi Porcini", "amount": 200, "unit": "g" },
+    { "ingredient_id": "panna_fresca", "name": "Panna fresca", "amount": 150, "unit": "ml" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Fondo", "description": "Cipolla e salsiccia sgranata in padella.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Funghi", "description": "Unisci i porcini a fette e cuoci.", "type": "cook", "duration": "4–5 min" },
+    { "id": 3, "title": "Cremoso", "description": "Aggiungi panna. Sala e condisci i rigatoni.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_gnocchi_gorgonzola",
+  "title": "Gnocchi al Gorgonzola",
+  "servings": 4,
+  "cookingTime": 15,
+  "difficulty": 1,
+  "description": "Salsa di gorgonzola e panna, super cremosa.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "gnocchi_patate", "name": "Gnocchi di patate", "amount": 600, "unit": "g" },
+    { "ingredient_id": "gorgonzola", "name": "Gorgonzola", "amount": 180, "unit": "g" },
+    { "ingredient_id": "panna_fresca", "name": "Panna fresca", "amount": 150, "unit": "ml" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 30, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Salsa", "description": "Sciogli gorgonzola e panna a fuoco dolce.", "type": "cook", "duration": "3–4 min" },
+    { "id": 2, "title": "Gnocchi", "description": "Cuoci gli gnocchi: scolali quando salgono a galla.", "type": "boil", "duration": "2–3 min" },
+    { "id": 3, "title": "Manteca", "description": "Condisci e completa con parmigiano.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_tagliatelle_funghi",
+  "title": "Tagliatelle ai Funghi Porcini",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 2,
+  "description": "Porcini saltati con aglio e prezzemolo.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "tagliatelle", "name": "Tagliatelle", "amount": 400, "unit": "g" },
+    { "ingredient_id": "funghi_porcini", "name": "Funghi Porcini", "amount": 300, "unit": "g" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Funghi", "description": "Salta i porcini con aglio in olio caldo.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Pasta", "description": "Cuoci le tagliatelle al dente.", "type": "boil" },
+    { "id": 3, "title": "Salta", "description": "Unisci pasta e funghi con prezzemolo tritato.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_couscous_verdure_ceci",
+  "title": "Cous Cous Verdure e Ceci",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 1,
+  "description": "Speziato con curry leggero.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "cous_cous", "name": "Cous cous", "amount": 300, "unit": "g" },
+    { "ingredient_id": "verdure_miste", "name": "Verdure miste", "amount": 400, "unit": "g" },
+    { "ingredient_id": "ceci", "name": "Ceci già cotti", "amount": 250, "unit": "g" },
+    { "ingredient_id": "curry", "name": "Curry in polvere", "amount": 3, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Verdure", "description": "Salta le verdure con olio e curry.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Idrata", "description": "Idrata il cous cous con acqua calda salata.", "type": "prep", "duration": "5 min" },
+    { "id": 3, "title": "Unisci", "description": "Sgrana il cous cous e mescola con ceci e verdure.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_riso_curry_pollo",
+  "title": "Riso Basmati al Curry con Pollo",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 2,
+  "description": "Piatto unico cremoso con latte di cocco.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "riso_basmati", "name": "Riso Basmati", "amount": 280, "unit": "g" },
+    { "ingredient_id": "pollo", "name": "Pollo", "amount": 500, "unit": "g" },
+    { "ingredient_id": "curry", "name": "Curry in polvere", "amount": 4, "unit": "g" },
+    { "ingredient_id": "latte_cocco", "name": "Latte di cocco", "amount": 200, "unit": "ml" },
+    { "ingredient_id": "verdure_miste", "name": "Verdure miste", "amount": 250, "unit": "g" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Cipolla e pollo a cubetti con curry.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Salsa", "description": "Unisci latte di cocco e verdure. Addensa.", "type": "cook", "duration": "5–6 min" },
+    { "id": 3, "title": "Riso", "description": "Lessa il basmati e servi con il curry di pollo.", "type": "boil" }
+  ]
+},
+{
+  "id": "rec_insalata_riso_tonno",
+  "title": "Insalata di Riso Tonno e Mais",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 1,
+  "description": "Fresca con olive e pomodorini.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "riso_parboiled", "name": "Riso parboiled", "amount": 320, "unit": "g" },
+    { "ingredient_id": "tonno_sgocciolato", "name": "Tonno in scatola sgocciolato", "amount": 240, "unit": "g" },
+    { "ingredient_id": "mais", "name": "Mais", "amount": 150, "unit": "g" },
+    { "ingredient_id": "olive_verdi", "name": "Olive verdi", "amount": 80, "unit": "g" },
+    { "ingredient_id": "pomodorini", "name": "Pomodorini", "amount": 200, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Riso", "description": "Cuoci e raffredda il riso.", "type": "boil", "duration": "12–14 min" },
+    { "id": 2, "title": "Condisci", "description": "Unisci tonno, mais, olive e pomodorini. Olio e sale.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_riso_patate_brodo",
+  "title": "Riso e Patate in Brodo",
+  "servings": 4,
+  "cookingTime": 30,
+  "difficulty": 1,
+  "description": "Con sedano, carota e cipolla.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "riso_parboiled", "name": "Riso parboiled", "amount": 280, "unit": "g" },
+    { "ingredient_id": "patate", "name": "Patate", "amount": 300, "unit": "g" },
+    { "ingredient_id": "sedano", "name": "Sedano", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "carota", "name": "Carota", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "brodo_vegetale", "name": "Brodo vegetale", "amount": 1200, "unit": "ml" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 30, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Trita sedano, carota e cipolla; rosola leggermente.", "type": "cook", "duration": "4 min" },
+    { "id": 2, "title": "Cottura", "description": "Aggiungi patate a cubetti, brodo e riso. Cuoci finché morbido.", "type": "cook", "duration": "18–20 min" },
+    { "id": 3, "title": "Finitura", "description": "Regola di sale e completa con parmigiano.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_risotto_limone",
+  "title": "Risotto al Limone e Rosmarino",
+  "servings": 4,
+  "cookingTime": 28,
+  "difficulty": 2,
+  "description": "Profumato e cremoso, perfetto d’estate.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "riso_carnaroli", "name": "Riso Carnaroli", "amount": 320, "unit": "g" },
+    { "ingredient_id": "brodo_vegetale", "name": "Brodo vegetale", "amount": 1000, "unit": "ml" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 40, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 60, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Tosta", "description": "Tosta il riso nel burro.", "type": "cook", "duration": "2–3 min" },
+    { "id": 2, "title": "Cuoci", "description": "Bagna con brodo poco alla volta.", "type": "cook", "duration": "16–18 min" },
+    { "id": 3, "title": "Profuma", "description": "Unisci scorza di limone e rosmarino tritato.", "type": "mix" },
+    { "id": 4, "title": "Manteca", "description": "Burro e parmigiano fuori fuoco.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_risotto_pomodoro",
+  "title": "Risotto al Pomodoro",
+  "servings": 4,
+  "cookingTime": 26,
+  "difficulty": 1,
+  "description": "Rosso e cremoso con passata e basilico.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "riso_carnaroli", "name": "Riso Carnaroli", "amount": 320, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 300, "unit": "g" },
+    { "ingredient_id": "brodo_vegetale", "name": "Brodo vegetale", "amount": 900, "unit": "ml" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 40, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 60, "unit": "g" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Tosta il riso nel burro.", "type": "cook", "duration": "2–3 min" },
+    { "id": 2, "title": "Cottura", "description": "Cuoci con brodo e aggiungi la passata a metà.", "type": "cook", "duration": "16–18 min" },
+    { "id": 3, "title": "Mantecatura", "description": "Burro, parmigiano e basilico spezzettato.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_lasagne_pesto",
+  "title": "Lasagne al Pesto",
+  "servings": 6,
+  "cookingTime": 50,
+  "difficulty": 2,
+  "description": "Strati di pesto, besciamella e mozzarella.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "lasagne_sfoglia", "name": "Sfoglia per lasagne", "amount": 250, "unit": "g" },
+    { "ingredient_id": "pesto_basilico", "name": "Pesto alla genovese", "amount": 200, "unit": "g" },
+    { "ingredient_id": "besciamella", "name": "Besciamella", "amount": 500, "unit": "g" },
+    { "ingredient_id": "mozzarella", "name": "Mozzarella", "amount": 250, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 80, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Strati", "description": "Sfoglia, besciamella, pesto e formaggi a ripetere.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "180°C per 30–35 minuti.", "type": "cook", "duration": "35 min" }
+  ]
+},
+{
+  "id": "rec_polpette_sugo",
+  "title": "Polpette al Sugo",
+  "servings": 4,
+  "cookingTime": 35,
+  "difficulty": 2,
+  "description": "Polpette morbide in salsa di pomodoro.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "carne_macinata", "name": "Carne macinata", "amount": 500, "unit": "g" },
+    { "ingredient_id": "uova", "name": "Uova", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "pangrattato", "name": "Pangrattato", "amount": 60, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 30, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 500, "unit": "g" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 8, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Impasto", "description": "Mescola carne, uovo, pangrattato, parmigiano e prezzemolo.", "type": "prep" },
+    { "id": 2, "title": "Salsa", "description": "Aglio in olio, unisci passata.", "type": "cook" },
+    { "id": 3, "title": "Cottura", "description": "Tuffa le polpette e cuoci 15–18 minuti.", "type": "cook", "duration": "18 min" }
+  ]
+},
+{
+  "id": "rec_pollo_curry",
+  "title": "Pollo al Curry",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 2,
+  "description": "Pollo speziato con latte di cocco.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pollo", "name": "Pollo", "amount": 600, "unit": "g" },
+    { "ingredient_id": "curry", "name": "Curry in polvere", "amount": 4, "unit": "g" },
+    { "ingredient_id": "latte_cocco", "name": "Latte di cocco", "amount": 200, "unit": "ml" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Rosola", "description": "Cipolla e pollo a cubetti con curry.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Crea salsa", "description": "Aggiungi latte di cocco e addensa.", "type": "cook", "duration": "5–6 min" }
+  ]
+},
+{
+  "id": "rec_pollo_rosmarino_patate",
+  "title": "Pollo al Rosmarino con Patate",
+  "servings": 4,
+  "cookingTime": 45,
+  "difficulty": 1,
+  "description": "Teglia unica, croccante e profumata.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pollo", "name": "Pollo", "amount": 900, "unit": "g" },
+    { "ingredient_id": "patate", "name": "Patate", "amount": 600, "unit": "g" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 30, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 8, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Teglia", "description": "Condisci pollo e patate con olio, sale e rosmarino.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "200°C per 35–40 minuti, gira a metà.", "type": "cook", "duration": "40 min" }
+  ]
+},
+{
+  "id": "rec_pollo_pizzaiola",
+  "title": "Pollo alla Pizzaiola",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 1,
+  "description": "Petto di pollo in sugo di pomodoro e basilico.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pollo", "name": "Pollo", "amount": 600, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 350, "unit": "g" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Rosola", "description": "Scotta il pollo in padella con olio.", "type": "cook", "duration": "4–5 min" },
+    { "id": 2, "title": "Sugo", "description": "Aggiungi passata, aglio e basilico. Cuoci 10 min.", "type": "cook" }
+  ]
+},
+{
+  "id": "rec_salsiccia_patate",
+  "title": "Salsiccia e Patate al Forno",
+  "servings": 4,
+  "cookingTime": 45,
+  "difficulty": 1,
+  "description": "Secondo rustico in teglia.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "salsiccia", "name": "Salsiccia", "amount": 500, "unit": "g" },
+    { "ingredient_id": "patate", "name": "Patate", "amount": 700, "unit": "g" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 25, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 8, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Condisci", "description": "Teglia con patate a spicchi e salsicce. Olio, sale, rosmarino.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "200°C per 35–40 minuti.", "type": "cook", "duration": "40 min" }
+  ]
+},
+{
+  "id": "rec_orata_cartoccio",
+  "title": "Orata al Cartoccio",
+  "servings": 4,
+  "cookingTime": 30,
+  "difficulty": 2,
+  "description": "Orata con limone, pomodorini ed erbe in cartoccio.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "orata", "name": "Orata eviscerata", "amount": 900, "unit": "g" },
+    { "ingredient_id": "pomodorini", "name": "Pomodorini", "amount": 200, "unit": "g" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Cartoccio", "description": "Prepara cartocci con orata, fette di limone e pomodorini.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "190°C per 20–22 minuti.", "type": "cook", "duration": "22 min" }
+  ]
+},
+{
+  "id": "rec_branzino_acqua_pazza",
+  "title": "Branzino all’Acqua Pazza",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 2,
+  "description": "Cottura umida con pomodorini, aglio e prezzemolo.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "branzino", "name": "Branzino eviscerato", "amount": 800, "unit": "g" },
+    { "ingredient_id": "pomodorini", "name": "Pomodorini", "amount": 200, "unit": "g" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "vino_bianco", "name": "Vino bianco", "amount": 80, "unit": "ml" },
+    { "ingredient_id": "acqua", "name": "Acqua", "amount": 120, "unit": "ml" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Scalda aglio e pomodorini con olio.", "type": "cook", "duration": "2–3 min" },
+    { "id": 2, "title": "Cottura", "description": "Aggiungi branzino, vino, acqua e prezzemolo. Copri e cuoci.", "type": "cook", "duration": "15–18 min" }
+  ]
+},
+{
+  "id": "rec_calamari_ripieni",
+  "title": "Calamari Ripieni al Forno",
+  "servings": 4,
+  "cookingTime": 35,
+  "difficulty": 3,
+  "description": "Ripieni di pangrattato, capperi e prezzemolo.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "calamari", "name": "Calamari", "amount": 600, "unit": "g" },
+    { "ingredient_id": "pangrattato", "name": "Pangrattato", "amount": 80, "unit": "g" },
+    { "ingredient_id": "capperi", "name": "Capperi", "amount": 15, "unit": "g" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "pomodorini", "name": "Pomodorini", "amount": 150, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Ripieno", "description": "Mescola pangrattato, capperi, aglio e prezzemolo.", "type": "prep" },
+    { "id": 2, "title": "Farcisci", "description": "Riempi i calamari e chiudi con stuzzicadenti.", "type": "prep" },
+    { "id": 3, "title": "Forno", "description": "180°C per 20–22 minuti con pomodorini.", "type": "cook", "duration": "22 min" }
+  ]
+},
+{
+  "id": "rec_gamberi_limone",
+  "title": "Gamberi al Limone in Padella",
+  "servings": 4,
+  "cookingTime": 12,
+  "difficulty": 1,
+  "description": "Semplici, profumati e veloci.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "gamberi", "name": "Gamberi", "amount": 500, "unit": "g" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Cottura", "description": "Salta i gamberi a fiamma alta 2 min per lato.", "type": "cook", "duration": "4 min" },
+    { "id": 2, "title": "Finitura", "description": "Succo di limone e prezzemolo tritato.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_frittata_cipolle",
+  "title": "Frittata di Cipolle",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 1,
+  "description": "Saporita, alta e morbida.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "uova", "name": "Uova", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 2, "unit": "pz" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 30, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Cipolle", "description": "Stufa le cipolle affettate con olio.", "type": "cook", "duration": "8 min" },
+    { "id": 2, "title": "Uova", "description": "Sbatti uova, sale e parmigiano.", "type": "prep" },
+    { "id": 3, "title": "Cottura", "description": "Cuoci a fuoco dolce e gira a metà.", "type": "cook", "duration": "6–8 min" }
+  ]
+},
+{
+  "id": "rec_verdure_forno",
+  "title": "Verdure Miste al Forno",
+  "servings": 4,
+  "cookingTime": 30,
+  "difficulty": 1,
+  "description": "Contorno di stagione semplice.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "verdure_miste", "name": "Verdure miste", "amount": 700, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 25, "unit": "ml" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 7, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Condisci", "description": "Taglia le verdure, condisci con olio, sale e rosmarino.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "200°C per 20–25 minuti.", "type": "cook", "duration": "25 min" }
+  ]
+},
+{
+  "id": "rec_insalata_tonno_fagioli",
+  "title": "Insalata Tonno e Fagioli",
+  "servings": 4,
+  "cookingTime": 10,
+  "difficulty": 1,
+  "description": "Con cipolla rossa e limone.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "tonno_sgocciolato", "name": "Tonno in scatola sgocciolato", "amount": 240, "unit": "g" },
+    { "ingredient_id": "fagioli_cannellini", "name": "Fagioli cannellini", "amount": 300, "unit": "g" },
+    { "ingredient_id": "cipolla_rossa", "name": "Cipolla rossa", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Condisci", "description": "Mescola tonno, fagioli e cipolla. Olio, sale e limone.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_panzanella",
+  "title": "Panzanella",
+  "servings": 4,
+  "cookingTime": 15,
+  "difficulty": 1,
+  "description": "Pane raffermo con pomodoro, cetriolo e cipolla.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pane", "name": "Pane", "amount": 250, "unit": "g" },
+    { "ingredient_id": "pomodoro", "name": "Pomodoro", "amount": 350, "unit": "g" },
+    { "ingredient_id": "cetriolo", "name": "Cetriolo", "amount": 200, "unit": "g" },
+    { "ingredient_id": "cipolla_rossa", "name": "Cipolla rossa", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 25, "unit": "ml" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Idrata pane", "description": "Ammolla il pane con poca acqua, poi strizza.", "type": "prep" },
+    { "id": 2, "title": "Condisci", "description": "Unisci verdure a pezzi, basilico, olio, sale e limone.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_crocchette_patate_scamorza",
+  "title": "Crocchette di Patate e Scamorza",
+  "servings": 4,
+  "cookingTime": 35,
+  "difficulty": 2,
+  "description": "Filanti dentro, croccanti fuori.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "patate", "name": "Patate", "amount": 700, "unit": "g" },
+    { "ingredient_id": "scamorza", "name": "Scamorza", "amount": 150, "unit": "g" },
+    { "ingredient_id": "uova", "name": "Uova", "amount": 2, "unit": "pz" },
+    { "ingredient_id": "pangrattato", "name": "Pangrattato", "amount": 120, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 40, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Impasto", "description": "Schiaccia patate lessate con uova, parmigiano e sale.", "type": "prep" },
+    { "id": 2, "title": "Forma", "description": "Inserisci un cubetto di scamorza e impana nel pangrattato.", "type": "prep" },
+    { "id": 3, "title": "Cottura", "description": "Forno a 200°C 18–20 min (o padella).", "type": "cook", "duration": "20 min" }
+  ]
+},
+{
+  "id": "rec_panna_cotta_limone",
+  "title": "Panna Cotta al Limone",
+  "servings": 6,
+  "cookingTime": 15,
+  "difficulty": 1,
+  "description": "Dessert fresco con gelatina e scorza di limone.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "panna_fresca", "name": "Panna fresca", "amount": 500, "unit": "ml" },
+    { "ingredient_id": "zucchero", "name": "Zucchero", "amount": 80, "unit": "g" },
+    { "ingredient_id": "gelatina", "name": "Gelatina in fogli", "amount": 8, "unit": "g" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 1, "unit": "pz" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Sciogli", "description": "Scalda panna con zucchero e scorza; sciogli la gelatina ammollata.", "type": "cook", "duration": "3–4 min" },
+    { "id": 2, "title": "Raffredda", "description": "Versa negli stampini e raffredda 3–4 ore.", "type": "mix", "duration": "180–240 min" }
+  ]
+},
+  {
+  "id": "rec_trofie_pesto",
+  "title": "Trofie al Pesto",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 1,
+  "description": "Trofie condite con pesto genovese e una manciata di parmigiano.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "trofie", "name": "Trofie", "amount": 400, "unit": "g" },
+    { "ingredient_id": "pesto_basilico", "name": "Pesto alla genovese", "amount": 180, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 50, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 7, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Pasta", "description": "Cuoci le trofie in acqua salata.", "type": "boil", "duration": "10–12 min" },
+    { "id": 2, "title": "Condisci", "description": "Stempera il pesto con 2 cucchiai d’acqua di cottura e manteca con parmigiano.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_spaghetti_puttanesca",
+  "title": "Spaghetti alla Puttanesca",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 1,
+  "description": "Sugo vivace con olive, capperi e acciughe.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
+    { "ingredient_id": "pomodori_pelati", "name": "Pomodori pelati", "amount": 400, "unit": "g" },
+    { "ingredient_id": "olive_nere", "name": "Olive nere", "amount": 80, "unit": "g" },
+    { "ingredient_id": "capperi", "name": "Capperi", "amount": 15, "unit": "g" },
+    { "ingredient_id": "acciughe", "name": "Filetti di acciughe", "amount": 20, "unit": "g" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "peperoncino", "name": "Peperoncino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Sugo", "description": "Aglio, acciughe, peperoncino e poi pelati, olive e capperi.", "type": "cook", "duration": "12–14 min" },
+    { "id": 2, "title": "Pasta", "description": "Cuoci gli spaghetti e salta col sugo.", "type": "boil" }
+  ]
+},
+{
+  "id": "rec_bucatini_amatriciana",
+  "title": "Bucatini all’Amatriciana",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 2,
+  "description": "Guanciale croccante, pomodoro e pecorino.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "bucatini", "name": "Bucatini", "amount": 360, "unit": "g" },
+    { "ingredient_id": "guanciale", "name": "Guanciale", "amount": 150, "unit": "g" },
+    { "ingredient_id": "pomodori_pelati", "name": "Pomodori pelati", "amount": 400, "unit": "g" },
+    { "ingredient_id": "pecorino_romano", "name": "Pecorino Romano", "amount": 80, "unit": "g" },
+    { "ingredient_id": "peperoncino", "name": "Peperoncino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Guanciale", "description": "Rosola il guanciale finché croccante.", "type": "cook", "duration": "5–6 min" },
+    { "id": 2, "title": "Sugo", "description": "Unisci i pelati e il peperoncino. Cuoci.", "type": "cook", "duration": "8–10 min" },
+    { "id": 3, "title": "Manteca", "description": "Condisci i bucatini con sugo e pecorino.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_pasta_norma",
+  "title": "Pasta alla Norma",
+  "servings": 4,
+  "cookingTime": 30,
+  "difficulty": 2,
+  "description": "Melanzane e pomodoro con ricotta salata.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "rigatoni", "name": "Rigatoni", "amount": 360, "unit": "g" },
+    { "ingredient_id": "melanzane", "name": "Melanzane", "amount": 350, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 400, "unit": "g" },
+    { "ingredient_id": "ricotta_salata", "name": "Ricotta salata", "amount": 60, "unit": "g" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 25, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 7, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Melanzane", "description": "A cubetti, rosola con olio finché dorate.", "type": "cook", "duration": "8–10 min" },
+    { "id": 2, "title": "Sugo", "description": "Scalda la passata con basilico.", "type": "cook", "duration": "6–7 min" },
+    { "id": 3, "title": "Condisci", "description": "Unisci pasta, melanzane e grattugia ricotta salata.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_pasta_fagioli",
+  "title": "Pasta e Fagioli",
+  "servings": 4,
+  "cookingTime": 30,
+  "difficulty": 1,
+  "description": "Zuppa densa con borlotti e odori.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pasta_corta", "name": "Pasta corta", "amount": 300, "unit": "g" },
+    { "ingredient_id": "fagioli_borlotti", "name": "Fagioli borlotti", "amount": 300, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 200, "unit": "g" },
+    { "ingredient_id": "sedano", "name": "Sedano", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "carota", "name": "Carota", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 7, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Soffritto", "description": "Sedano, carota e cipolla in olio.", "type": "cook", "duration": "5–6 min" },
+    { "id": 2, "title": "Zuppa", "description": "Unisci fagioli, passata e acqua. Aggiungi pasta a metà cottura.", "type": "cook", "duration": "16–18 min" }
+  ]
+},
+{
+  "id": "rec_risotto_zafferano",
+  "title": "Risotto allo Zafferano",
+  "servings": 4,
+  "cookingTime": 28,
+  "difficulty": 2,
+  "description": "Classico alla milanese con burro e parmigiano.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "riso_carnaroli", "name": "Riso Carnaroli", "amount": 320, "unit": "g" },
+    { "ingredient_id": "brodo_vegetale", "name": "Brodo vegetale", "amount": 1000, "unit": "ml" },
+    { "ingredient_id": "zafferano", "name": "Zafferano", "amount": 1, "unit": "g" },
+    { "ingredient_id": "vino_bianco", "name": "Vino bianco", "amount": 80, "unit": "ml" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 40, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 60, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Tosta", "description": "Tosta il riso nel burro e sfuma col vino.", "type": "cook", "duration": "3–4 min" },
+    { "id": 2, "title": "Cuoci", "description": "Aggiungi brodo a mestoli. Unisci lo zafferano.", "type": "cook", "duration": "16–18 min" },
+    { "id": 3, "title": "Manteca", "description": "Fuori fuoco con burro e parmigiano.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_risotto_gamberi_zucchine",
+  "title": "Risotto Gamberi e Zucchine",
+  "servings": 4,
+  "cookingTime": 27,
+  "difficulty": 2,
+  "description": "Delicato con gamberi saltati e zucchine.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "riso_carnaroli", "name": "Riso Carnaroli", "amount": 320, "unit": "g" },
+    { "ingredient_id": "gamberi", "name": "Gamberi", "amount": 300, "unit": "g" },
+    { "ingredient_id": "zucchine", "name": "Zucchine", "amount": 250, "unit": "g" },
+    { "ingredient_id": "brodo_vegetale", "name": "Brodo vegetale", "amount": 900, "unit": "ml" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Zucchine", "description": "Rosola le zucchine a dadini.", "type": "cook", "duration": "4–5 min" },
+    { "id": 2, "title": "Riso", "description": "Tosta il riso e porta a cottura con brodo.", "type": "cook", "duration": "16–18 min" },
+    { "id": 3, "title": "Gamberi", "description": "Salta i gamberi con aglio e unisci al risotto.", "type": "cook", "duration": "2–3 min" }
+  ]
+},
+{
+  "id": "rec_lasagne_bolognese",
+  "title": "Lasagne al Ragù",
+  "servings": 6,
+  "cookingTime": 60,
+  "difficulty": 2,
+  "description": "Sfoglie, ragù alla bolognese, besciamella e parmigiano.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "lasagne_sfoglia", "name": "Sfoglia per lasagne", "amount": 250, "unit": "g" },
+    { "ingredient_id": "ragu_bolognese", "name": "Ragù alla bolognese", "amount": 600, "unit": "g" },
+    { "ingredient_id": "besciamella", "name": "Besciamella", "amount": 600, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 90, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Strati", "description": "Alterna sfoglia, ragù, besciamella e parmigiano.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "Cuoci a 180°C per 35–40 minuti.", "type": "cook", "duration": "40 min" }
+  ]
+},
+{
+  "id": "rec_pizza_margherita",
+  "title": "Pizza Margherita (teglia)",
+  "servings": 4,
+  "cookingTime": 120,
+  "difficulty": 3,
+  "description": "Impasto semplice con lievito secco, passata e mozzarella.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "farina_00", "name": "Farina 00", "amount": 500, "unit": "g" },
+    { "ingredient_id": "acqua", "name": "Acqua", "amount": 320, "unit": "ml" },
+    { "ingredient_id": "lievito_birra_secco", "name": "Lievito di birra secco", "amount": 7, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 10, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 25, "unit": "ml" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 300, "unit": "g" },
+    { "ingredient_id": "mozzarella", "name": "Mozzarella", "amount": 250, "unit": "g" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 6, "unit": "pz" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Impasto", "description": "Mescola farina, lievito, acqua, sale e olio. Lievita 60–90 min.", "type": "prep" },
+    { "id": 2, "title": "Condisci e cuoci", "description": "Stendi, passa la salsa e inforna a 230°C 12–15 min. Aggiungi mozzarella a metà.", "type": "cook", "duration": "15 min" }
+  ]
+},
+{
+  "id": "rec_focaccia_rosmarino",
+  "title": "Focaccia al Rosmarino",
+  "servings": 6,
+  "cookingTime": 110,
+  "difficulty": 2,
+  "description": "Soffice, con olio e rosmarino.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "farina_00", "name": "Farina 00", "amount": 500, "unit": "g" },
+    { "ingredient_id": "acqua", "name": "Acqua", "amount": 350, "unit": "ml" },
+    { "ingredient_id": "lievito_birra_secco", "name": "Lievito di birra secco", "amount": 7, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 12, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 40, "unit": "ml" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Impasto", "description": "Lavora velocemente e fai lievitare 60–90 min.", "type": "prep" },
+    { "id": 2, "title": "Teglia", "description": "Stendi, imprimi i classici buchi, olio e rosmarino.", "type": "prep" },
+    { "id": 3, "title": "Forno", "description": "Cuoci a 220°C per 18–22 minuti.", "type": "cook", "duration": "20 min" }
+  ]
+},
+{
+  "id": "rec_crepes_marmellata",
+  "title": "Crêpes alla Marmellata",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 1,
+  "description": "Pasta base dolce e farcitura di marmellata.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "uova", "name": "Uova", "amount": 2, "unit": "pz" },
+    { "ingredient_id": "farina_00", "name": "Farina 00", "amount": 120, "unit": "g" },
+    { "ingredient_id": "latte", "name": "Latte", "amount": 250, "unit": "ml" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 30, "unit": "g" },
+    { "ingredient_id": "marmellata", "name": "Marmellata", "amount": 200, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Pastella", "description": "Sbatti uova, farina, latte e burro fuso.", "type": "prep" },
+    { "id": 2, "title": "Cuoci", "description": "In padella antiaderente sottili crêpes su entrambi i lati.", "type": "cook", "duration": "8–10 min" },
+    { "id": 3, "title": "Farcisci", "description": "Spalma marmellata e ripiega.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_tiramisu_classico",
+  "title": "Tiramisù Classico",
+  "servings": 8,
+  "cookingTime": 30,
+  "difficulty": 2,
+  "description": "Savoiardi, crema al mascarpone e cacao amaro.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "savoiardi", "name": "Savoiardi", "amount": 300, "unit": "g" },
+    { "ingredient_id": "mascarpone", "name": "Mascarpone", "amount": 500, "unit": "g" },
+    { "ingredient_id": "uova", "name": "Uova", "amount": 4, "unit": "pz" },
+    { "ingredient_id": "zucchero", "name": "Zucchero", "amount": 120, "unit": "g" },
+    { "ingredient_id": "caffe", "name": "Caffè", "amount": 250, "unit": "ml" },
+    { "ingredient_id": "cacao_amaro", "name": "Cacao amaro", "amount": 15, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Crema", "description": "Monta tuorli con zucchero, unisci mascarpone e albumi montati.", "type": "prep" },
+    { "id": 2, "title": "Strati", "description": "Savoiardi nel caffè e alterna con crema.", "type": "prep" },
+    { "id": 3, "title": "Riposo", "description": "Raffredda 3–4 ore; spolvera cacao.", "type": "mix", "duration": "180–240 min" }
+  ]
+},
+{
+  "id": "rec_torta_cacao",
+  "title": "Torta al Cacao",
+  "servings": 8,
+  "cookingTime": 55,
+  "difficulty": 1,
+  "description": "Soffice torta al cacao, ideale per colazione.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "farina_00", "name": "Farina 00", "amount": 250, "unit": "g" },
+    { "ingredient_id": "cacao_amaro", "name": "Cacao amaro", "amount": 30, "unit": "g" },
+    { "ingredient_id": "zucchero", "name": "Zucchero", "amount": 160, "unit": "g" },
+    { "ingredient_id": "uova", "name": "Uova", "amount": 3, "unit": "pz" },
+    { "ingredient_id": "latte", "name": "Latte", "amount": 180, "unit": "ml" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 80, "unit": "g" },
+    { "ingredient_id": "lievito_dolci", "name": "Lievito per dolci", "amount": 12, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Impasto", "description": "Mescola ingredienti fino a composto liscio.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "Cuoci a 180°C per 35–40 min.", "type": "cook", "duration": "40 min" }
+  ]
+},
+{
+  "id": "rec_biscotti_classici",
+  "title": "Biscotti Classici",
+  "servings": 8,
+  "cookingTime": 45,
+  "difficulty": 1,
+  "description": "Pasta frolla semplice, perfetti da inzuppo.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "farina_00", "name": "Farina 00", "amount": 300, "unit": "g" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 150, "unit": "g" },
+    { "ingredient_id": "zucchero", "name": "Zucchero", "amount": 120, "unit": "g" },
+    { "ingredient_id": "uova", "name": "Uova", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "lievito_dolci", "name": "Lievito per dolci", "amount": 8, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Frolla", "description": "Impasta velocemente e riposa 20 min in frigo.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "Sagoma e cuoci a 180°C per 12–14 min.", "type": "cook", "duration": "14 min" }
+  ]
+},
+{
+  "id": "rec_pannacotta_frutti",
+  "title": "Panna Cotta ai Frutti di Bosco",
+  "servings": 6,
+  "cookingTime": 15,
+  "difficulty": 1,
+  "description": "Classica panna cotta con coulis di frutti di bosco.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "panna_fresca", "name": "Panna fresca", "amount": 500, "unit": "ml" },
+    { "ingredient_id": "zucchero", "name": "Zucchero", "amount": 80, "unit": "g" },
+    { "ingredient_id": "gelatina", "name": "Gelatina in fogli", "amount": 8, "unit": "g" },
+    { "ingredient_id": "frutti_di_bosco", "name": "Frutti di bosco", "amount": 250, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Scalda panna e zucchero; sciogli la gelatina ammollata.", "type": "cook" },
+    { "id": 2, "title": "Raffredda", "description": "Versa negli stampi e raffredda 3–4 ore. Servi con frutti di bosco.", "type": "mix", "duration": "180–240 min" }
+  ]
+},
+{
+  "id": "rec_insalata_caprese",
+  "title": "Insalata Caprese",
+  "servings": 4,
+  "cookingTime": 10,
+  "difficulty": 1,
+  "description": "Pomodoro, mozzarella e basilico con olio EVO.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pomodoro", "name": "Pomodoro", "amount": 400, "unit": "g" },
+    { "ingredient_id": "mozzarella", "name": "Mozzarella", "amount": 250, "unit": "g" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 8, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Componi", "description": "Fette di pomodoro e mozzarella a strati con basilico, olio e sale.", "type": "prep" }
+  ]
+},
+{
+  "id": "rec_insalata_greca",
+  "title": "Insalata Greca",
+  "servings": 4,
+  "cookingTime": 12,
+  "difficulty": 1,
+  "description": "Pomodori, cetriolo, feta e olive nere.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pomodoro", "name": "Pomodoro", "amount": 350, "unit": "g" },
+    { "ingredient_id": "cetriolo", "name": "Cetriolo", "amount": 250, "unit": "g" },
+    { "ingredient_id": "cipolla_rossa", "name": "Cipolla rossa", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "feta", "name": "Feta", "amount": 150, "unit": "g" },
+    { "ingredient_id": "olive_nere", "name": "Olive nere", "amount": 80, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 25, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Condisci", "description": "Taglia le verdure e unisci feta e olive. Condisci con olio e sale.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_parmigiana_melanzane",
+  "title": "Parmigiana di Melanzane",
+  "servings": 6,
+  "cookingTime": 55,
+  "difficulty": 3,
+  "description": "Strati di melanzane, pomodoro e formaggi.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "melanzane", "name": "Melanzane", "amount": 800, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 700, "unit": "g" },
+    { "ingredient_id": "mozzarella", "name": "Mozzarella", "amount": 300, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 90, "unit": "g" },
+    { "ingredient_id": "farina_00", "name": "Farina 00", "amount": 50, "unit": "g" },
+    { "ingredient_id": "uova", "name": "Uova", "amount": 2, "unit": "pz" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 8, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 30, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 10, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Melanzane", "description": "Affetta, infarina e cuoci in padella con poco olio.", "type": "cook", "duration": "10–12 min" },
+    { "id": 2, "title": "Strati", "description": "Alterna sugo, melanzane, mozzarella e parmigiano.", "type": "prep" },
+    { "id": 3, "title": "Forno", "description": "180°C per 30–35 minuti.", "type": "cook", "duration": "35 min" }
+  ]
+},
+{
+  "id": "rec_pollo_limone",
+  "title": "Pollo al Limone",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 1,
+  "description": "Bocconcini di pollo al profumo di limone e rosmarino.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pollo", "name": "Pollo", "amount": 600, "unit": "g" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Rosola", "description": "Salta il pollo a cubetti con olio.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Salsa", "description": "Aggiungi succo e scorza di limone e rosmarino.", "type": "cook", "duration": "4–5 min" }
+  ]
+},
+{
+  "id": "rec_spezzatino_pollo_patate",
+  "title": "Spezzatino di Pollo con Patate",
+  "servings": 4,
+  "cookingTime": 40,
+  "difficulty": 2,
+  "description": "Cottura lenta in brodo con patate.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pollo", "name": "Pollo", "amount": 700, "unit": "g" },
+    { "ingredient_id": "patate", "name": "Patate", "amount": 500, "unit": "g" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "brodo_vegetale", "name": "Brodo vegetale", "amount": 500, "unit": "ml" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 7, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Cipolla in olio, poi pollo a rosolare.", "type": "cook", "duration": "8 min" },
+    { "id": 2, "title": "Stufa", "description": "Aggiungi patate, rosmarino e brodo. Cuoci coperto.", "type": "cook", "duration": "22–25 min" }
+  ]
+},
+{
+  "id": "rec_uova_pizzaiola",
+  "title": "Uova alla Pizzaiola",
+  "servings": 4,
+  "cookingTime": 18,
+  "difficulty": 1,
+  "description": "Uova nel sugo di pomodoro con basilico.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "uova", "name": "Uova", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 400, "unit": "g" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Sugo", "description": "Scalda la passata con olio e basilico.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Uova", "description": "Rompi le uova nel sugo e cuoci a fiamma bassa con coperchio.", "type": "cook", "duration": "6–8 min" }
+  ]
+},
+{
+  "id": "rec_frittata_zucchine",
+  "title": "Frittata di Zucchine",
+  "servings": 4,
+  "cookingTime": 22,
+  "difficulty": 1,
+  "description": "Ricca di verdure e parmigiano.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "uova", "name": "Uova", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "zucchine", "name": "Zucchine", "amount": 350, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 40, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Zucchine", "description": "Rosola le rondelle di zucchina.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Cottura", "description": "Versa uova sbattute e cuoci a fuoco dolce; gira a metà.", "type": "cook", "duration": "8–10 min" }
+  ]
+},
+{
+  "id": "rec_frittata_patate",
+  "title": "Frittata di Patate",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 1,
+  "description": "Rustica e sostanziosa.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "uova", "name": "Uova", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "patate", "name": "Patate", "amount": 500, "unit": "g" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Patate a dadini e cipolla rosolate.", "type": "cook", "duration": "10–12 min" },
+    { "id": 2, "title": "Cottura", "description": "Unisci le uova sbattute e cuoci coperto.", "type": "cook", "duration": "8–9 min" }
+  ]
+},
+{
+  "id": "rec_bruschette_pomodoro",
+  "title": "Bruschette al Pomodoro",
+  "servings": 4,
+  "cookingTime": 12,
+  "difficulty": 1,
+  "description": "Pane tostato con pomodorini, aglio e basilico.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pane", "name": "Pane", "amount": 250, "unit": "g" },
+    { "ingredient_id": "pomodorini", "name": "Pomodorini", "amount": 250, "unit": "g" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Tosta", "description": "Tosta le fette di pane e strofina con aglio.", "type": "cook" },
+    { "id": 2, "title": "Condisci", "description": "Pomodorini a cubetti con basilico, olio e sale.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_minestrone_verdure",
+  "title": "Minestrone di Verdure",
+  "servings": 4,
+  "cookingTime": 35,
+  "difficulty": 1,
+  "description": "Verdure miste e patate in brodo.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "verdure_miste", "name": "Verdure miste", "amount": 700, "unit": "g" },
+    { "ingredient_id": "patate", "name": "Patate", "amount": 300, "unit": "g" },
+    { "ingredient_id": "sedano", "name": "Sedano", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "carota", "name": "Carota", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "brodo_vegetale", "name": "Brodo vegetale", "amount": 1200, "unit": "ml" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 7, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Soffritto", "description": "Base di sedano, carota, cipolla.", "type": "cook", "duration": "5–6 min" },
+    { "id": 2, "title": "Zuppa", "description": "Aggiungi verdure, patate e brodo. Cuoci finché tenero.", "type": "cook", "duration": "20–22 min" }
+  ]
+},
+{
+  "id": "rec_zuppa_ceci_rosmarino",
+  "title": "Zuppa di Ceci al Rosmarino",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 1,
+  "description": "Cremosa con passata e odori.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "ceci", "name": "Ceci già cotti", "amount": 400, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 250, "unit": "g" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "brodo_vegetale", "name": "Brodo vegetale", "amount": 800, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Aglio e rosmarino in olio, poi passata e ceci.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Cuoci", "description": "Allunga con brodo e cuoci finché densa.", "type": "cook", "duration": "12–14 min" }
+  ]
+},
+{
+  "id": "rec_curry_verdure_riso",
+  "title": "Curry di Verdure al Cocco con Riso",
+  "servings": 4,
+  "cookingTime": 30,
+  "difficulty": 2,
+  "description": "Verdure al curry e latte di cocco con riso basmati.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "verdure_miste", "name": "Verdure miste", "amount": 500, "unit": "g" },
+    { "ingredient_id": "curry", "name": "Curry in polvere", "amount": 4, "unit": "g" },
+    { "ingredient_id": "latte_cocco", "name": "Latte di cocco", "amount": 200, "unit": "ml" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "riso_basmati", "name": "Riso Basmati", "amount": 280, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Curry", "description": "Cipolla e verdure con curry; unisci latte di cocco.", "type": "cook", "duration": "10–12 min" },
+    { "id": 2, "title": "Riso", "description": "Lessare il basmati e servire con il curry.", "type": "boil", "duration": "10–12 min" }
+  ]
+},
+{
+  "id": "rec_salmone_cartoccio",
+  "title": "Salmone al Cartoccio",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 1,
+  "description": "Filetto di salmone al forno con limone e prezzemolo.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "salmone", "name": "Filetto di salmone", "amount": 600, "unit": "g" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Cartoccio", "description": "Condisci il salmone con olio, sale, limone e prezzemolo.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "Chiudi il cartoccio e cuoci a 180°C per 15–18 min.", "type": "cook", "duration": "18 min" }
+  ]
+},
+{
+  "id": "rec_spaghetti_cacio_pepe",
+  "title": "Spaghetti Cacio e Pepe",
+  "servings": 4,
+  "cookingTime": 18,
+  "difficulty": 2,
+  "description": "Emulsione di pecorino e pepe, cremosa.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
+    { "ingredient_id": "pecorino_romano", "name": "Pecorino Romano", "amount": 120, "unit": "g" },
+    { "ingredient_id": "pepe_nero", "name": "Pepe nero", "amount": 3, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Pasta", "description": "Cuoci la pasta e conserva acqua di cottura.", "type": "boil" },
+    { "id": 2, "title": "Emulsione", "description": "Mescola pecorino e pepe con poca acqua fino a crema e condisci.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_rigatoni_gricia",
+  "title": "Rigatoni alla Gricia",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 2,
+  "description": "Guanciale, pecorino e pepe.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "rigatoni", "name": "Rigatoni", "amount": 360, "unit": "g" },
+    { "ingredient_id": "guanciale", "name": "Guanciale", "amount": 150, "unit": "g" },
+    { "ingredient_id": "pecorino_romano", "name": "Pecorino Romano", "amount": 90, "unit": "g" },
+    { "ingredient_id": "pepe_nero", "name": "Pepe nero", "amount": 2, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Guanciale", "description": "Rosola il guanciale finché rilascia il grasso.", "type": "cook", "duration": "5–6 min" },
+    { "id": 2, "title": "Condisci", "description": "Manteca i rigatoni con guanciale, pecorino e pepe.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_penne_arrabbiata",
+  "title": "Penne all’Arrabbiata",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 1,
+  "description": "Sugo piccante al pomodoro.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "penne", "name": "Penne", "amount": 360, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 450, "unit": "g" },
+    { "ingredient_id": "peperoncino", "name": "Peperoncino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Sugo", "description": "Aglio e peperoncino in olio, poi passata.", "type": "cook", "duration": "8–10 min" },
+    { "id": 2, "title": "Condisci", "description": "Penne al dente e prezzemolo tritato.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_tagliatelle_ragu",
+  "title": "Tagliatelle al Ragù",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 1,
+  "description": "Tagliatelle condite con ragù alla bolognese.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "tagliatelle", "name": "Tagliatelle", "amount": 400, "unit": "g" },
+    { "ingredient_id": "ragu_bolognese", "name": "Ragù alla bolognese", "amount": 450, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 60, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Pasta", "description": "Cuoci le tagliatelle al dente.", "type": "boil" },
+    { "id": 2, "title": "Condisci", "description": "Salta con ragù e completa con parmigiano.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_risotto_salsiccia_zafferano",
+  "title": "Risotto Salsiccia e Zafferano",
+  "servings": 4,
+  "cookingTime": 28,
+  "difficulty": 2,
+  "description": "Ricco, profumato allo zafferano.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "riso_carnaroli", "name": "Riso Carnaroli", "amount": 320, "unit": "g" },
+    { "ingredient_id": "salsiccia", "name": "Salsiccia", "amount": 250, "unit": "g" },
+    { "ingredient_id": "zafferano", "name": "Zafferano", "amount": 1, "unit": "g" },
+    { "ingredient_id": "brodo_vegetale", "name": "Brodo vegetale", "amount": 1000, "unit": "ml" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "vino_bianco", "name": "Vino bianco", "amount": 80, "unit": "ml" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 40, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 60, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Cipolla e salsiccia sgranata, poi riso tostato e sfumato.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Cottura", "description": "Porta a cottura con brodo e zafferano.", "type": "cook", "duration": "16–18 min" },
+    { "id": 3, "title": "Manteca", "description": "Burro e parmigiano.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_gnocchi_sorrentina",
+  "title": "Gnocchi alla Sorrentina",
+  "servings": 4,
+  "cookingTime": 25,
+  "difficulty": 1,
+  "description": "Gratinati con pomodoro, mozzarella e basilico.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "gnocchi_patate", "name": "Gnocchi di patate", "amount": 700, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 500, "unit": "g" },
+    { "ingredient_id": "mozzarella", "name": "Mozzarella", "amount": 250, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 50, "unit": "g" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Salsa", "description": "Scalda la passata con olio e basilico.", "type": "cook", "duration": "6–7 min" },
+    { "id": 2, "title": "Gnocchi", "description": "Cuoci e condisci, poi passa al grill con mozzarella e parmigiano.", "type": "cook", "duration": "5–6 min" }
+  ]
+},
+{
+  "id": "rec_pure_patate",
+  "title": "Purè di Patate",
+  "servings": 4,
+  "cookingTime": 30,
+  "difficulty": 1,
+  "description": "Morbido con latte, burro e parmigiano.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "patate", "name": "Patate", "amount": 800, "unit": "g" },
+    { "ingredient_id": "latte", "name": "Latte", "amount": 200, "unit": "ml" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 60, "unit": "g" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 30, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Lessa", "description": "Cuoci le patate e schiacciale.", "type": "boil", "duration": "20 min" },
+    { "id": 2, "title": "Monta", "description": "Unisci latte caldo, burro e parmigiano.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_cotolette_pollo",
+  "title": "Cotolette di Pollo al Forno",
+  "servings": 4,
+  "cookingTime": 30,
+  "difficulty": 1,
+  "description": "Impanate con pangrattato e cotte al forno.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pollo", "name": "Pollo", "amount": 600, "unit": "g" },
+    { "ingredient_id": "uova", "name": "Uova", "amount": 2, "unit": "pz" },
+    { "ingredient_id": "pangrattato", "name": "Pangrattato", "amount": 120, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Impanatura", "description": "Passa il pollo in uova e poi nel pangrattato.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "Cuoci a 200°C per 18–20 min, gira a metà.", "type": "cook", "duration": "20 min" }
+  ]
+},
+{
+  "id": "rec_macedonia_banana_bosco",
+  "title": "Macedonia Banana e Frutti di Bosco",
+  "servings": 4,
+  "cookingTime": 10,
+  "difficulty": 1,
+  "description": "Fresca con succo di limone.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "frutti_di_bosco", "name": "Frutti di bosco", "amount": 300, "unit": "g" },
+    { "ingredient_id": "banana", "name": "Banana", "amount": 2, "unit": "pz" },
+    { "ingredient_id": "zucchero", "name": "Zucchero", "amount": 20, "unit": "g" },
+    { "ingredient_id": "limone", "name": "Limone", "amount": 0.5, "unit": "pz" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Taglia", "description": "Affetta le banane e unisci ai frutti di bosco.", "type": "prep" },
+    { "id": 2, "title": "Condisci", "description": "Zucchero e succo di limone a piacere.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_frullato_frutti_bosco",
+  "title": "Frullato ai Frutti di Bosco",
+  "servings": 2,
+  "cookingTime": 5,
+  "difficulty": 1,
+  "description": "Bevanda veloce con latte.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "frutti_di_bosco", "name": "Frutti di bosco", "amount": 250, "unit": "g" },
+    { "ingredient_id": "latte", "name": "Latte", "amount": 300, "unit": "ml" },
+    { "ingredient_id": "zucchero", "name": "Zucchero", "amount": 20, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Frulla", "description": "Frulla tutto finché liscio.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_crostata_marmellata",
+  "title": "Crostata alla Marmellata",
+  "servings": 8,
+  "cookingTime": 60,
+  "difficulty": 2,
+  "description": "Frolla classica con cuore di marmellata.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "farina_00", "name": "Farina 00", "amount": 300, "unit": "g" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 150, "unit": "g" },
+    { "ingredient_id": "zucchero", "name": "Zucchero", "amount": 120, "unit": "g" },
+    { "ingredient_id": "uova", "name": "Uova", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "lievito_dolci", "name": "Lievito per dolci", "amount": 8, "unit": "g" },
+    { "ingredient_id": "marmellata", "name": "Marmellata", "amount": 250, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Frolla", "description": "Impasta, riposa 30 min in frigo.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "Stendi, farcisci e cuoci a 180°C per 30–35 min.", "type": "cook", "duration": "35 min" }
+  ]
+},
+{
+  "id": "rec_toast_prosciutto_mozzarella",
+  "title": "Toast Prosciutto e Mozzarella",
+  "servings": 2,
+  "cookingTime": 8,
+  "difficulty": 1,
+  "description": "Sandwich caldo filante.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pane", "name": "Pane", "amount": 160, "unit": "g" },
+    { "ingredient_id": "prosciutto_cotto", "name": "Prosciutto cotto", "amount": 120, "unit": "g" },
+    { "ingredient_id": "mozzarella", "name": "Mozzarella", "amount": 120, "unit": "g" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 10, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Monta", "description": "Farcisci il pane con prosciutto e mozzarella.", "type": "prep" },
+    { "id": 2, "title": "Tosta", "description": "In padella con poco burro o tostiera fino a doratura.", "type": "cook", "duration": "4–5 min" }
+  ]
+},
+{
+  "id": "rec_spaghetti_acciughe_pangrattato",
+  "title": "Spaghetti Acciughe e Pangrattato",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 1,
+  "description": "Saporiti con acciughe, aglio e briciole tostate.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
+    { "ingredient_id": "acciughe", "name": "Filetti di acciughe", "amount": 25, "unit": "g" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "pangrattato", "name": "Pangrattato", "amount": 60, "unit": "g" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 25, "unit": "ml" },
+    { "ingredient_id": "peperoncino", "name": "Peperoncino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Bruscolini", "description": "Tosta il pangrattato con poco olio.", "type": "cook", "duration": "2–3 min" },
+    { "id": 2, "title": "Condimento", "description": "Sciogli le acciughe in olio con aglio e peperoncino.", "type": "cook", "duration": "3–4 min" },
+    { "id": 3, "title": "Pasta", "description": "Salta gli spaghetti con salsa, prezzemolo e pangrattato.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_cannellini_toscana",
+  "title": "Fagioli Cannellini alla Toscana",
+  "servings": 4,
+  "cookingTime": 30,
+  "difficulty": 1,
+  "description": "In umido con pomodoro, aglio, salvia e rosmarino.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "fagioli_cannellini", "name": "Fagioli cannellini", "amount": 400, "unit": "g" },
+    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 300, "unit": "g" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "salvia", "name": "Salvia", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Aromi", "description": "Scalda olio con aglio, salvia e rosmarino.", "type": "cook", "duration": "2–3 min" },
+    { "id": 2, "title": "Umido", "description": "Unisci passata e fagioli; cuoci 15–18 min.", "type": "cook" }
+  ]
+},
+{
+  "id": "rec_pasta_burro_salvia",
+  "title": "Tagliatelle Burro e Salvia",
+  "servings": 4,
+  "cookingTime": 15,
+  "difficulty": 1,
+  "description": "Semplicissime e profumate.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "tagliatelle", "name": "Tagliatelle", "amount": 400, "unit": "g" },
+    { "ingredient_id": "burro", "name": "Burro", "amount": 80, "unit": "g" },
+    { "ingredient_id": "salvia", "name": "Salvia", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 50, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Burro", "description": "Fai spumeggiare il burro con la salvia.", "type": "cook", "duration": "2–3 min" },
+    { "id": 2, "title": "Condisci", "description": "Manteca le tagliatelle con il burro e il parmigiano.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_pasta_olive_capperi",
+  "title": "Spaghetti Olive e Capperi",
+  "servings": 4,
+  "cookingTime": 20,
+  "difficulty": 1,
+  "description": "Variante veloce in bianco.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
+    { "ingredient_id": "olive_nere", "name": "Olive nere", "amount": 90, "unit": "g" },
+    { "ingredient_id": "capperi", "name": "Capperi", "amount": 15, "unit": "g" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 25, "unit": "ml" },
+    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 5, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Sauté", "description": "Salta olive, capperi e aglio in olio.", "type": "cook", "duration": "3–4 min" },
+    { "id": 2, "title": "Pasta", "description": "Condisci gli spaghetti e completa con prezzemolo.", "type": "mix" }
+  ]
+},
+{
+  "id": "rec_pomodori_riso",
+  "title": "Pomodori al Riso",
+  "servings": 4,
+  "cookingTime": 60,
+  "difficulty": 2,
+  "description": "Pomodori ripieni di riso al forno.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pomodoro", "name": "Pomodoro", "amount": 800, "unit": "g" },
+    { "ingredient_id": "riso_parboiled", "name": "Riso parboiled", "amount": 200, "unit": "g" },
+    { "ingredient_id": "basilico", "name": "Basilico", "amount": 6, "unit": "pz" },
+    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 25, "unit": "ml" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 7, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Ripieno", "description": "Svuota i pomodori e mescola la polpa con riso, olio, aglio e basilico.", "type": "prep" },
+    { "id": 2, "title": "Forno", "description": "Riempi i pomodori e cuoci a 180°C per 40–45 min.", "type": "cook", "duration": "45 min" }
+  ]
+},
+{
+  "id": "rec_pasta_salsiccia_zucchine",
+  "title": "Pasta Salsiccia e Zucchine",
+  "servings": 4,
+  "cookingTime": 22,
+  "difficulty": 1,
+  "description": "Ricca ma veloce, con mantecatura al parmigiano.",
+  "image": "",
+  "ingredients": [
+    { "ingredient_id": "pasta_corta", "name": "Pasta corta", "amount": 360, "unit": "g" },
+    { "ingredient_id": "salsiccia", "name": "Salsiccia", "amount": 250, "unit": "g" },
+    { "ingredient_id": "zucchine", "name": "Zucchine", "amount": 250, "unit": "g" },
+    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
+    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
+    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 40, "unit": "g" },
+    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
+  ],
+  "steps": [
+    { "id": 1, "title": "Base", "description": "Cipolla, salsiccia sgranata e zucchine a rondelle.", "type": "cook", "duration": "8–9 min" },
+    { "id": 2, "title": "Manteca", "description": "Condisci la pasta e manteca con parmigiano.", "type": "mix" }
+  ]
+}
 ]
