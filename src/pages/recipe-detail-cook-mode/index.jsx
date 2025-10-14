@@ -20,7 +20,7 @@ import CostEstimation from './components/CostEstimation';
 /* ========== UTILI ========== */
 const cap = (s) => (s || '').replace(/\b\w/g, (m) => m.toUpperCase());
 
-// === CATALOGHI (prezzi + calorie) ===
+/* ========== CATALOG KEYS (solo per local fallback) ========== */
 const CATALOG_KEYS = {
   ingredientPrices: 'eatrio:catalog:ingredientPrices',
   ingredientNutrition: 'eatrio:catalog:ingredientNutrition',
@@ -34,10 +34,10 @@ const loadIngredientNutrition = () => {
   catch { return {}; }
 };
 
-// === DEV TOGGLE: mostra ID ricette (solo admin) ===
+/* ========== DEV TOGGLE: mostra ID ricette (solo admin) ========== */
 const DEV_SHOW_IDS_KEY = 'eatrio:dev:showIds';
 
-// === Catalogo Ricette (per ricaricare sempre la versione fresca) ===
+/* ========== Catalogo Ricette (ricarica sempre fresco) ========== */
 const RECIPES_KEY = 'eatrio:catalog:recipes';
 const getRecipeFromCatalog = (id) => {
   try {
@@ -46,31 +46,9 @@ const getRecipeFromCatalog = (id) => {
   } catch { return null; }
 };
 
-// converte quantità nell'unità base prezzo (kg/l/pz)
-const toBaseForPrice = (amount, fromUnit, base) => {
-  const u = (fromUnit || '').toLowerCase();
-  const qty = Number(amount || 0);
-  if (!Number.isFinite(qty) || qty <= 0) return 0;
-  if (base === 'kg') {
-    if (u === 'kg') return qty;
-    if (u === 'g' || u === 'gr') return qty / 1000;
-    return 0;
-  }
-  if (base === 'l') {
-    if (u === 'l') return qty;
-    if (u === 'ml') return qty / 1000;
-    if (u === 'cl') return qty / 100;
-    return 0;
-  }
-  if (base === 'pz') {
-    if (['pz','uovo','uova','pezzo','pezzi'].includes(u)) return qty;
-    return 0;
-  }
-  return 0;
-};
-
-// converter gemello per nutrizione (stesse basi)
-const toBaseForNutrition = (amount, fromUnit, base) => {
+/* ========== CONVERSIONI UNITA’ (prezzi e nutrizione) ========== */
+const toBaseQty = (amount, fromUnit, base) => {
+  // unica funzione per prezzi e nutrizione
   const u = (fromUnit || '').toLowerCase();
   const qty = Number(amount || 0);
   if (!Number.isFinite(qty) || qty <= 0) return 0;
@@ -165,7 +143,7 @@ const nameMatches = (pantryName, ingName) => {
   return candidates.some(c => tokenSetScore(p, c) >= 0.5);
 };
 
-/* ========== (INLINE) IMAGE OVERRIDE SHARED VIA localStorage ========== */
+/* ========== IMAGE OVERRIDE SHARED VIA localStorage ========== */
 const IMG_MAP_KEY = 'eatrio:recipeImages';
 const recipeKey = (t) =>
   stripAccents(String(t || ''))
@@ -191,10 +169,7 @@ const setRecipeImage = (title, urlOrEmpty) => {
   else delete map[k];
   saveImageMap(map);
   try {
-    window.dispatchEvent(new StorageEvent('storage', {
-      key: IMG_MAP_KEY,
-      newValue: JSON.stringify(map)
-    }));
+    window.dispatchEvent(new StorageEvent('storage', { key: IMG_MAP_KEY, newValue: JSON.stringify(map) }));
   } catch {}
 };
 const subscribeImageMap = (cb) => {
@@ -205,7 +180,7 @@ const subscribeImageMap = (cb) => {
   return () => window.removeEventListener('storage', handler);
 };
 
-/* ========== UNITÀ + EQUIVALENZE PACK (NUOVO) ========== */
+/* ========== UNITÀ + EQUIVALENZE PACK (per dispensa) ========== */
 const UNIT_MAP = {
   g:  { base: 'g',  factor: 1 },
   gr: { base: 'g',  factor: 1 },
@@ -230,7 +205,6 @@ const UNIT_MAP = {
   sacchetto:   { base: 'pack', factor: 1 },
 };
 
-/** Equivalenze per alcuni ingredienti */
 const PACK_EQUIV = {
   [normalizeText(canonicalFromNormalized(normalizeText('burro')))] : {
     pz: { base: 'g', factor: 250 }, conf: { base: 'g', factor: 250 },
@@ -285,7 +259,7 @@ const convertViaPack = (ingredientName, qty, fromU, toU) => {
   return inTargetBase / t.factor;
 };
 
-/* ========== DISPONIBILITÀ (PATCHATA) ========== */
+/* ========== DISPONIBILITÀ (usa convertSameBase/pack) ========== */
 const checkPantryFor = (pantry, name, needQty, needUnit) => {
   const need = Number(needQty);
   const safeNeed = Number.isFinite(need) && need > 0 ? need : 1;
@@ -316,8 +290,8 @@ const SUBS = {
 };
 const getSubs = (name) => SUBS[normalizeText(name)] || [];
 
-/* ========== COSTRUISCI RICETTA ARRICCHITA ========== */
-const buildRichRecipe = (base, currentServings, pantry, imageVersionBump = 0) => {
+/* ========== COSTRUISCI RICETTA ARRICCHITA (senza hook!) ========== */
+const buildRichRecipe = (base, currentServings, pantry, imageVersionBump, priceCatalog, nutritionCatalog) => {
   if (!base) return null;
 
   const title = base.title || 'Ricetta';
@@ -329,7 +303,7 @@ const buildRichRecipe = (base, currentServings, pantry, imageVersionBump = 0) =>
   const cookingTime = base.cookingTime || base.cookTime || 20;
   const description = base.description || `Ricetta semplice e gustosa: ${title}.`;
 
-  // Fallback ingredienti se la ricetta è senza lista
+  // Fallback ingredienti se mancano
   let ingredients = base.ingredients;
   if (!Array.isArray(ingredients) || ingredients.length === 0) {
     if (t.includes('carbonara')) {
@@ -407,14 +381,14 @@ const buildRichRecipe = (base, currentServings, pantry, imageVersionBump = 0) =>
     };
   });
 
-  // 🔢 Calorie totali ricetta calcolate dal catalogo ingredienti
-  const ingredientNutrition = loadIngredientNutrition();
+  // 🔢 Calorie totali ricetta (da nutritionCatalog se presente, altrimenti fallback localStorage)
+  const nutritionCat = nutritionCatalog && Object.keys(nutritionCatalog).length ? nutritionCatalog : loadIngredientNutrition();
   let totalKcal = 0;
   for (const ing of enrichedIngredients) {
-    const meta = ing.ingredientId ? ingredientNutrition[ing.ingredientId] : null;
+    const meta = ing.ingredientId ? nutritionCat[ing.ingredientId] : null;
     if (!meta) continue;
     const base = meta.unitBase || 'kg';
-    const needBaseQty = toBaseForNutrition(Number(ing.amount || 0), ing.unit || 'pz', base);
+    const needBaseQty = toBaseQty(Number(ing.amount || 0), ing.unit || 'pz', base);
     if (needBaseQty > 0) totalKcal += needBaseQty * Number(meta.kcalPerUnit || 0);
   }
   const computedCalories = Math.round(totalKcal);
@@ -432,19 +406,19 @@ const buildRichRecipe = (base, currentServings, pantry, imageVersionBump = 0) =>
     calories: computedCalories > 0 ? computedCalories : baseNutrition.calories,
   };
 
-  // costo ricetta da catalogo (se disponibile)
-  const { prices: ingredientPrices } = useCatalog(true);
+  // 💶 Costo ricetta (da priceCatalog se presente, altrimenti fallback localStorage)
+  const priceCat = priceCatalog && Object.keys(priceCatalog).length ? priceCatalog : loadIngredientPrices();
   const calcRetailer = (ret) => {
     let tot = 0;
     for (const ing of enrichedIngredients) {
       const id = ing.ingredientId;
       if (!id) continue;
-      const priceInfo = ingredientPrices?.[id];
+      const priceInfo = priceCat?.[id];
       if (!priceInfo) continue;
       const unitBase = priceInfo.unitBase || 'kg';
       const unitPrice = (priceInfo.retailers?.[ret] ?? priceInfo.avg ?? null);
       if (unitPrice == null) continue;
-      const needBaseQty = toBaseForPrice(Number(ing.amount || 0), ing.unit || 'pz', unitBase);
+      const needBaseQty = toBaseQty(Number(ing.amount || 0), ing.unit || 'pz', unitBase);
       if (needBaseQty > 0) tot += needBaseQty * Number(unitPrice);
     }
     return Math.round(tot * 100) / 100;
@@ -457,7 +431,6 @@ const buildRichRecipe = (base, currentServings, pantry, imageVersionBump = 0) =>
   const nonNull = Object.values(computedCost).filter(v => v > 0);
   const computedAvg = nonNull.length ? Math.round((nonNull.reduce((a,b)=>a+b,0)/nonNull.length)*100)/100 : null;
 
-  // ⬇️ RISOLUZIONE IMMAGINE CONDIVISA
   const defaultImg = 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=1200&h=900&fit=crop';
   const resolvedImage = getRecipeImage(title, base.image || defaultImg);
 
@@ -498,10 +471,11 @@ const RecipeDetailCookMode = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Ricetta passata dalla route
+  // ✅ Prendiamo i cataloghi qui (unico punto in cui usare hook)
+  const { prices: priceCatalog, nutrition: nutritionCatalog } = useCatalog(true);
+
   const routeRecipe = location?.state?.recipe || null;
 
-  // Versioning: se cambia il catalogo, forziamo un refresh
   const [recipesVersion, setRecipesVersion] = useState(0);
   useEffect(() => {
     const onStorage = (e) => { if (!e || e.key === RECIPES_KEY) setRecipesVersion(v => v + 1); };
@@ -514,7 +488,6 @@ const RecipeDetailCookMode = () => {
     };
   }, []);
 
-  // Prendi SEMPRE la versione fresca dal catalogo (merge con quella della route)
   const baseRecipe = useMemo(() => {
     if (!routeRecipe?.id) return routeRecipe;
     const fresh = getRecipeFromCatalog(routeRecipe.id);
@@ -544,13 +517,11 @@ const RecipeDetailCookMode = () => {
     };
   }, []);
 
-  // ↕️ Rerender quando cambia la mappa delle immagini
   const [imgTick, setImgTick] = useState(0);
   useEffect(() => subscribeImageMap(() => setImgTick(t => t + 1)), []);
 
   const [customIngredients, setCustomIngredients] = useState(null);
 
-  // Modalità dev: mostra ID ricette (persistito su localStorage) — toggle: Alt+Shift+D
   const [showIds, setShowIds] = useState(() => {
     try { return localStorage.getItem(DEV_SHOW_IDS_KEY) === '1'; } catch { return false; }
   });
@@ -576,8 +547,8 @@ const RecipeDetailCookMode = () => {
   }, []);
 
   const recipe = useMemo(
-    () => buildRichRecipe({ ...baseRecipe }, servings, pantry, imgTick),
-    [baseRecipe, servings, pantry, imgTick]
+    () => buildRichRecipe({ ...baseRecipe }, servings, pantry, imgTick, priceCatalog, nutritionCatalog),
+    [baseRecipe, servings, pantry, imgTick, priceCatalog, nutritionCatalog]
   );
 
   const effectiveIngredients = useMemo(() => {
@@ -706,7 +677,7 @@ const RecipeDetailCookMode = () => {
 
   const suggestedSubs = (effectiveIngredients || []).filter((i) => i?.substitute);
 
-  // 🔧 Hotkey admin: ALT+SHIFT+I per impostare/rimuovere immagine → persiste su tutte le viste
+  // 🔧 Hotkey admin: ALT+SHIFT+I per impostare/rimuovere immagine (persistente)
   useEffect(() => {
     const onKey = (e) => {
       if (!e || !e.altKey || !e.shiftKey) return;
@@ -725,7 +696,7 @@ const RecipeDetailCookMode = () => {
     return () => window.removeEventListener('keydown', onKey);
   }, [recipe?.title, recipe?.image]);
 
-  // 🔧 Hotkeys admin: Alt+Shift+P (prezzi), Alt+Shift+N (calorie) — incolla JSON e salva in localStorage
+  // 🔧 Hotkeys admin: Alt+Shift+P (prezzi), Alt+Shift+N (calorie)
   useEffect(() => {
     const onKey = (e) => {
       if (!e?.altKey || !e?.shiftKey) return;
