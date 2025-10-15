@@ -11,6 +11,7 @@ import AddIngredientModal from './components/AddIngredientModal';
 import ExpirationAlerts from './components/ExpirationAlerts';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
+import { writePantry, PANTRY_KEY } from '../../utils/pantryStorage';
 
 const PANTRY_STORAGE_KEYS = {
   ui: 'eatrio:pantryUI',          // { location, search }
@@ -81,12 +82,11 @@ const PantryManagement = () => {
     } catch {}
   }, [activeLocation, searchTerm]);
 
-  // Persisti items SOLO sulla chiave nuova
+  
   useEffect(() => {
-    try {
-      localStorage.setItem(PANTRY_STORAGE_KEYS.items, JSON.stringify(pantryItems));
-    } catch {}
-  }, [pantryItems]);
+    // garantiamo che la chiave resti quella nuova
+    writePantry(pantryItems);
+    }, [pantryItems]);
 
   // --- Filtri ---
   const filteredItems = pantryItems.filter((item) => {
