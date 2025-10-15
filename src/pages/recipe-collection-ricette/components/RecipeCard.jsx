@@ -1,30 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 
 // === Helpers & cataloghi locali (solo per le card) ===
-const STORAGE = { pantry: 'eatrio:pantryItems', cart: 'eatrio:cart', market: 'eatrio:market' };
+const STORAGE = { pantry: 'eatrio:pantry:v2', cart: 'eatrio:cart', market: 'eatrio:market' };
 
 const PRICE_CATALOG_AVG = {
   // Cereali / pasta (€/kg)
   spaghetti: 2.00,
   riso: 2.20,
   farina: 1.20,
-  lievito: 12.00, // €/kg (una bustina costa pochi cent, ma per kg il valore è alto)
-
+  lievito: 12.00,
   // Proteine / carne / latticini (€/kg)
   pollo: 8.00,
   pecorino: 22.00,
   parmigiano: 25.00,
   mozzarella: 10.00,
-  uova: 0.30,          // €/pz
-  uova_tiramisu: 0.30, // €/pz
-
+  uova: 0.30,
+  uova_tiramisu: 0.30,
   // Salumi (€/kg)
   guanciale: 18.00,
-
   // Verdure / orto (€/kg)
   pomodori: 2.20,
   pomodoro: 2.20,
@@ -32,38 +29,33 @@ const PRICE_CATALOG_AVG = {
   carota: 1.80,
   sedano: 2.00,
   verdure: 2.50,
-  basilico: 1.20,  // €/conf
-
+  basilico: 1.20,
   // Funghi e olive (€/kg)
-  porcini: 25.00,  // (molto variabile; fresco può essere molto di più)
+  porcini: 25.00,
   olive: 7.00,
-
   // Dispensa (€/kg)
   zucchero: 1.50,
   cacao: 12.00,
-  pepe: 40.00,     // spezie: €/kg alto ma quantità minime
+  pepe: 40.00,
   quinoa: 6.50,
   savoiardi: 6.00,
   granola: 8.00,
-
   // Condimenti / liquidi
-  olio: 8.00,   // €/l
-  aceto: 3.00,  // €/l
-  brodo: 2.00,  // €/l
-  passata: 2.10,// €/kg (se la esprimi in g va benissimo, noi convertiamo)
-  vinaigrette: 6.00, // €/l
-  latte: 1.60,  // €/l
-  yogurt: 3.80, // €/kg
-
-  // Caffè / bevande (€/kg o €/l)
-  caffe: 12.00, // €/kg macinato (stima)
-
+  olio: 8.00,
+  aceto: 3.00,
+  brodo: 2.00,
+  passata: 2.10,
+  vinaigrette: 6.00,
+  latte: 1.60,
+  yogurt: 3.80,
+  // Caffè / bevande
+  caffe: 12.00,
   // Frutta (€/kg)
   banana: 1.80,
   frutti_bosco: 9.00,
   aglio: 4.00,
-  alloro: 0.50, // €/pz (foglia/confezione simbolica)
-  burro: 8.00,  // €/kg
+  alloro: 0.50,
+  burro: 8.00,
 };
 
 const ALIASES = {
@@ -107,7 +99,6 @@ const toDisplayUnitPrice = (unitEuroBase, displayUnit) => {
   if (u === 'g')  return unitEuroBase / 1000;   // €/g da €/kg
   if (u === 'ml') return unitEuroBase / 1000;   // €/ml da €/l
   if (u === 'kg' || u === 'l' || u === 'pz' || u === 'conf' || u === 'mazzo') return unitEuroBase;
-  // fallback prudente: lascia invariato
   return unitEuroBase;
 };
 
@@ -115,7 +106,7 @@ const toDisplayUnitPrice = (unitEuroBase, displayUnit) => {
 const estimateUnitEuro = (key, market) => {
   let avg = PRICE_CATALOG_AVG[key];
   if (typeof avg !== 'number' || Number.isNaN(avg)) avg = 2.5;
-  avg = Math.min(Math.max(avg, 0.05), 100); // evita outlier assurdi
+  avg = Math.min(Math.max(avg, 0.05), 100);
   return priceForMarket(avg, market);
 };
 
@@ -123,7 +114,7 @@ const estimateUnitEuro = (key, market) => {
 const getRecipeIngredients = (recipe) => {
   const t = norm(recipe?.title);
   const s = Number(recipe?.servings || 4);
-  const sf = s/4; // scala su 4 porzioni base
+  const sf = s/4;
 
   if (t.includes('carbonara')) return [
     { key:'spaghetti', qty: 360*sf, unit:'g' },
@@ -180,8 +171,6 @@ const getRecipeIngredients = (recipe) => {
     { key:'granola', qty: 40*sf, unit:'g', optional:true },
     { key:'latte', qty: 150*sf, unit:'ml', optional:true },
   ];
-
-  // se non riconosciuta
   return [];
 };
 
@@ -229,8 +218,41 @@ const showToast = (msg) => {
   setTimeout(() => { try { document.body.removeChild(t); } catch {} }, 2200);
 };
 
+// --- lettura pantry reattiva (nuova chiave + fallback legacy) ---
+const readPantryOnce = () => {
+  try {
+    const v2 = JSON.parse(localStorage.getItem('eatrio:pantry:v2') || '[]');
+    if (Array.isArray(v2) && v2.length) return v2;
+    const legacyItems = JSON.parse(localStorage.getItem('eatrio:pantryItems') || '[]');
+    if (Array.isArray(legacyItems) && legacyItems.length) return legacyItems;
+    const legacy = JSON.parse(localStorage.getItem('eatrio:pantry') || '[]');
+    return Array.isArray(legacy) ? legacy : [];
+  } catch { return []; }
+};
+
 const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
   const navigate = useNavigate();
+
+  // stato reattivo per la dispensa
+  const [pantry, setPantry] = useState(() => readPantryOnce());
+
+  // ascolta update dal tab corrente (evento custom) e da altri tab (storage)
+  useEffect(() => {
+    const refresh = () => setPantry(readPantryOnce());
+    const onStorage = (e) => {
+      if (!e) return;
+      if (e.key === STORAGE.pantry) refresh();
+      // fallback: se qualcuno scrive ancora sulle vecchie chiavi, aggiorniamo
+      if (e.key === 'eatrio:pantry' || e.key === 'eatrio:pantryItems') refresh();
+    };
+
+    window.addEventListener('pantry:updated', refresh);
+    window.addEventListener('storage', onStorage);
+    return () => {
+      window.removeEventListener('pantry:updated', refresh);
+      window.removeEventListener('storage', onStorage);
+    };
+  }, []);
 
   const handleCardClick = () => {
     navigate('/recipe-detail-cook-mode', { state: { recipe } });
@@ -268,12 +290,9 @@ const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
   const formatPrice = (price) =>
     new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(price);
 
-  let pantry = [];
+  // market lo leggiamo una volta (non critico per l'availability)
   let market = 'AVG';
-  try {
-    pantry = JSON.parse(localStorage.getItem(STORAGE.pantry) || '[]');
-    market = localStorage.getItem(STORAGE.market) || 'AVG';
-  } catch {}
+  try { market = localStorage.getItem(STORAGE.market) || 'AVG'; } catch {}
 
   const recipeIngs = getRecipeIngredients(recipe);
   const missingNow = computeMissing(pantry, recipeIngs);
@@ -300,21 +319,23 @@ const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
     missing.forEach(m => {
       const name = capWords(m.key);
       const unit = m.unit;
-      // prezzo per unità BASE (€/kg, €/l o €/pz a seconda dell’ingrediente)
-const unitEuroAVG_base = estimateUnitEuro(m.key, 'AVG');
 
-// converto alla unità VISUALE dell’item (g/ml/kg/l/pz/conf/mazzo)
-const avg_disp   = toDisplayUnitPrice(unitEuroAVG_base, unit);
-const coop_disp  = toDisplayUnitPrice(priceForMarket(unitEuroAVG_base, 'Coop'), unit);
-const conad_disp = toDisplayUnitPrice(priceForMarket(unitEuroAVG_base, 'Conad'), unit);
-const essel_disp = toDisplayUnitPrice(priceForMarket(unitEuroAVG_base, 'Esselunga'), unit);
+      // prezzo per unità BASE (€/kg, €/l o €/pz)
+      const unitEuroAVG_base = estimateUnitEuro(m.key, 'AVG');
 
-const prices = {
-  AVG:   Number(avg_disp.toFixed(3)),   // lasciamo 3 decimali per €/g e €/ml
-  Coop:  Number(coop_disp.toFixed(3)),
-  Conad: Number(conad_disp.toFixed(3)),
-  Esselunga: Number(essel_disp.toFixed(3)),
-};
+      // converto alla unità VISUALE (g/ml/kg/l/pz/conf/mazzo)
+      const avg_disp   = toDisplayUnitPrice(unitEuroAVG_base, unit);
+      const coop_disp  = toDisplayUnitPrice(priceForMarket(unitEuroAVG_base, 'Coop'), unit);
+      const conad_disp = toDisplayUnitPrice(priceForMarket(unitEuroAVG_base, 'Conad'), unit);
+      const essel_disp = toDisplayUnitPrice(priceForMarket(unitEuroAVG_base, 'Esselunga'), unit);
+
+      const prices = {
+        AVG:   Number(avg_disp.toFixed(3)),
+        Coop:  Number(coop_disp.toFixed(3)),
+        Conad: Number(conad_disp.toFixed(3)),
+        Esselunga: Number(essel_disp.toFixed(3)),
+      };
+
       mergeCartItems(cart, {
         id: `${norm(name)}_${unit}_${Date.now()}`,
         name,
@@ -333,15 +354,15 @@ const prices = {
 
   return (
     <div
-  className={`bg-card rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-all duration-150 cursor-pointer active:scale-98 flex flex-col ${className}`}
->
+      className={`bg-card rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-all duration-150 cursor-pointer active:scale-98 flex flex-col ${className}`}
+    >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
-  src={recipe?.image}
-  alt={recipe?.title}
-  className="w-full h-full object-cover object-center"
-  onClick={handleCardClick}
-/>
+          src={recipe?.image}
+          alt={recipe?.title}
+          className="w-full h-full object-cover object-center"
+          onClick={handleCardClick}
+        />
 
         <button
           onClick={handleFavoriteClick}
@@ -361,20 +382,20 @@ const prices = {
         </div>
 
         <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-full text-xs font-medium shadow-md">
-  <span className={getAvailabilityColor(availabilityPct)}>
-    {availabilityPct}% disponibile
-  </span>
-</div>
+          <span className={getAvailabilityColor(availabilityPct)}>
+            {availabilityPct}% disponibile
+          </span>
+        </div>
       </div>
 
       <div className="p-4 space-y-3">
         <div>
           <h3
-  className="text-lg font-semibold text-card-foreground line-clamp-2 mb-1 hover:underline"
-  onClick={handleCardClick}
->
-  {recipe?.title}
-</h3>
+            className="text-lg font-semibold text-card-foreground line-clamp-2 mb-1 hover:underline"
+            onClick={handleCardClick}
+          >
+            {recipe?.title}
+          </h3>
           {recipe?.description && (
             <p className="text-sm text-muted-foreground line-clamp-2">
               {recipe?.description}
@@ -430,18 +451,18 @@ const prices = {
 
         <div className="mt-4 flex flex-wrap gap-2">
           <Button
-  type="button"
-  className="w-full sm:w-auto"
-  iconName="BookOpen"
-  iconPosition="left"
-  onClick={(e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    handleCardClick();
-  }}
->
-  Dettagli
-</Button>
+            type="button"
+            className="w-full sm:w-auto"
+            iconName="BookOpen"
+            iconPosition="left"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleCardClick();
+            }}
+          >
+            Dettagli
+          </Button>
           <Button
             variant="outline"
             className="w-full sm:w-auto"
@@ -461,3 +482,4 @@ const prices = {
 };
 
 export default RecipeCard;
+
