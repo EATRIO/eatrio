@@ -294,42 +294,44 @@ const RecipeCollection = () => {
     setFavorites(favoritesSet);
   }, [recipes]);
 
-  // Hotkeys: export id+title, force reload from /public
-  useEffect(() => {
-    const handler = async (e) => {
-      if (!e.altKey) return;
+  // Hotkeys: export id+title (Alt+E) e force reload da /public/data (Alt+Shift+0)
+useEffect(() => {
+  const handler = async (e) => {
+    if (!e.altKey) return;
 
-      // Alt + E = esporta id + titolo
-      if (e.key.toLowerCase() === 'e') {
-        try {
-          const data = (recipes || []).map(r => ({ id: r.id, title: r.title ?? '' }));
-          const json = JSON.stringify(data, null, 2);
-          if (navigator.clipboard?.writeText) {
-            await navigator.clipboard.writeText(json);
-            alert(`Esportate ${data.length} ricette (id + title) negli appunti.`);
-          } else {
-            window.prompt('Copia questo JSON:', json);
-          }
-        } catch {
-          alert('Export fallito.');
+    // Alt + E = esporta id + titolo in clipboard
+    if ((e.key || '').toLowerCase() === 'e') {
+      try {
+        const data = (recipes || []).map(r => ({ id: r.id, title: r.title ?? '' }));
+        const json = JSON.stringify(data, null, 2);
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(json);
+          alert(`Esportate ${data.length} ricette (id + title) negli appunti.`);
+        } else {
+          window.prompt('Copia questo JSON:', json);
         }
-        return;
+      } catch {
+        alert('Export fallito.');
       }
+      return;
+    }
 
-      // Alt + Shift + 0 = forza reload dal public/catalog.json
-      if (e.shiftKey && e.key === '0') {
-        try {
-          await ensureCatalogLoaded(true); // forza refresh da /public
-          await reload();
-          alert('Catalogo ricaricato dal file pubblico.');
-        } catch {
-          alert('Reload fallito.');
-        }
+    // Alt + Shift + 0 = forza reload dei JSON da /public/data
+    if (e.shiftKey && (e.key === '0')) {
+      try {
+        await forceReloadCatalog(); // <-- importato da ../../utils/catalog
+        await reload();             // <-- già esposto dall'hook useCatalog
+        alert('Catalogo ricaricato dal file pubblico.');
+      } catch {
+        alert('Reload fallito.');
       }
-    };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, [recipes, reload]);
+    }
+  };
+
+  window.addEventListener('keydown', handler);
+  return () => window.removeEventListener('keydown', handler);
+}, [recipes, reload]);
+
 
   // Calcolo disponibilità + meta costo/kcal
   const priceCatalog = prices;     // dal hook
