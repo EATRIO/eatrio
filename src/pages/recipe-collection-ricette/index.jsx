@@ -12,8 +12,7 @@ import SortOptions from './components/SortOptions';
 import AdvancedFilters from './components/AdvancedFilters';
 import RecipeGrid from './components/RecipeGrid';
 
-import { useCatalog } from '../../utils/catalog';
-import { ensureCatalogLoaded } from '../../lib/catalogLoader';
+import { useCatalog, forceReloadCatalog } from '../../utils/catalog';
 
 /* ===================== inline image override (condiviso con Cook Mode) ===================== */
 const __IMG_KEY = 'eatrio:recipeImages';
