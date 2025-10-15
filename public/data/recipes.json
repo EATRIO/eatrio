@@ -112,26 +112,6 @@
     ]
   },
   {
-    "id": "rec_trofie_pesto",
-    "title": "Trofie al Pesto",
-    "servings": 4,
-    "cookingTime": 25,
-    "difficulty": 1,
-    "description": "Pesto genovese con basilico, pinoli e parmigiano.",
-    "image": "",
-    "ingredients": [
-      { "ingredient_id": "trofie", "name": "Trofie", "amount": 400, "unit": "g" },
-      { "ingredient_id": "pesto_basilico", "name": "Pesto alla genovese", "amount": 180, "unit": "g" },
-      { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 40, "unit": "g" },
-      { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 8, "unit": "g" }
-    ],
-    "steps": [
-      { "id": 1, "title": "Pasta", "description": "Cuoci le trofie in acqua salata.", "type": "boil", "duration": "12–14 min" },
-      { "id": 2, "title": "Mantecatura", "description": "Scola e mescola con il pesto, allunga con poca acqua di cottura.", "type": "mix" },
-      { "id": 3, "title": "Finitura", "description": "Servi con parmigiano grattugiato.", "type": "prep" }
-    ]
-  },
-  {
     "id": "rec_pasta_norma",
     "title": "Pasta alla Norma",
     "servings": 4,
@@ -199,29 +179,6 @@
     "steps": [
       { "id": 1, "title": "Strati", "description": "Alterna sfoglia, ragù, besciamella e parmigiano.", "type": "prep" },
       { "id": 2, "title": "Cottura", "description": "In forno 180°C 35–40 min. Riposa 10 min.", "type": "cook", "duration": "40 min" }
-    ]
-  },
-  {
-    "id": "rec_spaghetti_puttanesca",
-    "title": "Spaghetti alla Puttanesca",
-    "servings": 4,
-    "cookingTime": 25,
-    "difficulty": 1,
-    "description": "Capperi, olive e pomodoro in padella.",
-    "image": "",
-    "ingredients": [
-      { "ingredient_id": "spaghetti", "name": "Spaghetti", "amount": 360, "unit": "g" },
-      { "ingredient_id": "pomodori_pelati", "name": "Pomodori pelati", "amount": 400, "unit": "g" },
-      { "ingredient_id": "olive_nere", "name": "Olive nere", "amount": 80, "unit": "g" },
-      { "ingredient_id": "capperi", "name": "Capperi", "amount": 15, "unit": "g" },
-      { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
-      { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
-      { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
-    ],
-    "steps": [
-      { "id": 1, "title": "Sugo", "description": "Aglio in olio, poi pelati, capperi e olive. Cuoci 10–12 min.", "type": "cook" },
-      { "id": 2, "title": "Pasta", "description": "Cuoci gli spaghetti. Tieni un po' d'acqua di cottura.", "type": "boil" },
-      { "id": 3, "title": "Mantecatura", "description": "Salta la pasta nel sugo. Regola di sale.", "type": "mix" }
     ]
   },
   {
@@ -544,27 +501,6 @@
       { "id": 2, "title": "Sugo", "description": "Cuoci la passata con basilico 10–12 min.", "type": "cook" },
       { "id": 3, "title": "Strati", "description": "Alterna melanzane, sugo, mozzarella e parmigiano.", "type": "prep" },
       { "id": 4, "title": "Forno", "description": "180°C per 25–30 minuti. Riposa 10 min.", "type": "cook", "duration": "30 min" }
-    ]
-  },
-  {
-    "id": "rec_frittata_zucchine",
-    "title": "Frittata di Zucchine",
-    "servings": 4,
-    "cookingTime": 18,
-    "difficulty": 1,
-    "description": "Semplice e veloce in padella.",
-    "image": "",
-    "ingredients": [
-      { "ingredient_id": "uova", "name": "Uova", "amount": 6, "unit": "pz" },
-      { "ingredient_id": "zucchine", "name": "Zucchine", "amount": 300, "unit": "g" },
-      { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 30, "unit": "g" },
-      { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 15, "unit": "ml" },
-      { "ingredient_id": "sale_fino", "name": "Sale fino", "amount": 6, "unit": "g" }
-    ],
-    "steps": [
-      { "id": 1, "title": "Zucchine", "description": "Salta le zucchine a rondelle in padella.", "type": "cook", "duration": "6–7 min" },
-      { "id": 2, "title": "Uova", "description": "Sbatti uova con sale e parmigiano.", "type": "prep" },
-      { "id": 3, "title": "Cottura", "description": "Versa in padella e cuoci a fiamma dolce, gira a metà.", "type": "cook", "duration": "6–8 min" }
     ]
   },
   {
@@ -1378,28 +1314,6 @@
   ]
 },
 {
-  "id": "rec_bucatini_amatriciana",
-  "title": "Bucatini all’Amatriciana",
-  "servings": 4,
-  "cookingTime": 25,
-  "difficulty": 2,
-  "description": "Guanciale croccante, pomodoro e pecorino.",
-  "image": "",
-  "ingredients": [
-    { "ingredient_id": "bucatini", "name": "Bucatini", "amount": 360, "unit": "g" },
-    { "ingredient_id": "guanciale", "name": "Guanciale", "amount": 150, "unit": "g" },
-    { "ingredient_id": "pomodori_pelati", "name": "Pomodori pelati", "amount": 400, "unit": "g" },
-    { "ingredient_id": "pecorino_romano", "name": "Pecorino Romano", "amount": 80, "unit": "g" },
-    { "ingredient_id": "peperoncino", "name": "Peperoncino", "amount": 1, "unit": "pz" },
-    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
-  ],
-  "steps": [
-    { "id": 1, "title": "Guanciale", "description": "Rosola il guanciale finché croccante.", "type": "cook", "duration": "5–6 min" },
-    { "id": 2, "title": "Sugo", "description": "Unisci i pelati e il peperoncino. Cuoci.", "type": "cook", "duration": "8–10 min" },
-    { "id": 3, "title": "Manteca", "description": "Condisci i bucatini con sugo e pecorino.", "type": "mix" }
-  ]
-},
-{
   "id": "rec_pasta_norma",
   "title": "Pasta alla Norma",
   "servings": 4,
@@ -1490,25 +1404,6 @@
     { "id": 1, "title": "Zucchine", "description": "Rosola le zucchine a dadini.", "type": "cook", "duration": "4–5 min" },
     { "id": 2, "title": "Riso", "description": "Tosta il riso e porta a cottura con brodo.", "type": "cook", "duration": "16–18 min" },
     { "id": 3, "title": "Gamberi", "description": "Salta i gamberi con aglio e unisci al risotto.", "type": "cook", "duration": "2–3 min" }
-  ]
-},
-{
-  "id": "rec_lasagne_bolognese",
-  "title": "Lasagne al Ragù",
-  "servings": 6,
-  "cookingTime": 60,
-  "difficulty": 2,
-  "description": "Sfoglie, ragù alla bolognese, besciamella e parmigiano.",
-  "image": "",
-  "ingredients": [
-    { "ingredient_id": "lasagne_sfoglia", "name": "Sfoglia per lasagne", "amount": 250, "unit": "g" },
-    { "ingredient_id": "ragu_bolognese", "name": "Ragù alla bolognese", "amount": 600, "unit": "g" },
-    { "ingredient_id": "besciamella", "name": "Besciamella", "amount": 600, "unit": "g" },
-    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 90, "unit": "g" }
-  ],
-  "steps": [
-    { "id": 1, "title": "Strati", "description": "Alterna sfoglia, ragù, besciamella e parmigiano.", "type": "prep" },
-    { "id": 2, "title": "Forno", "description": "Cuoci a 180°C per 35–40 minuti.", "type": "cook", "duration": "40 min" }
   ]
 },
 {
@@ -1723,26 +1618,6 @@
     { "id": 1, "title": "Melanzane", "description": "Affetta, infarina e cuoci in padella con poco olio.", "type": "cook", "duration": "10–12 min" },
     { "id": 2, "title": "Strati", "description": "Alterna sugo, melanzane, mozzarella e parmigiano.", "type": "prep" },
     { "id": 3, "title": "Forno", "description": "180°C per 30–35 minuti.", "type": "cook", "duration": "35 min" }
-  ]
-},
-{
-  "id": "rec_pollo_limone",
-  "title": "Pollo al Limone",
-  "servings": 4,
-  "cookingTime": 25,
-  "difficulty": 1,
-  "description": "Bocconcini di pollo al profumo di limone e rosmarino.",
-  "image": "",
-  "ingredients": [
-    { "ingredient_id": "pollo", "name": "Pollo", "amount": 600, "unit": "g" },
-    { "ingredient_id": "limone", "name": "Limone", "amount": 1, "unit": "pz" },
-    { "ingredient_id": "rosmarino", "name": "Rosmarino", "amount": 1, "unit": "pz" },
-    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
-    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
-  ],
-  "steps": [
-    { "id": 1, "title": "Rosola", "description": "Salta il pollo a cubetti con olio.", "type": "cook", "duration": "6–7 min" },
-    { "id": 2, "title": "Salsa", "description": "Aggiungi succo e scorza di limone e rosmarino.", "type": "cook", "duration": "4–5 min" }
   ]
 },
 {
@@ -1972,28 +1847,6 @@
   "steps": [
     { "id": 1, "title": "Guanciale", "description": "Rosola il guanciale finché rilascia il grasso.", "type": "cook", "duration": "5–6 min" },
     { "id": 2, "title": "Condisci", "description": "Manteca i rigatoni con guanciale, pecorino e pepe.", "type": "mix" }
-  ]
-},
-{
-  "id": "rec_penne_arrabbiata",
-  "title": "Penne all’Arrabbiata",
-  "servings": 4,
-  "cookingTime": 20,
-  "difficulty": 1,
-  "description": "Sugo piccante al pomodoro.",
-  "image": "",
-  "ingredients": [
-    { "ingredient_id": "penne", "name": "Penne", "amount": 360, "unit": "g" },
-    { "ingredient_id": "passata_di_pomodoro", "name": "Passata di pomodoro", "amount": 450, "unit": "g" },
-    { "ingredient_id": "peperoncino", "name": "Peperoncino", "amount": 1, "unit": "pz" },
-    { "ingredient_id": "aglio", "name": "Aglio", "amount": 1, "unit": "pz" },
-    { "ingredient_id": "prezzemolo", "name": "Prezzemolo", "amount": 1, "unit": "pz" },
-    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
-    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
-  ],
-  "steps": [
-    { "id": 1, "title": "Sugo", "description": "Aglio e peperoncino in olio, poi passata.", "type": "cook", "duration": "8–10 min" },
-    { "id": 2, "title": "Condisci", "description": "Penne al dente e prezzemolo tritato.", "type": "mix" }
   ]
 },
 {
@@ -2284,112 +2137,5 @@
     { "id": 1, "title": "Ripieno", "description": "Svuota i pomodori e mescola la polpa con riso, olio, aglio e basilico.", "type": "prep" },
     { "id": 2, "title": "Forno", "description": "Riempi i pomodori e cuoci a 180°C per 40–45 min.", "type": "cook", "duration": "45 min" }
   ]
-},
-{
-  "id": "rec_pasta_salsiccia_zucchine",
-  "title": "Pasta Salsiccia e Zucchine",
-  "servings": 4,
-  "cookingTime": 22,
-  "difficulty": 1,
-  "description": "Ricca ma veloce, con mantecatura al parmigiano.",
-  "image": "",
-  "ingredients": [
-    { "ingredient_id": "pasta_corta", "name": "Pasta corta", "amount": 360, "unit": "g" },
-    { "ingredient_id": "salsiccia", "name": "Salsiccia", "amount": 250, "unit": "g" },
-    { "ingredient_id": "zucchine", "name": "Zucchine", "amount": 250, "unit": "g" },
-    { "ingredient_id": "cipolla", "name": "Cipolla", "amount": 0.5, "unit": "pz" },
-    { "ingredient_id": "olio_extravergine", "name": "Olio EVO", "amount": 20, "unit": "ml" },
-    { "ingredient_id": "parmigiano", "name": "Parmigiano", "amount": 40, "unit": "g" },
-    { "ingredient_id": "sale_fino", "name": "Sale", "amount": 6, "unit": "g" }
-  ],
-  "steps": [
-    { "id": 1, "title": "Base", "description": "Cipolla, salsiccia sgranata e zucchine a rondelle.", "type": "cook", "duration": "8–9 min" },
-    { "id": 2, "title": "Manteca", "description": "Condisci la pasta e manteca con parmigiano.", "type": "mix" }
-  ]
-},
-  [
-  {
-    "id": "rec_pici_aglione",
-    "title": "Pici all'Aglione",
-    "servings": 4,
-    "cookingTime": 35,
-    "difficulty": 2,
-    "description": "Pasta tipica toscana con sugo di pomodoro e aglio in abbondanza.",
-    "ingredients": [],
-    "steps": [
-      { "id": 1, "title": "Preparazione", "description": "Prepara il sugo di pomodoro con aglio schiacciato.", "type": "prep", "duration": "10 min" },
-      { "id": 2, "title": "Cottura pasta", "description": "Cuoci i pici e condisci con il sugo all’aglione.", "type": "cook", "duration": "20 min", "timerMinutes": 20 },
-      { "id": 3, "title": "Finitura", "description": "Manteca con un filo d’olio e servi caldo.", "type": "mix", "duration": "5 min" }
-    ]
-  },
-  {
-    "id": "rec_orecchiette_cime_rapa",
-    "title": "Orecchiette alle Cime di Rapa",
-    "servings": 4,
-    "cookingTime": 30,
-    "difficulty": 1,
-    "description": "Classico pugliese con cime di rapa, aglio e acciughe.",
-    "ingredients": [],
-    "steps": [
-      { "id": 1, "title": "Sbollenta", "description": "Sbollenta le cime di rapa in acqua salata.", "type": "prep", "duration": "8 min" },
-      { "id": 2, "title": "Salta", "description": "Salta con aglio, olio e acciughe, unisci le orecchiette.", "type": "cook", "duration": "17 min", "timerMinutes": 17 },
-      { "id": 3, "title": "Servi", "description": "Completa con peperoncino a piacere.", "type": "mix", "duration": "5 min" }
-    ]
-  },
-  {
-    "id": "rec_pasta_alla_gricia",
-    "title": "Pasta alla Gricia",
-    "servings": 4,
-    "cookingTime": 25,
-    "difficulty": 1,
-    "description": "Antenata della carbonara: guanciale croccante e pecorino.",
-    "ingredients": [],
-    "steps": [
-      { "id": 1, "title": "Guanciale", "description": "Rosola il guanciale fino a renderlo croccante.", "type": "cook", "duration": "8 min" },
-      { "id": 2, "title": "Pasta", "description": "Cuoci la pasta e manteca con pecorino e guanciale.", "type": "cook", "duration": "12 min", "timerMinutes": 12 },
-      { "id": 3, "title": "Mantecatura", "description": "Aggiusta di pepe e servi cremoso.", "type": "mix", "duration": "5 min" }
-    ]
-  },
-  {
-    "id": "rec_pasta_pistacchio",
-    "title": "Pasta al Pistacchio",
-    "servings": 4,
-    "cookingTime": 20,
-    "difficulty": 1,
-    "description": "Cremosa salsa al pistacchio con una nota di limone.",
-    "ingredients": [],
-    "steps": [
-      { "id": 1, "title": "Crema", "description": "Prepara una crema di pistacchio con olio e limone.", "type": "prep", "duration": "5 min" },
-      { "id": 2, "title": "Pasta", "description": "Cuoci la pasta e unisci la crema con poca acqua di cottura.", "type": "cook", "duration": "12 min", "timerMinutes": 12 },
-      { "id": 3, "title": "Finitura", "description": "Zeste di limone e granella in superficie.", "type": "mix", "duration": "3 min" }
-    ]
-  },
-  {
-    "id": "rec_trofie_pesto_rucola",
-    "title": "Trofie al Pesto di Rucola",
-    "servings": 4,
-    "cookingTime": 20,
-    "difficulty": 1,
-    "description": "Alternativa fresca al pesto classico, con rucola e mandorle.",
-    "ingredients": [],
-    "steps": [
-      { "id": 1, "title": "Pesto", "description": "Frulla rucola, mandorle, olio e formaggio.", "type": "prep", "duration": "5 min" },
-      { "id": 2, "title": "Cuoci trofie", "description": "Cuoci le trofie e manteca con il pesto.", "type": "cook", "duration": "12 min", "timerMinutes": 12 },
-      { "id": 3, "title": "Servizio", "description": "Completa con mandorle tostate.", "type": "mix", "duration": "3 min" }
-    ]
-  },
-  {
-    "id": "rec_tagliolini_tartufo",
-    "title": "Tagliolini al Tartufo",
-    "servings": 4,
-    "cookingTime": 15,
-    "difficulty": 2,
-    "description": "Semplici e profumati, con burro chiarificato e tartufo.",
-    "ingredients": [],
-    "steps": [
-      { "id": 1, "title": "Burro", "description": "Sciogli il burro a fuoco dolce.", "type": "prep", "duration": "4 min" },
-      { "id": 2, "title": "Pasta", "description": "Cuoci i tagliolini e condisci con burro e tartufo.", "type": "cook", "duration": "8 min", "timerMinutes": 8 },
-      { "id": 3, "title": "Finitura", "description": "Regola di sale e pepe, lamelle di tartufo in cima.", "type": "mix", "duration": "3 min" }
-    ]
-  }
+}
 ]
