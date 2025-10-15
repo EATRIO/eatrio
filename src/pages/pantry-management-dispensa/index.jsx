@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import HeaderWithLogo from '../../components/ui/HeaderWithLogo';
 import BottomTabNavigation from '../../components/ui/BottomTabNavigation';
 import FloatingActionButton from '../../components/ui/FloatingActionButton';
@@ -11,126 +12,95 @@ import ExpirationAlerts from './components/ExpirationAlerts';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 
-// ------------------------------
-// Util: identifica l'utente corrente
-// Integra qui con il tuo sistema di auth (es. Supabase/Firebase/sessione)
-const getCurrentUserId = (): string => {
-  // Esempi:
-  // return auth.currentUser?.uid || 'guest';
-  // return session?.user?.id || 'guest';
-  return 'guest';
+const PANTRY_STORAGE_KEYS = {
+  ui: 'eatrio:pantryUI',          // { location, search }
+  items: 'eatrio:pantry:v2',      // nuova chiave unica
+  addModalOpen: 'eatrio:pantry:addModal',
 };
 
-const buildPantryKeys = (userId: string) => ({
-  ui: `eatrio:${userId}:pantryUI`,
-  items: `eatrio:${userId}:pantryItems:v1`,
-  addModalOpen: `eatrio:${userId}:pantry:addModal`,
-});
-// ------------------------------
+const PantryManagement = () => {
+  const navigate = useNavigate();
 
-const PantryManagement: React.FC = () => {
-  // Id utente + chiavi namespaced
-  const userId = getCurrentUserId();
-  const PANTRY_KEYS = useMemo(() => buildPantryKeys(userId), [userId]);
-
-  // Stato UI (tab attivo + ricerca), persistenza per-utente
-  const [activeLocation, setActiveLocation] = useState<'all' | 'pantry' | 'fridge' | 'freezer'>(() => {
+  // --- UI state (tab + ricerca), persistito ---
+  const [activeLocation, setActiveLocation] = useState(() => {
     try {
-      const ui = JSON.parse(localStorage.getItem(PANTRY_KEYS.ui) || '{}');
+      const ui = JSON.parse(localStorage.getItem(PANTRY_STORAGE_KEYS.ui) || '{}');
       return ui.location ?? 'all';
     } catch {
       return 'all';
     }
   });
 
-  const [searchTerm, setSearchTerm] = useState<string>(() => {
+  const [searchTerm, setSearchTerm] = useState(() => {
     try {
-      const ui = JSON.parse(localStorage.getItem(PANTRY_KEYS.ui) || '{}');
+      const ui = JSON.parse(localStorage.getItem(PANTRY_STORAGE_KEYS.ui) || '{}');
       return ui.search ?? '';
     } catch {
       return '';
     }
   });
 
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
-  const [selectionMode, setSelectionMode] = useState<boolean>(false);
-  const [showAddModal, setShowAddModal] = useState<boolean>(false);
-  const [showAlerts, setShowAlerts] = useState<boolean>(true);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectionMode, setSelectionMode] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showAlerts, setShowAlerts] = useState(true);
 
-  // Dispensa per-utente: nasce vuota se non c'è nulla in localStorage
-  type PantryItem = {
-    id: string;
-    name: string;
-    quantity: number;
-    unit: string;
-    location: 'pantry' | 'fridge' | 'freezer';
-    category?: string;
-    expirationDate?: string; // ISO yyyy-mm-dd
-    purchaseDate?: string;   // ISO yyyy-mm-dd
-    notes?: string;
-    addedAt?: string;        // ISO timestamp
-    [key: string]: any;
-  };
-
-  const [pantryItems, setPantryItems] = useState<PantryItem[]>(() => {
+  // --- Items: nasce vuota, con migrazione da vecchie chiavi se presenti ---
+  const [pantryItems, setPantryItems] = useState(() => {
     try {
-      const raw = localStorage.getItem(PANTRY_KEYS.items);
-      return raw ? JSON.parse(raw) : [];
+      // 1) prova chiave nuova
+      const rawNew = localStorage.getItem(PANTRY_STORAGE_KEYS.items);
+      if (rawNew) return JSON.parse(rawNew);
+
+      // 2) migrazione da chiavi legacy (se esistono)
+      const legacyCandidates = ['eatrio:pantryItems', 'eatrio:pantry'];
+      for (const key of legacyCandidates) {
+        const rawOld = localStorage.getItem(key);
+        if (rawOld) {
+          const parsed = JSON.parse(rawOld);
+          // salva nella chiave nuova e ritorna
+          localStorage.setItem(PANTRY_STORAGE_KEYS.items, JSON.stringify(parsed));
+          return parsed;
+        }
+      }
+
+      // 3) default: vuota
+      return [];
     } catch {
       return [];
     }
   });
 
-  // Persistenza UI per-utente
+  // Persisti UI
   useEffect(() => {
     try {
       localStorage.setItem(
-        PANTRY_KEYS.ui,
+        PANTRY_STORAGE_KEYS.ui,
         JSON.stringify({ location: activeLocation, search: searchTerm })
       );
     } catch {}
-  }, [activeLocation, searchTerm, PANTRY_KEYS.ui]);
+  }, [activeLocation, searchTerm]);
 
-  // Persistenza items per-utente
+  // Persisti items SOLO sulla chiave nuova
   useEffect(() => {
     try {
-      localStorage.setItem(PANTRY_KEYS.items, JSON.stringify(pantryItems));
+      localStorage.setItem(PANTRY_STORAGE_KEYS.items, JSON.stringify(pantryItems));
     } catch {}
-  }, [pantryItems, PANTRY_KEYS.items]);
+  }, [pantryItems]);
 
-  // Sync multi-tab (se apri due tab dello stesso utente)
-  useEffect(() => {
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === PANTRY_KEYS.items && e.newValue) {
-        try {
-          setPantryItems(JSON.parse(e.newValue));
-        } catch {}
-      }
-      if (e.key === PANTRY_KEYS.ui && e.newValue) {
-        try {
-          const ui = JSON.parse(e.newValue);
-          if (ui.location) setActiveLocation(ui.location);
-          if (typeof ui.search === 'string') setSearchTerm(ui.search);
-        } catch {}
-      }
-    };
-    window.addEventListener('storage', onStorage);
-    return () => window.removeEventListener('storage', onStorage);
-  }, [PANTRY_KEYS.items, PANTRY_KEYS.ui]);
-
-  // Filtro per tab + ricerca
-  const filteredItems = pantryItems?.filter((item) => {
+  // --- Filtri ---
+  const filteredItems = pantryItems.filter((item) => {
     const matchesLocation = activeLocation === 'all' || item?.location === activeLocation;
-    const term = (searchTerm || '').toLowerCase();
+    const q = (searchTerm || '').toLowerCase();
     const matchesSearch =
-      !term ||
-      item?.name?.toLowerCase()?.includes(term) ||
-      item?.category?.toLowerCase()?.includes(term) ||
-      item?.notes?.toLowerCase()?.includes(term);
+      !q ||
+      (item?.name || '').toLowerCase().includes(q) ||
+      (item?.category || '').toLowerCase().includes(q) ||
+      (item?.notes || '').toLowerCase().includes(q);
     return matchesLocation && matchesSearch;
   });
 
-  // Azioni header (placeholder)
+  // --- Header actions (stub) ---
   const headerActions = [
     {
       icon: 'Filter',
@@ -148,23 +118,22 @@ const PantryManagement: React.FC = () => {
     },
   ];
 
-  // Selezione card
-  const handleItemSelect = (itemId: string) => {
+  // --- Selezione multipla ---
+  const handleItemSelect = (itemId) => {
     if (!selectionMode) {
       setSelectionMode(true);
       setSelectedItems([itemId]);
     } else {
       setSelectedItems((prev) =>
-        prev?.includes(itemId) ? prev?.filter((id) => id !== itemId) : [...prev, itemId]
+        prev.includes(itemId) ? prev.filter((id) => id !== itemId) : [...prev, itemId]
       );
     }
   };
 
-  // Bulk actions
-  const handleBulkMoveToLocation = (locationId: 'pantry' | 'fridge' | 'freezer') => {
+  const handleBulkMoveToLocation = (locationId) => {
     setPantryItems((prev) =>
-      prev?.map((item) =>
-        selectedItems?.includes(item?.id) ? { ...item, location: locationId } : item
+      prev.map((item) =>
+        selectedItems.includes(item.id) ? { ...item, location: locationId } : item
       )
     );
     setSelectionMode(false);
@@ -172,55 +141,54 @@ const PantryManagement: React.FC = () => {
   };
 
   const handleBulkMarkAsUsed = () => {
-    setPantryItems((prev) => prev?.filter((item) => !selectedItems?.includes(item?.id)));
+    setPantryItems((prev) => prev.filter((item) => !selectedItems.includes(item.id)));
     setSelectionMode(false);
     setSelectedItems([]);
   };
 
   const handleBulkDelete = () => {
-    setPantryItems((prev) => prev?.filter((item) => !selectedItems?.includes(item?.id)));
+    setPantryItems((prev) => prev.filter((item) => !selectedItems.includes(item.id)));
     setSelectionMode(false);
     setSelectedItems([]);
   };
 
-  // Azioni per singolo item
-  const handleEditItem = (item: PantryItem) => {
+  // --- Azioni item singolo ---
+  const handleEditItem = (item) => {
     console.log('Editing item:', item);
-    // TODO: apri modal di edit se/quando la implementi
   };
 
-  const handleMarkItemUsed = (item: PantryItem) => {
-    setPantryItems((prev) => prev?.filter((i) => i?.id !== item?.id));
+  const handleMarkItemUsed = (item) => {
+    setPantryItems((prev) => prev.filter((i) => i.id !== item.id));
   };
 
-  const handleDeleteItem = (item: PantryItem) => {
-    setPantryItems((prev) => prev?.filter((i) => i?.id !== item?.id));
+  const handleDeleteItem = (item) => {
+    setPantryItems((prev) => prev.filter((i) => i.id !== item.id));
   };
 
-  // Aggiunta nuovo ingrediente
-  const handleAddIngredient = (newIngredient: PantryItem) => {
+  // --- Aggiunta nuovo ingrediente ---
+  const handleAddIngredient = (newIngredient) => {
     setPantryItems((prev) => [newIngredient, ...prev]);
   };
 
-  // FAB
-  const handleFloatingAction = (action: string) => {
+  // --- FAB ---
+  const handleFloatingAction = (action) => {
     if (action === 'add-ingredient') {
       setShowAddModal(true);
     }
   };
 
-  // Dalla sezione alert scadenze: vai all'item
-  const handleViewItemFromAlert = (item: PantryItem) => {
-    setActiveLocation(item?.location);
-    setSearchTerm(item?.name);
+  // --- Dalle notifiche scadenza: porta al tab giusto e filtra ---
+  const handleViewItemFromAlert = (item) => {
+    setActiveLocation(item?.location || 'all');
+    setSearchTerm(item?.name || '');
   };
 
-  // Quando non ci sono più selezionati -> chiudi selection mode
+  // Esci da selection mode se non ci sono selezionati
   useEffect(() => {
-    if (selectedItems?.length === 0 && selectionMode) {
+    if (selectedItems.length === 0 && selectionMode) {
       setSelectionMode(false);
     }
-  }, [selectedItems?.length, selectionMode]);
+  }, [selectedItems.length, selectionMode]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -236,13 +204,10 @@ const PantryManagement: React.FC = () => {
           placeholder="Cerca ingredienti, categorie..."
         />
 
-        {/* Storage Location Tabs */}
-        <StorageLocationTabs
-          activeLocation={activeLocation}
-          onLocationChange={setActiveLocation}
-        />
+        {/* Tabs (dispensa / frigo / freezer / tutti) */}
+        <StorageLocationTabs activeLocation={activeLocation} onLocationChange={setActiveLocation} />
 
-        {/* Expiration Alerts */}
+        {/* Avvisi scadenza */}
         {showAlerts && (
           <ExpirationAlerts
             ingredients={pantryItems}
@@ -251,9 +216,9 @@ const PantryManagement: React.FC = () => {
           />
         )}
 
-        {/* Items Grid */}
+        {/* Lista / griglia */}
         <div className="px-4 py-4">
-          {filteredItems?.length === 0 ? (
+          {filteredItems.length === 0 ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 bg-muted/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Icon name="Package" size={32} color="var(--color-muted-foreground)" />
@@ -285,11 +250,11 @@ const PantryManagement: React.FC = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredItems?.map((item) => (
+              {filteredItems.map((item) => (
                 <IngredientCard
-                  key={item?.id}
+                  key={item.id}
                   ingredient={item}
-                  isSelected={selectedItems?.includes(item?.id)}
+                  isSelected={selectedItems.includes(item.id)}
                   selectionMode={selectionMode}
                   onSelect={handleItemSelect}
                   onEdit={handleEditItem}
@@ -302,10 +267,10 @@ const PantryManagement: React.FC = () => {
         </div>
       </main>
 
-      {/* Bulk Actions Bar */}
-      {selectionMode && selectedItems?.length > 0 && (
+      {/* Barra azioni bulk */}
+      {selectionMode && selectedItems.length > 0 && (
         <BulkActionsBar
-          selectedCount={selectedItems?.length}
+          selectedCount={selectedItems.length}
           onMoveToLocation={handleBulkMoveToLocation}
           onMarkAsUsed={handleBulkMarkAsUsed}
           onDelete={handleBulkDelete}
@@ -316,17 +281,17 @@ const PantryManagement: React.FC = () => {
         />
       )}
 
-      {/* Add Ingredient Modal */}
+      {/* Modal aggiunta */}
       <AddIngredientModal
         isOpen={showAddModal}
         onClose={() => setShowAddModal(false)}
         onAdd={handleAddIngredient}
       />
 
-      {/* Floating Action Button */}
+      {/* FAB */}
       <FloatingActionButton onClick={handleFloatingAction} />
 
-      {/* Bottom Navigation */}
+      {/* Bottom nav */}
       <BottomTabNavigation />
     </div>
   );
