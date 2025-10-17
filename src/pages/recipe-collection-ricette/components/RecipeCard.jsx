@@ -4,60 +4,14 @@ import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 
-// === Helpers & cataloghi locali (solo per le card) ===
+// === Storage keys usate dalla card ===
 const STORAGE = { pantry: 'eatrio:pantry:v2', cart: 'eatrio:cart', market: 'eatrio:market' };
 
-const PRICE_CATALOG_AVG = {
-  // Cereali / pasta (€/kg)
-  spaghetti: 2.00,
-  riso: 2.20,
-  farina: 1.20,
-  lievito: 12.00,
-  // Proteine / carne / latticini (€/kg)
-  pollo: 8.00,
-  pecorino: 22.00,
-  parmigiano: 25.00,
-  mozzarella: 10.00,
-  uova: 0.30,
-  uova_tiramisu: 0.30,
-  // Salumi (€/kg)
-  guanciale: 18.00,
-  // Verdure / orto (€/kg)
-  pomodori: 2.20,
-  pomodoro: 2.20,
-  cipolla: 1.50,
-  carota: 1.80,
-  sedano: 2.00,
-  verdure: 2.50,
-  basilico: 1.20,
-  // Funghi e olive (€/kg)
-  porcini: 25.00,
-  olive: 7.00,
-  // Dispensa (€/kg)
-  zucchero: 1.50,
-  cacao: 12.00,
-  pepe: 40.00,
-  quinoa: 6.50,
-  savoiardi: 6.00,
-  granola: 8.00,
-  // Condimenti / liquidi
-  olio: 8.00,
-  aceto: 3.00,
-  brodo: 2.00,
-  passata: 2.10,
-  vinaigrette: 6.00,
-  latte: 1.60,
-  yogurt: 3.80,
-  // Caffè / bevande
-  caffe: 12.00,
-  // Frutta (€/kg)
-  banana: 1.80,
-  frutti_bosco: 9.00,
-  aglio: 4.00,
-  alloro: 0.50,
-  burro: 8.00,
-};
+// --- util nomi/normalizzazioni ---
+const capWords = (s) => (s||'').split(' ').map(w=>w? w[0].toUpperCase()+w.slice(1):'').join(' ');
+const norm = (s) => (s||'').toLowerCase().trim();
 
+// --- alias ingredienti per match dispensa ---
 const ALIASES = {
   spaghetti: ['spaghetti','pasta'], uova: ['uova','uovo'], pecorino: ['pecorino'],
   guanciale: ['guanciale'], pepe: ['pepe'], riso: ['riso','riso carnaroli','arborio'],
@@ -76,8 +30,6 @@ const ALIASES = {
   latte: ['latte'], yogurt: ['yogurt'], granola: ['granola'],
 };
 
-const capWords = (s) => (s||'').split(' ').map(w=>w? w[0].toUpperCase()+w.slice(1):'').join(' ');
-const norm = (s) => (s||'').toLowerCase().trim();
 const toBase = (qty, unit) => {
   const q = Number(qty)||0; const u = (unit||'').toLowerCase();
   if (u==='g') return { qty: q/1000, unit:'kg' };
@@ -86,28 +38,11 @@ const toBase = (qty, unit) => {
   if (u==='l') return { qty: q, unit:'l' };
   return { qty: q, unit:'pz' };
 };
+
 const matchPantry = (pantryItemName, key) => {
   const n = norm(pantryItemName);
   const aliases = ALIASES[key] || [key];
   return aliases.some(a => n.includes(norm(a)));
-};
-const priceForMarket = (avg, market) => (market==='Coop'?avg*1.00 : market==='Conad'?avg*0.95 : market==='Esselunga'?avg*1.05 : avg);
-
-// Converte il prezzo per unità BASE (kg/l/pz) al prezzo per unità VISUALE (g/ml/kg/l/pz/conf/mazzo...)
-const toDisplayUnitPrice = (unitEuroBase, displayUnit) => {
-  const u = (displayUnit || '').toLowerCase();
-  if (u === 'g')  return unitEuroBase / 1000;   // €/g da €/kg
-  if (u === 'ml') return unitEuroBase / 1000;   // €/ml da €/l
-  if (u === 'kg' || u === 'l' || u === 'pz' || u === 'conf' || u === 'mazzo') return unitEuroBase;
-  return unitEuroBase;
-};
-
-// stima €/unit base → €/unit per mercato
-const estimateUnitEuro = (key, market) => {
-  let avg = PRICE_CATALOG_AVG[key];
-  if (typeof avg !== 'number' || Number.isNaN(avg)) avg = 2.5;
-  avg = Math.min(Math.max(avg, 0.05), 100);
-  return priceForMarket(avg, market);
 };
 
 // mapping ingredienti per le 8 ricette del mock (quantità per l'intera ricetta)
@@ -179,13 +114,15 @@ const computeMissing = (pantry, ingredients) => {
   ingredients.forEach(ing => {
     if (ing.optional) return;
     let available = 0;
-    let baseUnit = toBase(ing.qty, ing.unit).unit;
+    const baseUnit = toBase(ing.qty, ing.unit).unit;
+
     pantry.forEach(p => {
       if (matchPantry(p?.name, ing.key)) {
         const pb = toBase(p?.quantity, p?.unit);
         if (pb.unit === baseUnit) available += pb.qty;
       }
     });
+
     const need = toBase(ing.qty, ing.unit).qty;
     const lack = Math.max(0, need - available);
     if (lack > 0) {
@@ -232,8 +169,6 @@ const readPantryOnce = () => {
 
 const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
   const navigate = useNavigate();
-
-  // stato reattivo per la dispensa
   const [pantry, setPantry] = useState(() => readPantryOnce());
 
   // ascolta update dal tab corrente (evento custom) e da altri tab (storage)
@@ -241,11 +176,10 @@ const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
     const refresh = () => setPantry(readPantryOnce());
     const onStorage = (e) => {
       if (!e) return;
-      if (e.key === STORAGE.pantry) refresh();
-      // fallback: se qualcuno scrive ancora sulle vecchie chiavi, aggiorniamo
-      if (e.key === 'eatrio:pantry' || e.key === 'eatrio:pantryItems') refresh();
+      if (e.key === STORAGE.pantry || e.key === 'eatrio:pantry' || e.key === 'eatrio:pantryItems') {
+        refresh();
+      }
     };
-
     window.addEventListener('pantry:updated', refresh);
     window.addEventListener('storage', onStorage);
     return () => {
@@ -290,10 +224,6 @@ const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
   const formatPrice = (price) =>
     new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(price);
 
-  // market lo leggiamo una volta (non critico per l'availability)
-  let market = 'AVG';
-  try { market = localStorage.getItem(STORAGE.market) || 'AVG'; } catch {}
-
   const recipeIngs = getRecipeIngredients(recipe);
   const missingNow = computeMissing(pantry, recipeIngs);
   const availabilityPct = recipeIngs.length
@@ -316,33 +246,16 @@ const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
     let cart = [];
     try { cart = JSON.parse(localStorage.getItem(STORAGE.cart) || '[]'); } catch {}
 
+    // aggiungi senza prezzi (verranno stimati altrove)
     missing.forEach(m => {
       const name = capWords(m.key);
       const unit = m.unit;
-
-      // prezzo per unità BASE (€/kg, €/l o €/pz)
-      const unitEuroAVG_base = estimateUnitEuro(m.key, 'AVG');
-
-      // converto alla unità VISUALE (g/ml/kg/l/pz/conf/mazzo)
-      const avg_disp   = toDisplayUnitPrice(unitEuroAVG_base, unit);
-      const coop_disp  = toDisplayUnitPrice(priceForMarket(unitEuroAVG_base, 'Coop'), unit);
-      const conad_disp = toDisplayUnitPrice(priceForMarket(unitEuroAVG_base, 'Conad'), unit);
-      const essel_disp = toDisplayUnitPrice(priceForMarket(unitEuroAVG_base, 'Esselunga'), unit);
-
-      const prices = {
-        AVG:   Number(avg_disp.toFixed(3)),
-        Coop:  Number(coop_disp.toFixed(3)),
-        Conad: Number(conad_disp.toFixed(3)),
-        Esselunga: Number(essel_disp.toFixed(3)),
-      };
-
       mergeCartItems(cart, {
         id: `${norm(name)}_${unit}_${Date.now()}`,
         name,
         quantity: m.qty,
         unit,
         checked: false,
-        prices,
         fromRecipe: recipe?.title,
         dateAdded: new Date().toISOString(),
       });
