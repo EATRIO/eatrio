@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import HeaderWithLogo from '../../components/ui/HeaderWithLogo';
 import BottomTabNavigation from '../../components/ui/BottomTabNavigation';
 import FloatingActionButton from '../../components/ui/FloatingActionButton';
@@ -14,14 +13,12 @@ import Button from '../../components/ui/Button';
 import { writePantry, PANTRY_KEY } from '../../utils/pantryStorage';
 
 const PANTRY_STORAGE_KEYS = {
-  ui: 'eatrio:pantryUI',          // { location, search }
-  items: 'eatrio:pantry:v2',      // nuova chiave unica
+  ui: 'eatrio:pantryUI',     // { location, search }
+  items: PANTRY_KEY,         // 'eatrio:pantry:v2'
   addModalOpen: 'eatrio:pantry:addModal',
 };
 
 const PantryManagement = () => {
-  const navigate = useNavigate();
-
   // --- UI state (tab + ricerca), persistito ---
   const [activeLocation, setActiveLocation] = useState(() => {
     try {
@@ -49,18 +46,18 @@ const PantryManagement = () => {
   // --- Items: nasce vuota, con migrazione da vecchie chiavi se presenti ---
   const [pantryItems, setPantryItems] = useState(() => {
     try {
-      // 1) prova chiave nuova
+      // 1) chiave nuova
       const rawNew = localStorage.getItem(PANTRY_STORAGE_KEYS.items);
       if (rawNew) return JSON.parse(rawNew);
 
-      // 2) migrazione da chiavi legacy (se esistono)
+      // 2) migrazione da legacy (se presenti)
       const legacyCandidates = ['eatrio:pantryItems', 'eatrio:pantry'];
       for (const key of legacyCandidates) {
         const rawOld = localStorage.getItem(key);
         if (rawOld) {
           const parsed = JSON.parse(rawOld);
-          // salva nella chiave nuova e ritorna
-          localStorage.setItem(PANTRY_STORAGE_KEYS.items, JSON.stringify(parsed));
+          // salva sulla nuova chiave + emetti evento
+          writePantry(parsed);
           return parsed;
         }
       }
@@ -72,7 +69,7 @@ const PantryManagement = () => {
     }
   });
 
-  // Persisti UI
+  // Persisti UI (tab + ricerca)
   useEffect(() => {
     try {
       localStorage.setItem(
@@ -82,12 +79,10 @@ const PantryManagement = () => {
     } catch {}
   }, [activeLocation, searchTerm]);
 
-  
+  // Persiste gli items sulla chiave nuova + dispatch evento
   useEffect(() => {
-  // garantiamo che la chiave resti quella nuova
-  writePantry(pantryItems);
-}, [pantryItems]);
-
+    writePantry(pantryItems);
+  }, [pantryItems]);
 
   // --- Filtri ---
   const filteredItems = pantryItems.filter((item) => {
@@ -299,4 +294,3 @@ const PantryManagement = () => {
 };
 
 export default PantryManagement;
-
