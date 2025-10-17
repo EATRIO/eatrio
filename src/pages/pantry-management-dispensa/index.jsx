@@ -84,9 +84,10 @@ const PantryManagement = () => {
 
   
   useEffect(() => {
-    // garantiamo che la chiave resti quella nuova
-    writePantry(pantryItems);
-    }, [pantryItems]);
+  // garantiamo che la chiave resti quella nuova
+  writePantry(pantryItems);
+}, [pantryItems]);
+
 
   // --- Filtri ---
   const filteredItems = pantryItems.filter((item) => {
