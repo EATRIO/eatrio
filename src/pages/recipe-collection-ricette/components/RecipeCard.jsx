@@ -4,232 +4,199 @@ import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 
-// === storage keys (pantry v2 + cart) ===
-const STORAGE = { pantry: 'eatrio:pantry:v2', cart: 'eatrio:cart', market: 'eatrio:market' };
+/** ================================
+ *  DEBUG
+ *  ================================ */
+const DEBUG = true;
+const dlog = (...a) => { if (DEBUG) console.log('[RecipeCard]', ...a); };
 
-// === ALIAS (aggiunti anche snake_case e varianti utili) ===
+/** ================================
+ *  STORAGE KEYS
+ *  ================================ */
+const STORAGE = {
+  pantry: 'eatrio:pantry:v2',
+  cart: 'eatrio:cart',
+  market: 'eatrio:market', // non usato qui, ma tenuto per compatibilità
+};
+
+/** ================================
+ *  ALIASES / MATCHING
+ *  ================================ */
+// mappa "chiave canonica" → sinonimi/alias che possiamo incontrare
 const ALIASES = {
-  spaghetti: ['spaghetti', 'pasta'],
+  spaghetti: ['spaghetti', 'spaghetto', 'pasta', 'pasta barilla', 'pasta di semola'],
+  riso: ['riso', 'riso carnaroli', 'riso arborio'],
+  farina: ['farina'],
+  lievito: ['lievito', 'lievito di birra', 'lievito secco'],
   uova: ['uova', 'uovo'],
+  uova_tiramisu: ['uova', 'uovo'],
   pecorino: ['pecorino'],
-  guanciale: ['guanciale'],
-  pepe: ['pepe'],
-  riso: ['riso', 'riso carnaroli', 'arborio'],
-  porcini: ['porcini', 'funghi porcini', 'funghi'],
   parmigiano: ['parmigiano', 'parmigiano reggiano'],
-  burro: ['burro'],
-  brodo: ['brodo'],
+  guanciale: ['guanciale'],
+  pepe: ['pepe', 'pepe nero'],
   pollo: ['pollo'],
-  olive: ['olive'],
-  pomodori: ['pomodori', 'pomodori pelati'],
-  pomodoro: ['pomodoro', 'pomodori', 'passata', 'passata di pomodoro'],
-  passata: ['passata', 'passata di pomodoro'],
-  passata_di_pomodoro: ['passata di pomodoro', 'passata', 'pomodoro'],
+  olive: ['olive', 'olive nere', 'olive verdi'],
+  pomodori: ['pomodori', 'pomodoro'],
+  pomodoro: ['pomodoro', 'pomodori'],
+  passata: ['passata', 'passata di pomodoro', 'passata di pomodori'],
   cipolla: ['cipolla', 'cipolle'],
   carota: ['carota', 'carote'],
   sedano: ['sedano'],
   quinoa: ['quinoa'],
   verdure: ['verdure', 'verdure di stagione', 'zucchine', 'peperoni', 'insalata'],
   vinaigrette: ['vinaigrette', 'condimento'],
-  olio: ['olio', 'olio extravergine', 'olio evo', 'olio extravergine di oliva'],
-  olio_extravergine: ['olio extravergine', 'olio evo', 'olio', 'olio extravergine di oliva'],
+  olio: ['olio', 'olio evo', 'olio extravergine', 'olio extravergine di oliva'],
   aceto: ['aceto', 'aceto di vino', 'aceto balsamico'],
   savoiardi: ['savoiardi'],
   mascarpone: ['mascarpone'],
   caffe: ['caffè', 'caffe'],
   cacao: ['cacao', 'cacao amaro'],
-  zucchero: ['zucchero'],
-  uova_tiramisu: ['uova', 'uovo'],
   lenticchie: ['lenticchie'],
   aglio: ['aglio', 'spicchio di aglio', 'spicchi di aglio'],
   alloro: ['alloro', 'foglia alloro'],
-  farina: ['farina'],
-  lievito: ['lievito', 'lievito di birra'],
   mozzarella: ['mozzarella', 'mozzarella fior di latte', 'mozzarella di bufala'],
-  basilico: ['basilico', 'foglie di basilico', 'mazzo di basilico', 'conf'],
-  banana: ['banana', 'banane'],
-  frutti_bosco: ['frutti di bosco', 'mirtilli', 'lamponi', 'fragole'],
+  basilico: ['basilico', 'mazzo di basilico', 'basilico fresco'],
+  frutti_bosco: ['frutti di bosco', 'frutti_bosco', 'mirtilli', 'lamponi', 'fragole'],
   latte: ['latte'],
   yogurt: ['yogurt'],
   granola: ['granola'],
-  sale_fino: ['sale', 'sale fino']
+  porcini: ['porcini', 'funghi porcini', 'funghi'],
+  burro: ['burro'],
+  brodo: ['brodo'],
 };
 
-const capWords = (s) => (s || '').split(' ').map(w => (w ? w[0].toUpperCase() + w.slice(1) : '')).join(' ');
+// utilità
 const norm = (s) => (s || '').toLowerCase().trim();
 
-// Converte quantità verso unità base per confronti: kg / l / pz
-const toBase = (qty, unit) => {
-  const q = Number(qty) || 0;
-  const u = (unit || '').toLowerCase();
-  if (u === 'g') return { qty: q / 1000, unit: 'kg' };
-  if (u === 'kg') return { qty: q, unit: 'kg' };
-  if (u === 'ml') return { qty: q / 1000, unit: 'l' };
-  if (u === 'l') return { qty: q, unit: 'l' };
-  return { qty: q, unit: 'pz' };
+const findCanonicalKeyFromName = (name) => {
+  const n = norm(name);
+  // 1) match via alias "includes"
+  for (const [key, aliases] of Object.entries(ALIASES)) {
+    if (aliases.some(a => n.includes(norm(a)))) return key;
+  }
+  // 2) fallback: normalizza togliendo articoli comuni
+  return n
+    .replace(/di\s+/g, '')
+    .replace(/\s+/g, '_')
+    .replace(/[^\p{L}\p{N}_]/gu, '');
 };
 
-// --- Pantry reading (una tantum) + fallback legacy (se mai servisse) ---
+const matchPantryByKey = (pantryItemName, canonicalKey) => {
+  const n = norm(pantryItemName);
+  const aliases = ALIASES[canonicalKey] || [canonicalKey];
+  return aliases.some(a => n.includes(norm(a)));
+};
+
+/** ================================
+ *  UNIT CONVERSION
+ *  ================================ */
+const toBase = (qty, unit) => {
+  const q = Number(qty) || 0;
+  const u = norm(unit);
+  if (u === 'g')  return { qty: q / 1000, unit: 'kg' };
+  if (u === 'kg') return { qty: q, unit: 'kg' };
+  if (u === 'ml') return { qty: q / 1000, unit: 'l'  };
+  if (u === 'l')  return { qty: q, unit: 'l'  };
+  return { qty: q, unit: 'pz' }; // fallback
+};
+
+/** ================================
+ *  PANTRY READ (v2 + fallback legacy)
+ *  ================================ */
 const readPantryOnce = () => {
   try {
     const v2 = JSON.parse(localStorage.getItem(STORAGE.pantry) || '[]');
-    if (Array.isArray(v2)) return v2;
-  } catch {}
-  // fallback vecchie chiavi, nel caso qualche schermata scriva ancora lì
-  try {
+    if (Array.isArray(v2) && v2.length) return v2;
     const legacyItems = JSON.parse(localStorage.getItem('eatrio:pantryItems') || '[]');
-    if (Array.isArray(legacyItems)) return legacyItems;
-  } catch {}
-  try {
+    if (Array.isArray(legacyItems) && legacyItems.length) return legacyItems;
     const legacy = JSON.parse(localStorage.getItem('eatrio:pantry') || '[]');
-    if (Array.isArray(legacy)) return legacy;
-  } catch {}
-  return [];
-};
-
-// --- match pantry item con ingrediente ricetta (usa name + ingredient_id/key + alias) ---
-const matchPantryItem = (pantryName, ing) => {
-  const pn = norm(pantryName);
-
-  // match diretto sul name (sia lato ricetta che lato pantry)
-  if (ing?.name) {
-    const iname = norm(ing.name);
-    if (pn.includes(iname) || iname.includes(pn)) return true;
+    return Array.isArray(legacy) ? legacy : [];
+  } catch {
+    return [];
   }
-
-  // match via key/ingredient_id/alias
-  const rawKey = ing?.key || ing?.ingredient_id || ing?.name || '';
-  const key = norm(rawKey);
-  const aliases = ALIASES[key] || [key];
-  return aliases.some(a => pn.includes(norm(a)));
 };
 
-// --- normalizza gli ingredienti della ricetta ---
-// supporta: amount / quantity / qty, unit, optional, ingredient_id
+/** ================================
+ *  RECIPE NORMALIZATION
+ *  ================================ */
+// Supporta sia recipes con {ingredient_id, name, amount, unit} sia eventuali {name, qty, unit}
 const normalizeRecipeIngredients = (recipe) => {
-  if (Array.isArray(recipe?.ingredients) && recipe.ingredients.length) {
-    return recipe.ingredients.map(it => {
-      const qty = Number(it.amount ?? it.quantity ?? it.qty ?? 0) || 0;
-      return {
-        key: norm(it.ingredient_id || it.key || it.name || ''),
-        ingredient_id: it.ingredient_id,
-        name: it.name,
-        qty,
-        unit: it.unit || 'pz',
-        optional: !!it.optional
-      };
-    });
-  }
-
-  // --- Fallback legacy su titolo (vecchie 8 ricette) ---
-  const t = norm(recipe?.title);
-  const s = Number(recipe?.servings || 4);
-  const sf = s / 4;
-
-  if (t.includes('carbonara')) return [
-    { key: 'spaghetti', qty: 360 * sf, unit: 'g' },
-    { key: 'uova', qty: 4 * sf, unit: 'pz' },
-    { key: 'pecorino', qty: 60 * sf, unit: 'g', optional: true },
-    { key: 'guanciale', qty: 150 * sf, unit: 'g' },
-    { key: 'pepe', qty: 5 * sf, unit: 'g', optional: true }
-  ];
-  if (t.includes('porcini')) return [
-    { key: 'riso', qty: 320 * sf, unit: 'g' },
-    { key: 'porcini', qty: 250 * sf, unit: 'g' },
-    { key: 'parmigiano', qty: 40 * sf, unit: 'g', optional: true },
-    { key: 'burro', qty: 30 * sf, unit: 'g' },
-    { key: 'brodo', qty: 1 * sf, unit: 'l' }
-  ];
-  if (t.includes('cacciatora')) return [
-    { key: 'pollo', qty: 1 * sf, unit: 'kg' },
-    { key: 'olive', qty: 80 * sf, unit: 'g' },
-    { key: 'passata', qty: 400 * sf, unit: 'g' },
-    { key: 'cipolla', qty: 100 * sf, unit: 'g' }
-  ];
-  if (t.includes('quinoa')) return [
-    { key: 'quinoa', qty: 280 * sf, unit: 'g' },
-    { key: 'verdure', qty: 400 * sf, unit: 'g' },
-    { key: 'vinaigrette', qty: 40 * sf, unit: 'ml', optional: true },
-    { key: 'olio', qty: 20 * sf, unit: 'ml', optional: true }
-  ];
-  if (t.includes('tiramis')) return [
-    { key: 'savoiardi', qty: 400 * sf, unit: 'g' },
-    { key: 'mascarpone', qty: 500 * sf, unit: 'g' },
-    { key: 'caffe', qty: 200 * sf, unit: 'ml' },
-    { key: 'zucchero', qty: 80 * sf, unit: 'g' },
-    { key: 'uova_tiramisu', qty: 4 * sf, unit: 'pz' },
-    { key: 'cacao', qty: 10 * sf, unit: 'g' }
-  ];
-  if (t.includes('lenticchie')) return [
-    { key: 'lenticchie', qty: 320 * sf, unit: 'g' },
-    { key: 'pomodoro', qty: 200 * sf, unit: 'g', optional: true },
-    { key: 'cipolla', qty: 80 * sf, unit: 'g' },
-    { key: 'aglio', qty: 5 * sf, unit: 'g', optional: true },
-    { key: 'alloro', qty: 1 * sf, unit: 'pz', optional: true }
-  ];
-  if (t.includes('pizza')) return [
-    { key: 'farina', qty: 500 * sf, unit: 'g' },
-    { key: 'lievito', qty: 7 * sf, unit: 'g' },
-    { key: 'passata', qty: 300 * sf, unit: 'g' },
-    { key: 'mozzarella', qty: 250 * sf, unit: 'g' },
-    { key: 'basilico', qty: 1 * sf, unit: 'conf', optional: true }
-  ];
-  if (t.includes('smoothie') || t.includes('bowl')) return [
-    { key: 'frutti_bosco', qty: 200 * sf, unit: 'g' },
-    { key: 'banana', qty: 1 * sf, unit: 'pz' },
-    { key: 'yogurt', qty: 150 * sf, unit: 'g' },
-    { key: 'granola', qty: 40 * sf, unit: 'g', optional: true },
-    { key: 'latte', qty: 150 * sf, unit: 'ml', optional: true }
-  ];
-
-  return [];
+  const src = Array.isArray(recipe?.ingredients) ? recipe.ingredients : [];
+  const out = src.map((ing) => {
+    const name = ing?.name || ing?.ingredient_name || ing?.ingredient || ing?.ingredient_id || '';
+    const canonical = findCanonicalKeyFromName(name);
+    const qty = ing?.amount ?? ing?.qty ?? ing?.quantity ?? 0;
+    const unit = norm(ing?.unit || 'pz');
+    const optional = Boolean(ing?.optional);
+    return { key: canonical, qty: Number(qty) || 0, unit, optional, originalName: name };
+  });
+  return out;
 };
 
-// --- calcolo mancanti rispetto alla dispensa (match + unità base) ---
-const computeMissing = (pantry, ingredients) => {
+/** ================================
+ *  MISSING CALC
+ *  ================================ */
+const computeMissing = (pantry, ingredients /* normalized */) => {
   const missing = [];
 
   ingredients.forEach(ing => {
     if (ing.optional) return;
 
-    // unità base dell’ingrediente richiesto
-    const { unit: baseUnit, qty: needBase } = toBase(ing.qty, ing.unit);
+    let available = 0;
+    const baseTarget = toBase(ing.qty, ing.unit).unit;
 
-    // somma disponibilità in pantry su elementi che matchano
-    let availableBase = 0;
     pantry.forEach(p => {
-      if (matchPantryItem(p?.name, ing)) {
-        const pb = toBase(p?.quantity, p?.unit);
-        if (pb.unit === baseUnit) availableBase += pb.qty;
-      }
+      if (!p?.name) return;
+      if (!matchPantryByKey(p.name, ing.key)) return;
+      const pb = toBase(p.quantity, p.unit);
+      if (pb.unit === baseTarget) available += pb.qty;
     });
 
-    const lackBase = Math.max(0, needBase - availableBase);
-    if (lackBase > 0) {
-      // restituisco nella stessa unit della ricetta se possibile
-      let qty = lackBase;
-      let unit = baseUnit;
-      if (ing.unit === 'g' && baseUnit === 'kg') { qty = Math.round(lackBase * 1000); unit = 'g'; }
-      if (ing.unit === 'ml' && baseUnit === 'l') { qty = Math.round(lackBase * 1000); unit = 'ml'; }
-      missing.push({ key: ing.key, name: ing.name, qty, unit });
+    const need = toBase(ing.qty, ing.unit).qty;
+    const lack = Math.max(0, need - available);
+    if (lack > 0) {
+      // presentiamo nella stessa "scala" dell’input se possibile
+      let qty = lack;
+      let unit = baseTarget;
+      if (ing.unit === 'g'  && baseTarget === 'kg') { qty = Math.round(lack * 1000); unit = 'g'; }
+      if (ing.unit === 'ml' && baseTarget === 'l')  { qty = Math.round(lack * 1000); unit = 'ml'; }
+      missing.push({ key: ing.key, qty, unit });
     }
   });
 
   return missing;
 };
 
-// --- merge items nel carrello (senza prezzi hardcoded) ---
-const mergeCartItems = (cart, item) => {
-  const idx = cart.findIndex(
-    it => norm(it.name) === norm(item.name) && norm(it.unit) === norm(item.unit)
-  );
-  if (idx >= 0) {
-    cart[idx].quantity = Number(cart[idx].quantity || 0) + Number(item.quantity || 0);
-  } else {
-    cart.push(item);
+/** ================================
+ *  UI helpers
+ *  ================================ */
+const getDifficultyColor = (difficulty) => {
+  switch (difficulty) {
+    case 1: return 'text-success';
+    case 2: return 'text-warning';
+    case 3: return 'text-error';
+    default: return 'text-muted-foreground';
   }
 };
+const getDifficultyText = (difficulty) => {
+  switch (difficulty) {
+    case 1: return 'Facile';
+    case 2: return 'Medio';
+    case 3: return 'Difficile';
+    default: return 'N/A';
+  }
+};
+const getAvailabilityColor = (percentage) => {
+  if (percentage >= 80) return 'text-success';
+  if (percentage >= 50) return 'text-warning';
+  return 'text-error';
+};
+const formatPrice = (price) =>
+  new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(price ?? 0);
 
+/** ================================
+ *  TOAST
+ *  ================================ */
 const showToast = (msg) => {
   const t = document.createElement('div');
   t.className = 'fixed top-20 left-1/2 -translate-x-1/2 bg-success text-white px-4 py-2 rounded-lg shadow z-[1000]';
@@ -238,77 +205,70 @@ const showToast = (msg) => {
   setTimeout(() => { try { document.body.removeChild(t); } catch {} }, 2200);
 };
 
+/** ================================
+ *  COMPONENT
+ *  ================================ */
 const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
   const navigate = useNavigate();
 
-  // dispensa reattiva
+  // dispensa locale alla card + contatore eventi per badge LIVE
   const [pantry, setPantry] = useState(() => readPantryOnce());
+  const [debugTick, setDebugTick] = useState(0);
 
-  // ascolta update (stesso tab + altri tab)
+  // evento custom + storage cross-tab
   useEffect(() => {
-    const refresh = () => setPantry(readPantryOnce());
+    const refresh = () => {
+      const latest = readPantryOnce();
+      dlog('pantry:updated -> reload pantry, items:', latest);
+      setPantry(latest);
+      setDebugTick((t) => t + 1);
+    };
     const onStorage = (e) => {
       if (!e) return;
-      if (e.key === STORAGE.pantry || e.key === 'eatrio:pantry' || e.key === 'eatrio:pantryItems') {
+      if (
+        e.key === STORAGE.pantry ||
+        e.key === 'eatrio:pantry' ||
+        e.key === 'eatrio:pantryItems'
+      ) {
+        dlog('storage event on key:', e.key, '-> reload');
         refresh();
       }
     };
+    dlog('MOUNT card:', recipe?.title);
     window.addEventListener('pantry:updated', refresh);
     window.addEventListener('storage', onStorage);
     return () => {
       window.removeEventListener('pantry:updated', refresh);
       window.removeEventListener('storage', onStorage);
     };
-  }, []);
+  }, [recipe?.title]);
 
   const handleCardClick = () => {
     navigate('/recipe-detail-cook-mode', { state: { recipe } });
   };
-
   const handleFavoriteClick = (e) => {
     e.stopPropagation();
     onFavoriteToggle?.(recipe?.id);
   };
 
-  const getDifficultyColor = (difficulty) => {
-    switch (difficulty) {
-      case 1: return 'text-success';
-      case 2: return 'text-warning';
-      case 3: return 'text-error';
-      default: return 'text-muted-foreground';
-    }
-  };
-
-  const getDifficultyText = (difficulty) => {
-    switch (difficulty) {
-      case 1: return 'Facile';
-      case 2: return 'Medio';
-      case 3: return 'Difficile';
-      default: return 'N/A';
-    }
-  };
-
-  const getAvailabilityColor = (percentage) => {
-    if (percentage >= 80) return 'text-success';
-    if (percentage >= 50) return 'text-warning';
-    return 'text-error';
-  };
-
-  const formatPrice = (price) =>
-    new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(price);
-
-  // ingredienti normalizzati dalla ricetta
+  // ==== CALCOLI + LOG ====
   const recipeIngs = normalizeRecipeIngredients(recipe);
+  dlog('recipe:', recipe?.title, 'normalized ings:', recipeIngs);
 
-  // calcolo availability/mancanti
+  try { dlog('localStorage pantry raw:', localStorage.getItem(STORAGE.pantry)); } catch {}
+  dlog('pantry parsed:', pantry);
+
   const missingNow = computeMissing(pantry, recipeIngs);
+  dlog('missingNow:', missingNow);
+
   const availabilityPct = recipeIngs.length
     ? Math.round(((recipeIngs.length - missingNow.length) / recipeIngs.length) * 100)
     : (recipe?.ingredientAvailability ?? 0);
+  dlog('availabilityPct:', availabilityPct);
 
+  // === Add to cart minimale: aggiunge SOLO i mancanti (senza prezzi) ===
   const handleAddToCart = (e) => {
     e.stopPropagation();
-
     if (!recipeIngs.length) {
       alert('Ingredienti non specificati per questa ricetta.');
       return;
@@ -318,34 +278,31 @@ const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
       showToast('Hai già tutti gli ingredienti 🙂');
       return;
     }
-
     let cart = [];
     try { cart = JSON.parse(localStorage.getItem(STORAGE.cart) || '[]'); } catch {}
-
-    missing.forEach(m => {
-      const name = capWords(m.name || m.key);
-      mergeCartItems(cart, {
-        id: `${norm(name)}_${m.unit}_${Date.now()}`,
+    missing.forEach((m) => {
+      const name = (ALIASES[m.key]?.[0] || m.key).replace(/_/g, ' ');
+      cart.push({
+        id: `${m.key}_${m.unit}_${Date.now()}`,
         name,
         quantity: m.qty,
         unit: m.unit,
         checked: false,
-        // Se hai un catalogo prezzi esterno, arricchisci qui:
-        // prices: getPricesFor(name, m.unit)
         fromRecipe: recipe?.title,
-        dateAdded: new Date().toISOString()
+        dateAdded: new Date().toISOString(),
       });
     });
-
     try { localStorage.setItem(STORAGE.cart, JSON.stringify(cart)); } catch {}
     showToast('Ingredienti mancanti aggiunti al Carrello');
   };
 
   return (
-    <div className={`bg-card rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-all duration-150 cursor-pointer active:scale-98 flex flex-col ${className}`}>
+    <div
+      className={`bg-card rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-all duration-150 cursor-pointer active:scale-98 flex flex-col ${className}`}
+    >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
-          src={recipe?.image}
+          src={recipe?.image || ''}
           alt={recipe?.title}
           className="w-full h-full object-cover object-center"
           onClick={handleCardClick}
@@ -364,11 +321,17 @@ const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
           />
         </button>
 
+        {/* prezzo stimato se presente nel JSON */}
         {recipe?.estimatedCost != null && (
           <div className="absolute top-3 left-3 bg-black/70 text-white px-2 py-1 rounded-full text-xs font-semibold shadow-md">
-            {formatPrice(recipe.estimatedCost)}
+            {formatPrice(recipe?.estimatedCost)}
           </div>
         )}
+
+        {/* LIVE tick + availability */}
+        <div className="absolute bottom-3 left-3 bg-black/70 text-white px-2 py-1 rounded-full text-[10px]">
+          LIVE {debugTick}
+        </div>
 
         <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-full text-xs font-medium shadow-md">
           <span className={getAvailabilityColor(availabilityPct)}>
@@ -393,24 +356,38 @@ const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
         </div>
 
         <div className="flex flex-wrap items-center gap-3 text-sm">
-          <div className="flex items-center gap-1">
-            <Icon name="Clock" size={16} color="var(--color-muted-foreground)" />
-            <span className="text-muted-foreground">{recipe?.cookingTime}min</span>
-          </div>
-
-          <div className="flex items-center gap-1">
-            <Icon name="ChefHat" size={16} color="var(--color-muted-foreground)" />
-            <span className={getDifficultyColor(recipe?.difficulty)}>
-              {getDifficultyText(recipe?.difficulty)}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1">
-            <Icon name="Users" size={16} color="var(--color-muted-foreground)" />
-            <span className="text-muted-foreground">{recipe?.servings}</span>
-          </div>
+          {recipe?.cookingTime != null && (
+            <div className="flex items-center gap-1">
+              <Icon name="Clock" size={16} color="var(--color-muted-foreground)" />
+              <span className="text-muted-foreground">{recipe?.cookingTime}min</span>
+            </div>
+          )}
+          {recipe?.difficulty != null && (
+            <div className="flex items-center gap-1">
+              <Icon name="ChefHat" size={16} color="var(--color-muted-foreground)" />
+              <span className={getDifficultyColor(recipe?.difficulty)}>
+                {getDifficultyText(recipe?.difficulty)}
+              </span>
+            </div>
+          )}
+          {recipe?.servings != null && (
+            <div className="flex items-center gap-1">
+              <Icon name="Users" size={16} color="var(--color-muted-foreground)" />
+              <span className="text-muted-foreground">{recipe?.servings}</span>
+            </div>
+          )}
         </div>
 
+        {/* macro se presenti */}
+        {(recipe?.calories || recipe?.protein || recipe?.carbs) && (
+          <div className="pt-2 border-t border-border text-xs text-muted-foreground space-y-1">
+            {recipe?.calories != null && <div>{recipe?.calories} kcal</div>}
+            {recipe?.protein != null && <div>Proteine: {recipe?.protein} g</div>}
+            {recipe?.carbs != null && <div>Carboidrati: {recipe?.carbs} g</div>}
+          </div>
+        )}
+
+        {/* confronto prezzi se presente (facoltativo) */}
         {recipe?.priceComparison && (
           <div className="mt-2 space-y-0.5">
             {[
@@ -465,3 +442,4 @@ const RecipeCard = ({ recipe, onFavoriteToggle, className = '' }) => {
 };
 
 export default RecipeCard;
+
